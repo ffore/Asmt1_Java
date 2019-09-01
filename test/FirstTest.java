@@ -7,5 +7,6 @@ class FirstTest {
     public void testSayHello() {
         First first = new First();
         assertTrue(first.sayHello().equals("Hello World"));
+        assertTrue(true);
     }
 }

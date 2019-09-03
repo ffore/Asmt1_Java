@@ -79,9 +79,35 @@ public class BodyMassIndexTest {
 
     @Test
     public void testCheckWeightInputReturnsBoolean(){
-        assertTrue(BodyMassIndex.isValidWeight(150));
-        assertFalse(BodyMassIndex.isValidWeight(-120));
-        assertFalse(BodyMassIndex.isValidWeight(0));
+        assertTrue(BodyMassIndex.isValidWeight("150"));
+//        assertFalse(BodyMassIndex.isValidWeight("0"));
+    }
+
+    @Test
+    public void testCheckIfWeightIsOnlyNumbers(){
+        assertFalse(BodyMassIndex.isValidWeight("120 lbs"));
+        assertFalse(BodyMassIndex.isValidWeight("lbs 120"));
+        assertFalse(BodyMassIndex.isValidWeight("120lbs"));
+        assertFalse(BodyMassIndex.isValidWeight("120 pounds"));
+        assertFalse(BodyMassIndex.isValidWeight("120 lbs"));
+        assertFalse(BodyMassIndex.isValidWeight("-120"));
+        assertFalse(BodyMassIndex.isValidWeight("one hundred and twenty pounds"));
+    }
+
+    @Test
+    public void testCheckWeightIsNotZeroPreceding(){
+        assertFalse(BodyMassIndex.isValidWeight("090"));
+        assertFalse(BodyMassIndex.isValidWeight("0"));
+        assertTrue(BodyMassIndex.isValidWeight("100"));
+    }
+
+    @Test
+    public void testUserInputObject(){
+        userInput userInput = new userInput("5\'11\"", 120);
+        assertEquals(120, userInput.getWeight());
+        assertEquals("5\'11\"", userInput.getHeight());
+        assertEquals(11, userInput.getHeightIn());
+        assertEquals(5, userInput.getHeightFt());
     }
 
 }

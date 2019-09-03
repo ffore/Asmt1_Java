@@ -7,10 +7,11 @@ public class BodyMassIndex {
 
 //    temporary main function to run BodyMassIndex.java
     public static void main(String args[]){
-        acceptUserInput();
+        userInput userInput = acceptUserInput();
+        System.out.println("user put in height " + userInput.getHeight() + " and weight " + userInput.getWeight());
     }
 
-    public static void acceptUserInput(){
+    public static userInput acceptUserInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;
         String height="";
@@ -27,23 +28,24 @@ public class BodyMassIndex {
             height = myScan.nextLine();
             validHeight = isValidHeight(height);
         }
-        System.out.println("You entered: " + height + "\n");
+//        System.out.println("You entered: " + height + "\n");
         boolean validWeight = false;
-        int weight = 0;
+        String weightStr = "";
+        count = 0;
         while(!validWeight){
-            System.out.println("Weight Measurement");
-            System.out.println("This is valid input --> 120");
-            System.out.print("Enter weight in lbs: ");
-            try{
-                weight = myScan.nextInt();
+            if(count == 0){
+                System.out.println("Weight Measurement");
+                System.out.println("This is valid input --> 120");
+                System.out.print("Enter weight in lbs: ");
             }
-            catch(InputMismatchException e) {
-                myScan.next();
-                continue;
-            }
-            validWeight = isValidWeight(weight);
+            else System.out.print("Something went wrong, please enter height again: ");
+            count++;
+            weightStr = myScan.nextLine();
+            validWeight = isValidWeight(weightStr);
         }
-        System.out.println("weight is: " + weight);
+//        System.out.println("weight is: " + weightStr);
+        int weight = Integer.parseInt(weightStr);
+        return new userInput(height, weight);
     }
 
     public static boolean isValidHeight(String height){
@@ -119,10 +121,56 @@ public class BodyMassIndex {
         else return true;
     }
 
-    public static boolean isValidWeight(int weight){
-        if(weight <= 0) return false;
-        return true;
+    public static boolean isValidWeight(String weight){
+        if( isOnlyNumbers(weight) &&
+            isFirstCharValidDigit(weight) ) return true;
+        return false;
     }
 
+    public static boolean isOnlyNumbers(String weight){
+        if(!weight.matches("[0-9]+")) return false;
+        else return true;
+    }
+
+    public static boolean isFirstCharValidDigit(String weight){
+        if(weight.charAt(0) != '0') return true;
+        else return false;
+    }
+
+}
+
+final class userInput {
+//    only good values will be here since
+//    checking is done before the instance
+//    of this object
+    private final String height;
+    private final int weight;
+    int singleQuoteIndex;
+    int doubleQuoteIndex;
+
+    public userInput(String height, int weight){
+        this.height = height;
+        this.weight = weight;
+        singleQuoteIndex = height.indexOf('\'');
+        doubleQuoteIndex = height.indexOf('\"');
+    }
+
+    public String getHeight(){
+        return height;
+    }
+
+    public int getWeight(){
+        return weight;
+    }
+
+    public int getHeightIn(){
+        String inchStr = height.substring(singleQuoteIndex+1, doubleQuoteIndex);
+        return Integer.parseInt(inchStr);
+    }
+
+    public int getHeightFt(){
+        String inchStr = height.substring(0, singleQuoteIndex);
+        return Integer.parseInt(inchStr);
+    }
 }
 

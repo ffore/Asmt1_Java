@@ -27,24 +27,13 @@ public class ShortestDistance {
         System.out.println("The calculated distance is: " + shortestDistance.getDistance());
     }
 
-    public static boolean isValidNumber(String input) {
-        try {
-            Double check = Double.parseDouble(input);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid Input. Expected a valid number");
-            return false;
-        }
-
-        return true;
-    }
-
     public double acceptCoordinate(String currentCoordinate) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter a value for " + currentCoordinate);
         String input = scanner.nextLine();
 
-        while(!isValidNumber(input)) {
+        while(isInvalidInput(input)) {
             System.out.println("Enter a new value for " + currentCoordinate);
             input = scanner.nextLine();
         }
@@ -68,15 +57,15 @@ public class ShortestDistance {
         this.setDistance(Math.sqrt(sum));
     }
 
-    public double subtract(double a, double b) {
+    public static double subtract(double a, double b) {
         return a - b;
     }
 
-    public double add(double a, double b) {
+    public static double add(double a, double b) {
         return a + b;
     }
 
-    public double square(double a) {
+    public static double square(double a) {
         return a * a;
     }
 
@@ -94,5 +83,9 @@ public class ShortestDistance {
 
     public void setCoordinates(double[] coordinate) {
         this.coordinate = coordinate;
+    }
+
+    public static boolean isInvalidInput(String input) {
+        return !InputValidation.isValidDouble(input);
     }
 }

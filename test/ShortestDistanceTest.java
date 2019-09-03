@@ -4,42 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ShortestDistanceTest {
 
-    private ShortestDistance shortestDistance = new ShortestDistance();
-
-    // Input Validation
-    @Test
-    public void testWholeNumberInputCanConvertToNumber() {
-        String input = "50";
-        assertTrue(ShortestDistance.isValidNumber(input));
-    }
-
-    @Test
-    public void testDecimalNumberInputCanConvertToNumber() {
-        String input = "50.99";
-        assertTrue(ShortestDistance.isValidNumber(input));
-    }
-
-    @Test
-    public void testNegativeNumberInputCanConvertToNumber() {
-        String input = "-10.0";
-        assertTrue(ShortestDistance.isValidNumber(input));
-    }
-
-    @Test
-    public void testWordsCannotConvertToNumber() {
-        String input = "Hello World";
-        assertFalse(ShortestDistance.isValidNumber(input));
-    }
-
-    @Test
-    public void testSpecialCharactersCannotConvertToNumber() {
-        String input = "3!@#$%^&*()[]{},.<>-_=+`~/?'\"\\";
-        assertFalse(ShortestDistance.isValidNumber(input));
-    }
-
     // User Input
     @Test
     public void testValidInputReturnsCoordinate() {
+        ShortestDistance shortestDistance = new ShortestDistance();
         StringBufferInputStream inputStream = new StringBufferInputStream("20");
         System.setIn(inputStream);
         assertEquals(shortestDistance.acceptCoordinate("x1"), 20);
@@ -48,23 +16,23 @@ public class ShortestDistanceTest {
     // Subtraction
     @Test
     public void testSubtractionWithPositiveNumbers() {
-        assertEquals(shortestDistance.subtract(5.0, 3.0), 2.0);
+        assertEquals(ShortestDistance.subtract(5.0, 3.0), 2.0);
     }
 
     @Test
     public void testSubtractionWithNegativeNumbers() {
-        assertEquals(shortestDistance.subtract(-3, -2), -1);
+        assertEquals(ShortestDistance.subtract(-3, -2), -1);
     }
 
     @Test
     public void testSubtractionWithOppositeSignedNumbers() {
-        assertEquals(shortestDistance.subtract(-3, 3), -6);
-        assertEquals(shortestDistance.subtract(3, -3), 6);
+        assertEquals(ShortestDistance.subtract(-3, 3), -6);
+        assertEquals(ShortestDistance.subtract(3, -3), 6);
     }
 
     @Test
     public void testSubtractionWithDecimalNumbers() {
-        assertEquals(shortestDistance.subtract(-2.5, -2.0), -0.5);
+        assertEquals(ShortestDistance.subtract(-2.5, -2.0), -0.5);
     }
 
 //    @Test
@@ -76,43 +44,43 @@ public class ShortestDistanceTest {
     // Addition
     @Test
     public void testAdditionWithPositiveNumbers() {
-        assertEquals(shortestDistance.add(1.0, 1.0), 2.0);
+        assertEquals(ShortestDistance.add(1.0, 1.0), 2.0);
     }
 
     @Test
-    public void testAdditionwithNegativeNumbers() {
-        assertEquals(shortestDistance.add(-1, -11), -12);
+    public void testAdditionWithNegativeNumbers() {
+        assertEquals(ShortestDistance.add(-1, -11), -12);
     }
 
     @Test
     public void testAdditionWithOppositeSignedNumbers() {
-        assertEquals(shortestDistance.add(1, -1), 0);
+        assertEquals(ShortestDistance.add(1, -1), 0);
     }
 
     @Test
     public void testAdditionWithDecimalNumbers() {
-        assertEquals(shortestDistance.add(1.5, 3.5), 5);
+        assertEquals(ShortestDistance.add(1.5, 3.5), 5);
     }
 
     @Test
     public void testAdditionWithSixDigitDecimalNumbers() {
-        assertEquals(shortestDistance.add(1.111111, 3.888888), 4.999999);
+        assertEquals(ShortestDistance.add(1.111111, 3.888888), 4.999999);
     }
 
     // Square
     @Test
     public void testSquareWithPositiveNumber() {
-        assertEquals(shortestDistance.square(5.0), 25);
+        assertEquals(ShortestDistance.square(5.0), 25);
     }
 
     @Test
     public void testSquareWithNegativeNumber() {
-        assertEquals(shortestDistance.square(-5), 25);
+        assertEquals(ShortestDistance.square(-5), 25);
     }
 
     @Test
     public void testSquareWithDecimalNumber() {
-        assertEquals(shortestDistance.square(2.5), 6.25);
+        assertEquals(ShortestDistance.square(2.5), 6.25);
     }
 
 //    @Test
@@ -176,6 +144,14 @@ public class ShortestDistanceTest {
 
         shortestDistance.calculateDistance();
         assertEquals(shortestDistance.getDistance(), Math.sqrt(50.5));
+    }
+
+    // Input Validation
+    @Test
+    public void testIsInvalidInput() {
+        String input1 = "0", input2 = "hello";
+        assertFalse(ShortestDistance.isInvalidInput(input1));
+        assertTrue(ShortestDistance.isInvalidInput(input2));
     }
 
 }

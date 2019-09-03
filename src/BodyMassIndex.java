@@ -1,5 +1,6 @@
 import org.junit.platform.commons.util.StringUtils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BodyMassIndex {
@@ -13,15 +14,36 @@ public class BodyMassIndex {
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;
         String height="";
+        int count = 0;
         while(!validHeight){
-            System.out.println("Height Measurement");
-            System.out.println("Use single quote (\') for feet & double quote (\") for inches");
-            System.out.println("This is valid input --> 5\'8\" (no spaces!)");
-            System.out.print("Enter height: ");
+            if(count == 0) {
+                System.out.println("Height Measurement");
+                System.out.println("Use single quote (\') for feet & double quote (\") for inches");
+                System.out.println("This is valid input --> 5\'8\" (no spaces!)");
+                System.out.print("Enter height: ");
+            }
+            else System.out.print("Something went wrong, please enter height again: ");
+            count++;
             height = myScan.nextLine();
             validHeight = isValidHeight(height);
         }
-        System.out.println("You entered: " + height);
+        System.out.println("You entered: " + height + "\n");
+        boolean validWeight = false;
+        int weight = 0;
+        while(!validWeight){
+            System.out.println("Weight Measurement");
+            System.out.println("This is valid input --> 120");
+            System.out.print("Enter weight in lbs: ");
+            try{
+                weight = myScan.nextInt();
+            }
+            catch(InputMismatchException e) {
+                myScan.next();
+                continue;
+            }
+            validWeight = isValidWeight(weight);
+        }
+        System.out.println("weight is: " + weight);
     }
 
     public static boolean isValidHeight(String height){
@@ -32,6 +54,7 @@ public class BodyMassIndex {
             !doQuotesOccurOnce(height) ||
             !isOnlyNumbersAndQuotes(height) ||
             !areQuotesAfterNumbers(height, singleQuoteIndex, doubleQuoteIndex) ||
+            !areNumbersZeroPreceding(height, singleQuoteIndex, doubleQuoteIndex) ||
             !areMeasurementsValid(height, singleQuoteIndex, doubleQuoteIndex)) return false;
         else return true;
     }
@@ -60,6 +83,15 @@ public class BodyMassIndex {
         else return true;
     }
 
+    public static boolean areNumbersZeroPreceding(String height, int singleQuoteIndex, int doubleQuoteIndex){
+        String ftString = height.substring(0,singleQuoteIndex);
+        String inString = height.substring(singleQuoteIndex+1, doubleQuoteIndex);
+        if( ftString.charAt(0) == '0' && ftString.length() != 1 ||
+            inString.charAt(0) == '0' && inString.length() != 1) return false;
+        return true;
+
+    }
+
     public static boolean areQuotesAfterNumbers(String height, int singleQuoteIndex, int doubleQuoteIndex){
 //      ' and " are after numbers
         if( !height.substring(0, 1).matches("[0-9]+") ||
@@ -85,6 +117,11 @@ public class BodyMassIndex {
         }
         if(heightIn > 11 || (heightFt == 0 && heightIn == 0)) return false;
         else return true;
+    }
+
+    public static boolean isValidWeight(int weight){
+        if(weight <= 0) return false;
+        return true;
     }
 
 }

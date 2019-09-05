@@ -1,5 +1,7 @@
 import org.junit.platform.commons.util.StringUtils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,6 +11,9 @@ public class BodyMassIndex {
     public static void main(String args[]){
         userInput userInput = acceptUserInput();
         System.out.println("user put in height " + userInput.getHeight() + " and weight " + userInput.getWeight());
+        double bmi = getBMI(userInput);
+        String category = getBMICategory(bmi);
+        System.out.println("BMI: " + bmi + " (" + category + ")");
     }
 
     public static userInput acceptUserInput(){
@@ -135,6 +140,44 @@ public class BodyMassIndex {
     public static boolean isFirstCharValidDigit(String weight){
         if(weight.charAt(0) != '0') return true;
         else return false;
+    }
+
+    public static double getHeightInMeters(int ft, int in){
+        double totalHeightInches = (double) getHeightInInches(ft, in);
+        double htInMeters = totalHeightInches*0.025;
+        return round(htInMeters, 3);
+    }
+
+    public static int getHeightInInches(int ft, int in){
+        return (ft*12 + in);
+    }
+
+    public static double getWeightInKilos(int lbs){
+        double lbsInDbl = (double) lbs;
+        return lbsInDbl*0.45;
+
+    }
+
+    public static double getBMI(userInput usr){
+        double heightInMeters = getHeightInMeters(usr.getHeightFt(), usr.getHeightIn());
+        double weightInKilos = getWeightInKilos(usr.getWeight());
+        double metersSquared = heightInMeters*heightInMeters;
+        double rawBMI = weightInKilos/metersSquared;
+        return round(rawBMI, 1);
+    }
+
+    public static double round(double value, int places){
+//      following is inspired by https://www.baeldung.com/java-round-decimal-number
+        BigDecimal bdRounded = new BigDecimal(Double.toString(value));
+        bdRounded = bdRounded.setScale(places, RoundingMode.HALF_UP);
+        return bdRounded.doubleValue();
+    }
+
+    public static String getBMICategory(double bmi){
+        if(bmi<18.5) return "Underweight";
+        else if(bmi >= 18.5 && bmi <= 24.9) return "Normal weight";
+        else if(bmi >= 25 && bmi <= 29.9) return "Overweight";
+        else return "Obese";
     }
 
 }

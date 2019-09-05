@@ -110,4 +110,59 @@ public class BodyMassIndexTest {
         assertEquals(5, userInput.getHeightFt());
     }
 
+    @Test
+    public void testHeightInInchesConversion(){
+        assertEquals(63,BodyMassIndex.getHeightInInches(5, 3));
+        assertEquals(10,BodyMassIndex.getHeightInInches(0, 10));
+        assertEquals(72,BodyMassIndex.getHeightInInches(6, 0));
+    }
+
+//    3 people to test:
+//      1.) 5'3" 125lbs
+//      2.) 6'0" 166lbs
+//      3.) 1'5" 66lbs
+    @Test
+    public void testHeightInMetersConversion(){
+        assertEquals(1.575, BodyMassIndex.getHeightInMeters(5, 3));
+        assertEquals(1.8, BodyMassIndex.getHeightInMeters(6, 0));
+        assertEquals(0.425, BodyMassIndex.getHeightInMeters(1, 5));
+    }
+
+    @Test
+    public void testWeightToKiloConversion(){
+        assertEquals(56.25, BodyMassIndex.getWeightInKilos(125));
+        assertEquals(74.7, BodyMassIndex.getWeightInKilos(166));
+        assertEquals(29.7, BodyMassIndex.getWeightInKilos(66));
+    }
+
+    @Test
+    public void testRoundingHelper(){
+        assertEquals(22.5, BodyMassIndex.round(22.4999, 1));
+        assertEquals(29.1, BodyMassIndex.round(29.1222, 1));
+        assertEquals(0.112, BodyMassIndex.round(0.11223, 3));
+        assertEquals(3.789, BodyMassIndex.round(3.78877, 3));
+        assertEquals(27.0, BodyMassIndex.round(27.0, 1));
+    }
+
+    @Test
+    public void testGetBMI(){
+        assertEquals(22.7, BodyMassIndex.getBMI(new userInput("5\'3\"", 125)));
+        assertEquals(23.1, BodyMassIndex.getBMI(new userInput("6\'0\"", 166)));
+        assertEquals(164.4, BodyMassIndex.getBMI(new userInput("1\'5\"", 66)));
+    }
+
+    @Test
+    public void testGetCategory(){
+//        assertThrows()
+        assertEquals("Underweight", BodyMassIndex.getBMICategory(17.2));
+        assertNotEquals("Underweight", BodyMassIndex.getBMICategory(18.5));
+        assertEquals("Normal weight", BodyMassIndex.getBMICategory(18.5));
+        assertEquals("Normal weight", BodyMassIndex.getBMICategory(24.9));
+        assertNotEquals("Normal weight", BodyMassIndex.getBMICategory(25.0));
+        assertEquals("Overweight", BodyMassIndex.getBMICategory(25.0));
+        assertEquals("Overweight", BodyMassIndex.getBMICategory(29.9));
+        assertNotEquals("Overweight", BodyMassIndex.getBMICategory(30.0));
+        assertEquals("Obese", BodyMassIndex.getBMICategory(30.0));
+        assertEquals("Obese", BodyMassIndex.getBMICategory(38.1));
+    }
 }

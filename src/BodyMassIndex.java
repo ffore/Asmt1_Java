@@ -10,7 +10,6 @@ public class BodyMassIndex {
 //    temporary main function to run BodyMassIndex.java
     public static void main(String args[]){
         userInput userInput = acceptUserInput();
-        System.out.println("user put in height " + userInput.getHeight() + " and weight " + userInput.getWeight());
         double bmi = getBMI(userInput);
         String category = getBMICategory(bmi);
         System.out.println("BMI: " + bmi + " (" + category + ")");
@@ -154,7 +153,8 @@ public class BodyMassIndex {
 
     public static double getWeightInKilos(int lbs){
         double lbsInDbl = (double) lbs;
-        return lbsInDbl*0.45;
+        double kilos = lbsInDbl*0.45;
+        return round(kilos, 2);
 
     }
 

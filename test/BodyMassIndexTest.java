@@ -1,11 +1,37 @@
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BodyMassIndexTest {
 
+//    @Test
+//    public void testHeightPrompt() {
+//        assertEquals("Height Measurement\nUse single quote (\') for feet & double quote (\") for inches\nThis is valid input --> 5\'8\" (no spaces!)\nEnter height: ", BodyMassIndex.getHeightPrompt());
+//    }
+//
+//    @Test
+//    public void testHeightRetryPrompt() {
+//        assertEquals("Something went wrong, please enter height again: ", BodyMassIndex.getHeightRetryPrompt());
+//    }
+
+    @Test
+    public void testInput() {
+        String input = "5\'11\"\r150\r";
+//        following code inspired by: https://stackoverflow.com/a/31635737
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        userInput x = BodyMassIndex.acceptUserInput();
+        assertEquals(150, x.getWeight());
+        assertEquals("5\'11\"", x.getHeight());
+    }
+
     @Test
     public void testCheckHeightInputReturnsBoolean() {
-        assertTrue(BodyMassIndex.isValidHeight("5'6\""));
+        assertTrue(BodyMassIndex.isValidHeight("5\'6\""));
     }
 
     @Test
@@ -37,8 +63,7 @@ public class BodyMassIndexTest {
         assertTrue(BodyMassIndex.isValidHeight("7\'4\""));
     }
 
-
-//    check input only has numbers and ' and "
+//    check input only has numbers && ' and "
     @Test
     public void testCheckHeightInputHasOnlyQuotesAndNumbers() {
         assertFalse(BodyMassIndex.isValidHeight("hello\'goodbye\""));
@@ -52,7 +77,8 @@ public class BodyMassIndexTest {
 //    check input has quotes after numbers not before (not '5"3)
     @Test
     public void testCheckHeightInputQuotesAreAfterNumbers() {
-        assertFalse(BodyMassIndex.isValidHeight("\'5\"9")); // x'5"9  x'59" x5'"9 ->5'9"
+//      x'5"9  x'59" x5'"9 ->5'9"
+        assertFalse(BodyMassIndex.isValidHeight("\'5\"9"));
         assertFalse(BodyMassIndex.isValidHeight("\'59\""));
         assertFalse(BodyMassIndex.isValidHeight("5\'\"9"));
         assertTrue(BodyMassIndex.isValidHeight("5\'9\""));
@@ -63,6 +89,7 @@ public class BodyMassIndexTest {
         assertFalse(BodyMassIndex.isValidHeight("5\'12\""));
         assertFalse(BodyMassIndex.isValidHeight("3\'22\""));
         assertFalse(BodyMassIndex.isValidHeight("0\'0\""));
+        assertTrue(BodyMassIndex.isValidHeight("4\'0\""));
     }
 
     @Test
@@ -80,7 +107,7 @@ public class BodyMassIndexTest {
     @Test
     public void testCheckWeightInputReturnsBoolean(){
         assertTrue(BodyMassIndex.isValidWeight("150"));
-//        assertFalse(BodyMassIndex.isValidWeight("0"));
+        assertFalse(BodyMassIndex.isValidWeight("0"));
     }
 
     @Test
@@ -103,6 +130,8 @@ public class BodyMassIndexTest {
 
     @Test
     public void testUserInputObject(){
+//        assuming only valid height and weight will be fed into userInput object
+//        all bad inputs would have been prevented by acceptUserInput function
         userInput userInput = new userInput("5\'11\"", 120);
         assertEquals(120, userInput.getWeight());
         assertEquals("5\'11\"", userInput.getHeight());
@@ -141,7 +170,8 @@ public class BodyMassIndexTest {
         assertEquals(29.1, BodyMassIndex.round(29.1222, 1));
         assertEquals(0.112, BodyMassIndex.round(0.11223, 3));
         assertEquals(3.789, BodyMassIndex.round(3.78877, 3));
-        assertEquals(27.0, BodyMassIndex.round(27.0, 1));
+        assertEquals(27.22, BodyMassIndex.round(27.2167, 2));
+        assertEquals(0.22, BodyMassIndex.round(0.2222222, 2));
     }
 
     @Test

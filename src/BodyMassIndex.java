@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class BodyMassIndex {
 
 //    temporary main function to run BodyMassIndex.java
-    public static void main(String args[]){
-        userInput userInput = acceptUserInput();
-        double bmi = getBMI(userInput);
-        String category = getBMICategory(bmi);
-        System.out.println("BMI: " + bmi + " (" + category + ")");
-    }
+//    public static void main(String args[]){
+//        userInput userInput = acceptUserInput();
+//        double bmi = getBMI(userInput);
+//        String category = getBMICategory(bmi);
+//        System.out.println("BMI: " + bmi + " (" + category + ")");
+//    }
 
     public static userInput acceptUserInput(){
         Scanner myScan = new Scanner(System.in);
@@ -42,7 +42,7 @@ public class BodyMassIndex {
                 System.out.println("This is valid input --> 120");
                 System.out.print("Enter weight in lbs: ");
             }
-            else System.out.print("Something went wrong, please enter height again: ");
+            else System.out.print("Something went wrong, please enter weight again: ");
             count++;
             weightStr = myScan.nextLine();
             validWeight = isValidWeight(weightStr);

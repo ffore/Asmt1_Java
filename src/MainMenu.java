@@ -2,10 +2,12 @@ import java.util.Scanner;
 
 public class MainMenu {
 
+    private BodyMassIndex bodyMassIndex;
     private ShortestDistance shortestDistance;
     private boolean isStillRunning;
 
     public MainMenu() {
+        this.bodyMassIndex = new BodyMassIndex();
         this.shortestDistance = new ShortestDistance();
         this.isStillRunning = true;
     }
@@ -43,7 +45,8 @@ public class MainMenu {
     public void runFunction(int option) {
         switch(option) {
             case 1:
-                // Function
+                bodyMassIndex = this.getBodyMassIndex();
+                bodyMassIndex.acceptUserInput();
                 break;
             case 2:
                 // Function
@@ -87,6 +90,10 @@ public class MainMenu {
 
     public boolean isRunning() {
         return this.isStillRunning;
+    }
+
+    public BodyMassIndex getBodyMassIndex() {
+        return this.bodyMassIndex;
     }
 
     public ShortestDistance getShortestDistance() {

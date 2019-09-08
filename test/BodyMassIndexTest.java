@@ -135,8 +135,6 @@ public class BodyMassIndexTest {
         userInput userInput = new userInput("5\'11\"", 120);
         assertEquals(120, userInput.getWeight());
         assertEquals("5\'11\"", userInput.getHeight());
-        assertEquals(11, userInput.getHeightIn());
-        assertEquals(5, userInput.getHeightFt());
     }
 
     @Test
@@ -176,9 +174,9 @@ public class BodyMassIndexTest {
 
     @Test
     public void testGetBMI(){
-        assertEquals(22.7, BodyMassIndex.getBMI(new userInput("5\'3\"", 125)));
-        assertEquals(23.1, BodyMassIndex.getBMI(new userInput("6\'0\"", 166)));
-        assertEquals(164.4, BodyMassIndex.getBMI(new userInput("1\'5\"", 66)));
+        assertEquals(22.7, BodyMassIndex.getBMI("5\'3\"", 125));
+        assertEquals(23.1, BodyMassIndex.getBMI("6\'0\"", 166));
+        assertEquals(164.4, BodyMassIndex.getBMI("1\'5\"", 66));
     }
 
     @Test

@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class BodyMassIndex {
 
 //    temporary main function to run BodyMassIndex.java
-//    public static void main(String args[]){
-//        userInput userInput = acceptUserInput();
+    public static void main(String args[]){
+        acceptUserInput();
 //        double bmi = getBMI(userInput);
 //        String category = getBMICategory(bmi);
 //        System.out.println("BMI: " + bmi + " (" + category + ")");
-//    }
+    }
 
     public static userInput acceptUserInput(){
         Scanner myScan = new Scanner(System.in);
@@ -32,7 +32,6 @@ public class BodyMassIndex {
             height = myScan.nextLine();
             validHeight = isValidHeight(height);
         }
-//        System.out.println("You entered: " + height + "\n");
         boolean validWeight = false;
         String weightStr = "";
         count = 0;
@@ -47,8 +46,8 @@ public class BodyMassIndex {
             weightStr = myScan.nextLine();
             validWeight = isValidWeight(weightStr);
         }
-//        System.out.println("weight is: " + weightStr);
         int weight = Integer.parseInt(weightStr);
+        printResult(height, weight);
         return new userInput(height, weight);
     }
 
@@ -88,9 +87,9 @@ public class BodyMassIndex {
 
     }
 
-    public static double getBMI(userInput usr){
-        double heightInMeters = getHeightInMeters(usr.getHeightFt(), usr.getHeightIn());
-        double weightInKilos = getWeightInKilos(usr.getWeight());
+    public static double getBMI(String height, int weight){
+        double heightInMeters = getHeightInMeters(getHeightFt(height), getHeightIn(height));
+        double weightInKilos = getWeightInKilos(weight);
         double metersSquared = heightInMeters*heightInMeters;
         double rawBMI = weightInKilos/metersSquared;
         return round(rawBMI, 1);
@@ -110,6 +109,25 @@ public class BodyMassIndex {
         else return "Obese";
     }
 
+    public static void printResult(String height, int weight){
+        double bmi = getBMI(height, weight);
+        String category = getBMICategory(bmi);
+        System.out.println("BMI: " + bmi + " (" + category + ")");
+    }
+
+    public static int getHeightIn(String height){
+        int singleQuoteIndex = height.indexOf('\'');
+        int doubleQuoteIndex = height.indexOf('\"');
+        String inchStr = height.substring(singleQuoteIndex+1, doubleQuoteIndex);
+        return Integer.parseInt(inchStr);
+    }
+
+    public static int getHeightFt(String height){
+        int singleQuoteIndex = height.indexOf('\'');
+        String inchStr = height.substring(0, singleQuoteIndex);
+        return Integer.parseInt(inchStr);
+    }
+
 }
 
 final class userInput {
@@ -124,8 +142,6 @@ final class userInput {
     public userInput(String height, int weight){
         this.height = height;
         this.weight = weight;
-        singleQuoteIndex = height.indexOf('\'');
-        doubleQuoteIndex = height.indexOf('\"');
     }
 
     public String getHeight(){
@@ -136,14 +152,5 @@ final class userInput {
         return weight;
     }
 
-    public int getHeightIn(){
-        String inchStr = height.substring(singleQuoteIndex+1, doubleQuoteIndex);
-        return Integer.parseInt(inchStr);
-    }
-
-    public int getHeightFt(){
-        String inchStr = height.substring(0, singleQuoteIndex);
-        return Integer.parseInt(inchStr);
-    }
 }
 

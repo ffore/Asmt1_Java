@@ -15,7 +15,7 @@ public class ShortestDistance {
         this.coordinates = coordinates;
     }
 
-    public static void main(String[] args) {
+    public void acceptInput() {
         ShortestDistance shortestDistance = new ShortestDistance();
         String[] parameter = {"x1", "y1", "x2", "y2"};
 
@@ -45,6 +45,7 @@ public class ShortestDistance {
         this.calculateDistance();
         double result = this.getDistance();
         System.out.println("The resulting distance is: " + result);
+        System.out.println("Returning to the Main Menu...");
         return result;
     }
 

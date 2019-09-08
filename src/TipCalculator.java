@@ -17,6 +17,10 @@ public class TipCalculator {
     }
 
     public static boolean isValidPrice(String price){
-        return true;
+        if( InputValidation.hasOnlyNumbersAndOnePeriod(price)
+            && InputValidation.hasOnlyTwoDecimalPlaces(price)
+            && InputValidation.notZero(price)
+        ) return true;
+        else return false;
     }
 }

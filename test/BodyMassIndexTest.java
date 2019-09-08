@@ -24,7 +24,7 @@ public class BodyMassIndexTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        userInput x = BodyMassIndex.acceptUserInput();
+        userInput x = BodyMassIndex.acceptInput();
         assertEquals(150, x.getWeight());
         assertEquals("5\'11\"", x.getHeight());
     }

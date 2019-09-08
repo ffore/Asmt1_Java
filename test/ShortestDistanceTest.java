@@ -35,11 +35,10 @@ public class ShortestDistanceTest {
         assertEquals(ShortestDistance.subtract(-2.5, -2.0), -0.5);
     }
 
-//    @Test
-//    public void testSubtractionWithSixDigitDecimalNumbers() {
-//        assertEquals(shortestDistance.subtract(5.666666, 4.333333), 1.333333);
-//        System.out.println(shortestDistance.subtract(4.4, 4.2));
-//    }
+    @Test
+    public void testSubtractionWithSixDigitDecimalNumbers() {
+        assertEquals(ShortestDistance.subtract(5.666666, 4.333333), 1.333);
+    }
 
     // Addition
     @Test
@@ -64,7 +63,7 @@ public class ShortestDistanceTest {
 
     @Test
     public void testAdditionWithSixDigitDecimalNumbers() {
-        assertEquals(ShortestDistance.add(1.111111, 3.888888), 4.999999);
+        assertEquals(ShortestDistance.add(1.111111, 3.888888), 5.0);
     }
 
     // Square
@@ -83,11 +82,31 @@ public class ShortestDistanceTest {
         assertEquals(ShortestDistance.square(2.5), 6.25);
     }
 
-//    @Test
-//    public void testSquareWithSixDigitDecimalNumber() {
-//        assertEquals(shortestDistance.square(2.112233), 4.46152825);
-//    }
+    @Test
+    public void testSquareWithSixDigitDecimalNumber() {
+        assertEquals(ShortestDistance.square(2.112233), 4.462);
+    }
 
+    // Round
+    @Test
+    public void testRoundWithPositiveNumber() {
+        assertEquals(ShortestDistance.round(1.0), 1.0);
+    }
+
+    @Test
+    public void testRoundWithNegativeNumber() {
+        assertEquals(ShortestDistance.round(-1.0), -1.0);
+    }
+
+    @Test
+    public void testRoundWithDecimalNumber() {
+        assertEquals(ShortestDistance.round(1000.5), 1000.5);
+    }
+
+    @Test
+    public void testRoundWithSixDigitDecimalNumber() {
+        assertEquals(ShortestDistance.round(1.555555), 1.556);
+    }
     // Private Variable Interactions
     @Test
     public void testGetDistance() {
@@ -112,9 +131,11 @@ public class ShortestDistanceTest {
 
     @Test
     public void testSetCoordinate() {
-        ShortestDistance emptyCoordinate = new ShortestDistance();
         double[] arr = {1, 2, 3, 4};
-        emptyCoordinate.setCoordinates(arr);
+        ShortestDistance emptyCoordinate = new ShortestDistance(arr);
+
+        emptyCoordinate.setCoordinate(0, 5);
+        arr[0] = 5;
         assertEquals(emptyCoordinate.getCoordinates(), arr);
     }
 
@@ -123,27 +144,39 @@ public class ShortestDistanceTest {
     public void testDistanceCalculationWithWholePositiveNumbers() {
         double[] values = {1, 1, 2, 2};
         ShortestDistance shortestDistance = new ShortestDistance(values);
+        double result = ShortestDistance.round(Math.sqrt(2));
 
         shortestDistance.calculateDistance();
-        assertEquals(shortestDistance.getDistance(), Math.sqrt(2));
+        assertEquals(shortestDistance.getDistance(), result);
     }
 
     @Test
     public void testDistanceCalculationWithMixedNumbers() {
         double[] values = {-1, -1, -2, -2};
         ShortestDistance shortestDistance = new ShortestDistance(values);
+        double result = ShortestDistance.round(Math.sqrt(2));
 
         shortestDistance.calculateDistance();
-        assertEquals(shortestDistance.getDistance(), Math.sqrt(2));
+        assertEquals(shortestDistance.getDistance(), result);
     }
 
     @Test
     public void testDistanceCalculationWithDecimalNumbers() {
         double[] values = {1.5, 2, 6, 7.5};
         ShortestDistance shortestDistance = new ShortestDistance(values);
+        double result = ShortestDistance.round(Math.sqrt(50.5));
 
         shortestDistance.calculateDistance();
-        assertEquals(shortestDistance.getDistance(), Math.sqrt(50.5));
+        assertEquals(shortestDistance.getDistance(), result);
+    }
+
+    @Test
+    public void testDistanceCalculationWithSixDigitDecimalNumbers() {
+        double[] values = {4.22333, 2.654321, 7.33366, 1.123456};
+        ShortestDistance shortestDistance = new ShortestDistance(values);
+
+        shortestDistance.calculateDistance();
+        assertEquals(shortestDistance.getDistance(), 3.466);
     }
 
     // Input Validation

@@ -5,6 +5,7 @@ public class Retirement {
         // Create Rounding function for 2 decimal places
     // Accept user input for "percentage saved" ?
     // Accept user input for desired savings goal
+
     private int currentAge;
     private double annualSalary;
     private double percentageSaved;
@@ -15,6 +16,13 @@ public class Retirement {
         this.annualSalary = 0;
         this.percentageSaved = 0;
         this.savingsGoal = 0;
+    }
+
+    public static void main(String[] args) {
+
+        for(int i = 0; i < 4; i++) {
+
+        }
     }
 
     public int getCurrentAge() {

@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class ShortestDistance {
 
     private double distance;
-    private double[] coordinate;
+    private double[] coordinates;
 
     public ShortestDistance() {
         this.distance = 0.0;
-        this.coordinate = new double[4];
+        this.coordinates = new double[4];
     }
 
-    public ShortestDistance(double[] coordinate) {
+    public ShortestDistance(double[] coordinates) {
         this.distance = 0.0;
-        this.coordinate = coordinate;
+        this.coordinates = coordinates;
     }
 
     public static void main(String[] args) {
@@ -20,7 +20,8 @@ public class ShortestDistance {
         String[] parameter = {"x1", "y1", "x2", "y2"};
 
         for(int i = 0; i < 4; i++) {
-            shortestDistance.coordinate[i] = shortestDistance.acceptCoordinate(parameter[i]);
+            double coordinate = shortestDistance.acceptCoordinate(parameter[i]);
+            shortestDistance.setCoordinate(i, coordinate);
         }
 
         shortestDistance.calculateDistance();
@@ -42,7 +43,7 @@ public class ShortestDistance {
     }
 
     public void calculateDistance() {
-        double xDifference, yDifference, xSquared, ySquared, sum;
+        double xDifference, yDifference, xSquared, ySquared, sum, result;
         double[] values = this.getCoordinates();
 
         xDifference = subtract(values[2], values[0]);
@@ -53,20 +54,24 @@ public class ShortestDistance {
 
         sum = add(xSquared, ySquared);
 
-        // Math Library being used for square root ONLY.
-        this.setDistance(Math.sqrt(sum));
+        result = round(Math.sqrt(sum));
+        this.setDistance(result);
     }
 
     public static double subtract(double a, double b) {
-        return a - b;
+        return round(a - b);
     }
 
     public static double add(double a, double b) {
-        return a + b;
+        return round(a + b);
     }
 
     public static double square(double a) {
-        return a * a;
+        return round(a * a);
+    }
+
+    public static double round(double a) {
+        return Math.round(a * 1000.0) / 1000.0;
     }
 
     public double getDistance() {
@@ -78,11 +83,11 @@ public class ShortestDistance {
     }
 
     public double[] getCoordinates() {
-        return this.coordinate;
+        return this.coordinates;
     }
 
-    public void setCoordinates(double[] coordinate) {
-        this.coordinate = coordinate;
+    public void setCoordinate(int position, double coordinate) {
+        this.coordinates[position] = coordinate;
     }
 
     public static boolean isInvalidInput(String input) {

@@ -1,15 +1,31 @@
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.StringBufferInputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShortestDistanceTest {
 
     // User Input
+    // References: https://stackoverflow.com/a/31635737
     @Test
     public void testValidInputReturnsCoordinate() {
         ShortestDistance shortestDistance = new ShortestDistance();
-        StringBufferInputStream inputStream = new StringBufferInputStream("20");
-        System.setIn(inputStream);
+        String input = "20\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertEquals(shortestDistance.acceptCoordinate("x1"), 20);
+    }
+
+    @Test
+    public void testInvalidInputLoopsUntilValid() {
+        ShortestDistance shortestDistance = new ShortestDistance();
+        String input = "Hello World\r20";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
         assertEquals(shortestDistance.acceptCoordinate("x1"), 20);
     }
 

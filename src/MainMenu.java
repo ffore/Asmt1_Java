@@ -12,17 +12,20 @@ public class MainMenu {
 
     public static void main(String[] args) {
         MainMenu menu = new MainMenu();
-        int option;
-
-        while(menu.isRunning()) {
-            displayMenu();
-            option = menu.acceptInput();
-            menu.runFunction(option);
-        }
-
-        close();
+        menu.start();
     }
 
+    public void start() {
+        int option;
+
+        while(this.isRunning()) {
+            displayMenu();
+            option = this.acceptInput();
+            this.runFunction(option);
+        }
+
+        closeMenu();
+    }
     public static void displayMenu() {
         displayMenuHeader();
         displayOptions();
@@ -43,26 +46,24 @@ public class MainMenu {
     public void runFunction(int option) {
         switch(option) {
             case 1:
-                // Function
+                // Body Mass Index Function
                 break;
             case 2:
-                // Function
+                // Retirement Function
                 break;
             case 3:
-                System.out.println("Hello World");
-                shortestDistance = this.getShortestDistance();
-                shortestDistance.acceptInput();
+                this.startShortestDistance();
                 break;
             case 4:
-                // Function
+                // Split the Tip Function
                 break;
             case 5:
-                this.isStillRunning = false;
+                this.setIsStillRunning(false);
                 break;
         }
     }
 
-    public boolean isInvalidMenuOption(String input) {
+    public static boolean isInvalidMenuOption(String input) {
         return !InputValidation.isValidMenuOption(input);
     }
 
@@ -80,7 +81,7 @@ public class MainMenu {
         System.out.println("5 - Quit the program");
     }
 
-    public static void close() {
+    public static void closeMenu() {
         System.out.println("Thank you for running our program");
         System.out.println("Closing application...");
     }
@@ -89,7 +90,11 @@ public class MainMenu {
         return this.isStillRunning;
     }
 
-    public ShortestDistance getShortestDistance() {
-        return this.shortestDistance;
+    public void setIsStillRunning(boolean value) {
+        this.isStillRunning = value;
+    }
+
+    public void startShortestDistance() {
+        this.shortestDistance.acceptInput();
     }
 }

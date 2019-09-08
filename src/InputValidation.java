@@ -1,8 +1,19 @@
 public class InputValidation {
 
     public static boolean isValidMenuOption(String input) {
-        int option = Integer.parseInt(input);
+        int option = setOption(input);
+        return option != 0 && fallsInOptionRange(option);
+    }
 
+    public static int setOption(String input) {
+        if(isValidInteger(input)) {
+            return Integer.parseInt(input);
+        } else {
+            return 0;
+        }
+    }
+
+    public static boolean fallsInOptionRange(int option) {
         if(option >= 1 && option <= 5) {
             return true;
         } else {
@@ -10,6 +21,7 @@ public class InputValidation {
             return false;
         }
     }
+
 
     public static boolean isValidAge(String input) {
         int age = Integer.parseInt(input);

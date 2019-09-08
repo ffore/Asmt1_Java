@@ -3,6 +3,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class InputValidationTest {
 
+    // Menu Option
+    @Test
+    public void testValidNumberIsValidMenuOption() {
+        assertTrue(InputValidation.isValidMenuOption("5"));
+    }
+
+    @Test
+    public void testInvalidInputIsInvalidMenuOption() {
+        assertFalse(InputValidation.isValidMenuOption("Hello World"));
+    }
+
+    @Test
+    public void testIntegerSetsOption() {
+        assertEquals(InputValidation.setOption("1"), 1);
+    }
+
+    @Test
+    public void testStringFailsToSetOption() {
+        assertEquals(InputValidation.setOption("Hello World"), 0);
+    }
+
+    @Test
+    public void testValidOptionFallsInRange() {
+        assertTrue(InputValidation.fallsInOptionRange(2));
+    }
+
+    @Test
+    public void testInvalidOptionDoesNotFallInRange() {
+        assertFalse(InputValidation.fallsInOptionRange(0));
+    }
+
     // Coordinate Validation
     @Test
     public void testWholeNumberInputCanConvertToCoordinate() {

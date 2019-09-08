@@ -1,11 +1,5 @@
 public class Retirement {
 
-    // Accept user input for age
-    // Accept user input for salary
-        // Create Rounding function for 2 decimal places
-    // Accept user input for "percentage saved" ?
-    // Accept user input for desired savings goal
-
     private int currentAge;
     private double annualSalary;
     private double percentageSaved;

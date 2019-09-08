@@ -16,15 +16,14 @@ public class ShortestDistance {
     }
 
     public void acceptInput() {
-        ShortestDistance shortestDistance = new ShortestDistance();
         String[] parameter = {"x1", "y1", "x2", "y2"};
 
         for(int i = 0; i < 4; i++) {
-            double coordinate = shortestDistance.acceptCoordinate(parameter[i]);
-            shortestDistance.setCoordinate(i, coordinate);
+            double coordinate = this.acceptCoordinate(parameter[i]);
+            this.setCoordinate(i, coordinate);
         }
 
-        shortestDistance.printResults();
+        this.printResults();
     }
 
     public double acceptCoordinate(String currentCoordinate) {

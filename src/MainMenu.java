@@ -26,6 +26,7 @@ public class MainMenu {
 
         closeMenu();
     }
+
     public static void displayMenu() {
         displayMenuHeader();
         displayOptions();

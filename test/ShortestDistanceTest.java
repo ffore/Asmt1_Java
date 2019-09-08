@@ -107,6 +107,7 @@ public class ShortestDistanceTest {
     public void testRoundWithSixDigitDecimalNumber() {
         assertEquals(ShortestDistance.round(1.555555), 1.556);
     }
+
     // Private Variable Interactions
     @Test
     public void testGetDistance() {
@@ -187,4 +188,13 @@ public class ShortestDistanceTest {
         assertTrue(ShortestDistance.isInvalidInput(input2));
     }
 
+    // Printing
+    @Test
+    public void testPrintingCalculationResults() {
+        double[] arr = {1, 1, 2, 2};
+        ShortestDistance shortestDistance = new ShortestDistance(arr);
+
+        double result = shortestDistance.printResults();
+        assertEquals(result, 1.414);
+    }
 }

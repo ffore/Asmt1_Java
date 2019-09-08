@@ -24,8 +24,7 @@ public class ShortestDistance {
             shortestDistance.setCoordinate(i, coordinate);
         }
 
-        shortestDistance.calculateDistance();
-        System.out.println("The calculated distance is: " + shortestDistance.getDistance());
+        shortestDistance.printResults();
     }
 
     public double acceptCoordinate(String currentCoordinate) {
@@ -40,6 +39,13 @@ public class ShortestDistance {
         }
 
         return Double.parseDouble(input);
+    }
+
+    public double printResults() {
+        this.calculateDistance();
+        double result = this.getDistance();
+        System.out.println("The resulting distance is: " + result);
+        return result;
     }
 
     public void calculateDistance() {

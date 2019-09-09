@@ -117,8 +117,8 @@ public class InputValidation {
         else return true;
     }
 
-    public static boolean isOnlyNumbers(String weight){
-        if(!weight.matches("[0-9]+")) return false;
+    public static boolean isOnlyNumbers(String str){
+        if(!str.matches("[0-9]+")) return false;
         else return true;
     }
 
@@ -149,6 +149,13 @@ public class InputValidation {
 //        price is guaranteed to have only numbers, 1 period, & 2 decimal places
         double priceInDouble = Double.parseDouble(price);
         if(priceInDouble == 0) return false;
+        else return true;
+    }
+
+    public static boolean notZeroPeople(String numOfPeople){
+//        numOfPeople is guaranteed to only be numbers
+        int intPeople = Integer.parseInt(numOfPeople);
+        if(intPeople == 0) return false;
         else return true;
     }
 

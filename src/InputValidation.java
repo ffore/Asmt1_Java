@@ -10,49 +10,45 @@ public class InputValidation {
         return age != 0 && fallsInAgeRange(age);
     }
 
-    // Here
     public static boolean isValidAmount(String input) {
-        String strippedInput = stripInput(input);
-        double amount = convertToDouble(strippedInput);
-        return amount != 0;
+        if(containsExtraSymbols(input)) {
+            return false;
+        } else {
+            double amount = convertToAmount(input);
+            return amount != 0;
+        }
     }
 
-    public static double convertToDouble(String input) {
-        if(containsMultipleDecimals(input)) {
-            return 0;
+    public static boolean containsExtraSymbols(String input) {
+        return containsDollarSign(input) || containsCommas(input)
+                || containsMultipleDecimals(input);
+    }
+
+    public static boolean containsDollarSign(String input) {
+        if(input.contains("$")) {
+            System.out.println("Do not include \'$\' in your input");
+            return true;
         } else {
-            if(isValidDouble(input)) {
-                return Double.parseDouble(input);
-            } else {
-                return 0;
-            }
+            return false;
+        }
+    }
+
+    public static boolean containsCommas(String input) {
+        if(input.contains(",")) {
+            System.out.println("Do not include \',\' in your input");
+            return true;
+        } else {
+            return false;
         }
     }
 
     public static boolean containsMultipleDecimals(String input) {
-        if(input.contains(".")) {
-            int index = input.indexOf(".");
-            String[] splitInput = input.split(".");
-
-            if(splitInput.length > 2) {
-                System.out.println("Multiple decimal points detected. Please enter only 1");
-                return true;
-            }
+        if(input.indexOf(".") != input.lastIndexOf(".")) {
+            System.out.println("Only include one \'.\' in your input");
+            return true;
+        } else {
+            return false;
         }
-
-        return false;
-    }
-
-    public static String stripInput(String input) {
-        if(input.contains("$")) {
-            input = input.replace("$", "");
-        }
-
-        if(input.contains(",")) {
-            input = input.replace(",", "");
-        }
-
-        return input;
     }
 
     public static boolean fallsInOptionRange(int option) {
@@ -91,6 +87,15 @@ public class InputValidation {
         }
 
         return true;
+    }
+
+    public static double convertToAmount(String input) {
+        if(isValidDouble(input)) {
+            double amount = Double.parseDouble(input);
+            return Math.round(amount * 100.0) / 100.0;
+        } else {
+            return 0;
+        }
     }
 
     public static boolean isValidDouble(String input) {

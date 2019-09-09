@@ -15,12 +15,12 @@ public class InputValidationTest {
     }
 
     @Test
-    public void testIntegerGetsOption() {
+    public void testIntegerConvertsToInteger() {
         assertEquals(InputValidation.convertToInteger("1"), 1);
     }
 
     @Test
-    public void testStringFailsToGetOption() {
+    public void testStringFailsToConvertToInteger() {
         assertEquals(InputValidation.convertToInteger("Hello World"), 0);
     }
 
@@ -34,33 +34,33 @@ public class InputValidationTest {
         assertFalse(InputValidation.fallsInOptionRange(0));
     }
 
-    // Coordinate Validation
+    // Double Validation
     @Test
-    public void testWholeNumberInputCanConvertToCoordinate() {
+    public void testWholeNumberInputCanConvertToDouble() {
         String input = "50";
         assertTrue(InputValidation.isValidDouble(input));
     }
 
     @Test
-    public void testDecimalNumberInputCanConvertToCoordinate() {
+    public void testDecimalNumberInputCanConvertToDouble() {
         String input = "50.99";
         assertTrue(InputValidation.isValidDouble(input));
     }
 
     @Test
-    public void testNegativeNumberInputCanConvertToCoordinate() {
+    public void testNegativeNumberInputCanConvertToDouble() {
         String input = "-10.0";
         assertTrue(InputValidation.isValidDouble(input));
     }
 
     @Test
-    public void testWordsCannotConvertToCoordinate() {
+    public void testWordsCannotConvertToDouble() {
         String input = "Hello World";
         assertFalse(InputValidation.isValidDouble(input));
     }
 
     @Test
-    public void testSpecialCharactersCannotConvertToCoordinate() {
+    public void testSpecialCharactersCannotConvertToDouble() {
         String input = "3!@#$%^&*()[]{},.<>-_=+`~/?'\"\\";
         assertFalse(InputValidation.isValidDouble(input));
     }
@@ -124,26 +124,99 @@ public class InputValidationTest {
 
     // Amount Validation
     @Test
-    public void testStrippingInputWithDollarSignOnly() {
-        String input = "$10";
-        assertEquals(InputValidation.stripInput(input), "10");
+    public void testExtraCharactersAreInvalidAmount() {
+        String input = "$1.000,000";
+        assertFalse(InputValidation.isValidAmount(input));
     }
 
     @Test
-    public void testStrippingInputWithCommasOnly() {
-        String input = "1,,,,1,";
-        assertEquals(InputValidation.stripInput(input), "11");
+    public void testWordsAreInvalidAmount() {
+        String input = "Hello World";
+        assertFalse(InputValidation.isValidAmount(input));
     }
 
     @Test
-    public void testStrippingInputWithCommaAndDollarSign() {
-        String input = "21,3$,";
-        assertEquals(InputValidation.stripInput(input), "213");
+    public void testValidSalaryIsValidAmount() {
+        String input = "1000000";
+        assertTrue(InputValidation.isValidAmount(input));
     }
 
     @Test
-    public void testStrippingInputWithOtherCharacters() {
-        String input = "123%^&*";
-        assertEquals(InputValidation.stripInput(input), "123%^&*");
+    public void testCanConvertSalaryAndRoundToAmount() {
+        String input = "1000.005";
+        assertEquals(InputValidation.convertToAmount(input), 1000.01);
+    }
+
+    @Test
+    public void testCannotConvertWordsToAmount() {
+        String input = "Hello World";
+        assertEquals(InputValidation.convertToAmount(input), 0);
+    }
+
+    // Input Checking
+    @Test
+    public void testInputContainsAllExtraSymbols() {
+        String input = "$1,000.000.00";
+        assertTrue(InputValidation.containsExtraSymbols(input));
+    }
+
+    @Test
+    public void testInputContainsNoExtraSymbols() {
+        String input = "100.00";
+        assertFalse(InputValidation.containsExtraSymbols(input));
+    }
+
+    @Test
+    public void testInputContainsMultipleDollarSigns() {
+        String input = "$$$$";
+        assertTrue(InputValidation.containsDollarSign(input));
+    }
+
+    @Test
+    public void testInputContainsNoDollarSigns() {
+        String input = "100";
+        assertFalse(InputValidation.containsDollarSign(input));
+    }
+
+    @Test
+    public void testInputContainsDollarSign() {
+        String input = "$100";
+        assertTrue(InputValidation.containsDollarSign(input));
+    }
+
+    @Test
+    public void testInputContainsMultipleCommas() {
+        String input = "1,000,000";
+        assertTrue(InputValidation.containsCommas(input));
+    }
+
+    @Test
+    public void testInputContainsNoCommas() {
+        String input = "1000";
+        assertFalse(InputValidation.containsCommas(input));
+    }
+
+    @Test
+    public void testInputContainsOneComma() {
+        String input = "1,000";
+        assertTrue(InputValidation.containsCommas(input));
+    }
+
+    @Test
+    public void testInputContainsMultipleDecimals() {
+        String input = "1.10.0";
+        assertTrue(InputValidation.containsMultipleDecimals(input));
+    }
+
+    @Test
+    public void testInputContainsNoDecimals() {
+        String input2 = "100";
+        assertFalse(InputValidation.containsMultipleDecimals(input2));
+    }
+
+    @Test
+    public void testInputContainsOneDecimal() {
+        String input3 = "10.00";
+        assertFalse(InputValidation.containsMultipleDecimals(input3));
     }
 }

@@ -164,8 +164,8 @@ public class InputValidation {
         else return true;
     }
 
-    public static boolean isOnlyNumbers(String weight){
-        if(!weight.matches("[0-9]+")) return false;
+    public static boolean isOnlyNumbers(String str){
+        if(!str.matches("[0-9]+")) return false;
         else return true;
     }
 
@@ -174,5 +174,36 @@ public class InputValidation {
         else return false;
     }
 
+    public static boolean hasOnlyNumbersAndOnePeriod(String price){
+//        does price have a period?
+        if(price.indexOf('.') == -1) return false;
+//        does price only have 1 period?
+        if(price.indexOf('.') != price.lastIndexOf('.')) return false;
+        String tmp = price.replace(".", "");
+        if(!tmp.matches("[0-9]+")) return false;
+        else return true;
+    }
+
+    public static boolean hasOnlyTwoDecimalPlaces(String price){
+//        price is guaranteed to have only numbers and 1 period
+        int periodIndex = price.indexOf('.');
+        String cents = price.substring(periodIndex+1, price.length());
+        if(cents.length() != 2) return false;
+        return true;
+    }
+
+    public static boolean notZero(String price){
+//        price is guaranteed to have only numbers, 1 period, & 2 decimal places
+        double priceInDouble = Double.parseDouble(price);
+        if(priceInDouble == 0) return false;
+        else return true;
+    }
+
+    public static boolean notZeroPeople(String numOfPeople){
+//        numOfPeople is guaranteed to only be numbers
+        int intPeople = Integer.parseInt(numOfPeople);
+        if(intPeople == 0) return false;
+        else return true;
+    }
 
 }

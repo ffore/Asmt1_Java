@@ -49,9 +49,7 @@ public class MainMenu {
     public void runFunction(int option) {
         switch(option) {
             case 1:
-                // Refactor
-                bodyMassIndex = this.getBodyMassIndex();
-                bodyMassIndex.acceptUserInput();
+                this.getBodyMassIndex();
                 break;
             case 2:
                 // Retirement Function
@@ -103,7 +101,7 @@ public class MainMenu {
         this.shortestDistance.acceptInput();
     }
 
-    public BodyMassIndex getBodyMassIndex() {
-        return this.bodyMassIndex;
+    public void getBodyMassIndex() {
+        this.bodyMassIndex.acceptInput();
     }
 }

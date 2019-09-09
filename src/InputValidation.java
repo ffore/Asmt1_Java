@@ -1,16 +1,58 @@
 public class InputValidation {
 
     public static boolean isValidMenuOption(String input) {
-        int option = setOption(input);
+        int option = convertToInteger(input);
         return option != 0 && fallsInOptionRange(option);
     }
 
-    public static int setOption(String input) {
-        if(isValidInteger(input)) {
-            return Integer.parseInt(input);
-        } else {
+    public static boolean isValidAge(String input) {
+        int age = convertToInteger(input);
+        return age != 0 && fallsInAgeRange(age);
+    }
+
+    // Here
+    public static boolean isValidAmount(String input) {
+        String strippedInput = stripInput(input);
+        double amount = convertToDouble(strippedInput);
+        return amount != 0;
+    }
+
+    public static double convertToDouble(String input) {
+        if(containsMultipleDecimals(input)) {
             return 0;
+        } else {
+            if(isValidDouble(input)) {
+                return Double.parseDouble(input);
+            } else {
+                return 0;
+            }
         }
+    }
+
+    public static boolean containsMultipleDecimals(String input) {
+        if(input.contains(".")) {
+            int index = input.indexOf(".");
+            String[] splitInput = input.split(".");
+
+            if(splitInput.length > 2) {
+                System.out.println("Multiple decimal points detected. Please enter only 1");
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static String stripInput(String input) {
+        if(input.contains("$")) {
+            input = input.replace("$", "");
+        }
+
+        if(input.contains(",")) {
+            input = input.replace(",", "");
+        }
+
+        return input;
     }
 
     public static boolean fallsInOptionRange(int option) {
@@ -22,10 +64,7 @@ public class InputValidation {
         }
     }
 
-
-    public static boolean isValidAge(String input) {
-        int age = Integer.parseInt(input);
-
+    public static boolean fallsInAgeRange(int age) {
         if(age >= 22 && age <=98) {
             return true;
         } else {
@@ -35,15 +74,12 @@ public class InputValidation {
         }
     }
 
-    public static boolean isValidDouble(String input) {
-        try {
-            double check = Double.parseDouble(input);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid Input. Expected a single valid number.");
-            return false;
+    public static int convertToInteger(String input) {
+        if(isValidInteger(input)) {
+            return Integer.parseInt(input);
+        } else {
+            return 0;
         }
-
-        return true;
     }
 
     public static boolean isValidInteger(String input) {
@@ -51,6 +87,17 @@ public class InputValidation {
             int check = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             System.out.println("Invalid Input. Expected a whole number.");
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean isValidDouble(String input) {
+        try {
+            double check = Double.parseDouble(input);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid Input. Expected a single valid number.");
             return false;
         }
 

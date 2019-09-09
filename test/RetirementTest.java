@@ -1,8 +1,52 @@
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RetirementTest {
 
+    // User Input
+    @Test
+    public void testValidAgePassesAgeCheck() {
+        String input = "30\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkAge();
+        assertEquals(retirement.getCurrentAge(), 30);
+    }
+
+    @Test
+    public void testInvalidAgeLoopsUntilValid() {
+        String input = "Hello World\r30\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkAge();
+        assertEquals(retirement.getCurrentAge(), 30);
+    }
+
+    // Input Validation
+    @Test
+    public void testThirtyIsValidAge() {
+        assertFalse(Retirement.isInvalidAge("30"));
+    }
+
+    @Test
+    public void testTenIsInvalidAge() {
+        assertTrue(Retirement.isInvalidAge("10"));
+    }
+
+    @Test
+    public void testWordsAreInvalidAges() {
+        assertTrue(Retirement.isInvalidAge("Hello World"));
+    }
+
+    // Private Variable Interactions
     @Test
     public void testCanGetCurrentAge() {
         Retirement user = new Retirement();

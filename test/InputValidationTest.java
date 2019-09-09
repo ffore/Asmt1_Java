@@ -15,13 +15,13 @@ public class InputValidationTest {
     }
 
     @Test
-    public void testIntegerSetsOption() {
-        assertEquals(InputValidation.setOption("1"), 1);
+    public void testIntegerGetsOption() {
+        assertEquals(InputValidation.convertToInteger("1"), 1);
     }
 
     @Test
-    public void testStringFailsToSetOption() {
-        assertEquals(InputValidation.setOption("Hello World"), 0);
+    public void testStringFailsToGetOption() {
+        assertEquals(InputValidation.convertToInteger("Hello World"), 0);
     }
 
     @Test
@@ -87,27 +87,63 @@ public class InputValidationTest {
 
     // Age Validation
     @Test
-    public void testTwentyTwoIsAValidAge() {
+    public void testValidNumberIsValidAge() {
         String input = "22";
         assertTrue(InputValidation.isValidAge(input));
     }
 
     @Test
-    public void testTwentyOneIsAnInvalidAge() {
-        String input = "21";
+    public void testWordIsInvalidAge() {
+        String input = "Hello World";
         assertFalse(InputValidation.isValidAge(input));
+    }
+
+    @Test
+    public void testTwentyTwoIsAValidAge() {
+        int input = 22;
+        assertTrue(InputValidation.fallsInAgeRange(input));
+    }
+
+    @Test
+    public void testTwentyOneIsAnInvalidAge() {
+        int input = 21;
+        assertFalse(InputValidation.fallsInAgeRange(input));
     }
 
     @Test
     public void testNinetyEightIsAValidAge() {
-        String input = "98";
-        assertTrue(InputValidation.isValidAge(input));
+        int input = 98;
+        assertTrue(InputValidation.fallsInAgeRange(input));
     }
 
     @Test
     public void testNinetyNineIsAnInvalidAge() {
-        String input = "99";
-        assertFalse(InputValidation.isValidAge(input));
+        int input = 99;
+        assertFalse(InputValidation.fallsInAgeRange(input));
     }
 
+    // Amount Validation
+    @Test
+    public void testStrippingInputWithDollarSignOnly() {
+        String input = "$10";
+        assertEquals(InputValidation.stripInput(input), "10");
+    }
+
+    @Test
+    public void testStrippingInputWithCommasOnly() {
+        String input = "1,,,,1,";
+        assertEquals(InputValidation.stripInput(input), "11");
+    }
+
+    @Test
+    public void testStrippingInputWithCommaAndDollarSign() {
+        String input = "21,3$,";
+        assertEquals(InputValidation.stripInput(input), "213");
+    }
+
+    @Test
+    public void testStrippingInputWithOtherCharacters() {
+        String input = "123%^&*";
+        assertEquals(InputValidation.stripInput(input), "123%^&*");
+    }
 }

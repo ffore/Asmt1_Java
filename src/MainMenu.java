@@ -49,6 +49,7 @@ public class MainMenu {
     public void runFunction(int option) {
         switch(option) {
             case 1:
+                // Refactor
                 bodyMassIndex = this.getBodyMassIndex();
                 bodyMassIndex.acceptUserInput();
                 break;

@@ -9,7 +9,7 @@ public class TipCalculator {
         acceptInput();
     }
 
-    public static void acceptInput(){
+    public static Bill acceptInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validPrice = false;
         int count = 0;
@@ -45,7 +45,9 @@ public class TipCalculator {
             validNumOfPeople = isValidNumOfPeople(numOfPeople);
             count++;
         }
+        Bill bill = new Bill(price, numOfPeople);
         splitTip(price, numOfPeople);
+        return bill;
     }
 
     public static boolean isValidPrice(String price){
@@ -62,12 +64,34 @@ public class TipCalculator {
         else return false;
     }
 
-    public static void splitTip(String price, String numOfPeople){
+//    public static boolean canSplitTip(String price, String numOfPeople){
+////        price will be a validated value
+//        BigDecimal bdPrice = new BigDecimal(price);
+////        numOfPeople is guaranteed to be a non-negative int
+//        BigDecimal bdPeople = new BigDecimal(numOfPeople);
+//        BigDecimal zero = new BigDecimal("0.00");
+//        BigDecimal piece = getPiece()
+//        if(piece.equals(zero)) {
+//            System.out.println("Can\'t divide by zero, too many people to split bill with");
+//            return false;
+//        }
+//    }
+
+//    returns boolean for testing
+    public static boolean splitTip(String price, String numOfPeople){
         BigDecimal bdPrice = new BigDecimal(price);
         BigDecimal total = addGratuity(bdPrice);
         BigDecimal people = new BigDecimal(numOfPeople);
-        BigDecimal[] distribution = getDistribution(total, people);
+        BigDecimal piece = getPiece(total, people);
+        BigDecimal zero = new BigDecimal("0.00");
+//        System.out.println("piece: " + piece);
+        if(piece.equals(zero)) {
+            System.out.println("Can\'t divide by zero, too many people to split bill with");
+            return false;
+        }
+        BigDecimal[] distribution = getDistribution(total, people, piece);
         printResult(distribution, total);
+        return true;
     }
 
     public static BigDecimal addGratuity(BigDecimal price){
@@ -79,20 +103,11 @@ public class TipCalculator {
         return total;
     }
 
-    public static BigDecimal[] getDistribution(BigDecimal total, BigDecimal people){
-        BigDecimal piece = getPiece(total, people);
-//        try{
-            BigDecimal hun = new BigDecimal("100");
-            int mod = total.remainder(piece).multiply(hun).intValue();
-//        }
-//        catch(ArithmeticException e){
-////            temporary
-//            System.out.println("Something went wrong");
-//            double[] x = {1.0};
-//            return x;
-//        }
-//        double[] x = {1.0};
-//        return x;
+    public static BigDecimal[] getDistribution(BigDecimal total, BigDecimal people, BigDecimal piece){
+        BigDecimal hun = new BigDecimal("100");
+//      checked if piece == 0 before getDistribution() is called
+        int mod = total.remainder(piece).multiply(hun).intValue();
+
         BigDecimal[] dist = new BigDecimal[people.intValue()];
         Arrays.fill(dist, piece);
 //        is the piece longer than 2 decimals
@@ -109,18 +124,12 @@ public class TipCalculator {
     }
 
     public static BigDecimal getPiece(BigDecimal total, BigDecimal people){
+//       would throw Arithmetic Exception if didn't have truncation in division
 //       non-terminating decimal expansion prevention inpsired by https://stackoverflow.com/a/10603722
         BigDecimal piece = total.divide(people, RoundingMode.FLOOR);
-        piece = piece.setScale(2, RoundingMode.HALF_UP);
+        piece = piece.setScale(2, RoundingMode.FLOOR);  // switched to floor from half-up
         return piece;
     }
-
-//    public static int getSprinkle(double total, double people, double piece){
-//        double sprinkle = 100*(total - (piece*people));
-//        BigDecimal bdRounded = new BigDecimal(Double.toString(sprinkle));
-//        bdRounded = bdRounded.setScale(2, RoundingMode.HALF_UP);
-//        return bdRounded.intValue();
-//    }
 
     public static void printResult(BigDecimal[] dist, BigDecimal total){
         System.out.println("With gratuity, total is: " + total);
@@ -129,5 +138,25 @@ public class TipCalculator {
             int count = i+1;
             System.out.println("guest" + count + ": $" + dist[i]);
         }
+    }
+}
+
+final class Bill {
+//    only good values
+//    this is created after validation
+    private final String price;
+    private final String people;
+
+    public Bill(String price, String people){
+        this.price = price;
+        this.people = people;
+    }
+
+    public String getPrice(){
+        return this.price;
+    }
+
+    public String getPeople(){
+        return this.people;
     }
 }

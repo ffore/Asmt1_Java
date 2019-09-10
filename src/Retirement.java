@@ -93,41 +93,47 @@ public class Retirement {
     }
 
     public void checkAge() {
-        System.out.println("Please enter your current age in years: ");
+        System.out.print("Please enter your current age in years: ");
         String input = scanner.nextLine();
 
         while(isInvalidAge(input)) {
-            System.out.println("Enter a new value for your current age: ");
+            System.out.println("");
+            System.out.print("Enter a new value for your current age: ");
             input = scanner.nextLine();
         }
+        System.out.println("");
 
         int age = Integer.parseInt(input);
         this.setCurrentAge(age);
     }
 
     public void checkSalary() {
-        System.out.println("Please enter your annual salary in dollars: ");
         System.out.println("NOTE: Your input will be rounded to the nearest cent.");
+        System.out.print("Please enter your annual salary in dollars: ");
         String input = scanner.nextLine();
 
         while(isInvalidAmount(input)) {
-            System.out.println("Enter a new value for your annual salary: ");
+            System.out.println("");
+            System.out.print("Enter a new value for your annual salary: ");
             input = scanner.nextLine();
         }
+        System.out.println("");
 
         this.roundSalary(input);
     }
 
     public void checkPercentage() {
-        System.out.println("Please enter the percentage of your salary that " +
-                "will be saved each year towards your retirement: ");
         System.out.println("NOTE: Only whole numbers will be accepted.");
+        System.out.print("Please enter the percentage of your salary that " +
+                "will be saved each year towards your retirement: ");
         String input = scanner.nextLine();
 
         while(isInvalidPercentage(input)) {
-            System.out.println("Enter a new value for your percentage saved: ");
+            System.out.println("");
+            System.out.print("Enter a new value for your percentage saved: ");
             input = scanner.nextLine();
         }
+        System.out.println("");
 
         int percentage = Integer.parseInt(input);
         this.setPercentageSaved(percentage);
@@ -136,14 +142,16 @@ public class Retirement {
     }
 
     public void checkSavings() {
-        System.out.println("Please enter the savings goal you'd like to reach: ");
         System.out.println("NOTE: Your input will be rounded to the nearest cent.");
+        System.out.print("Please enter the savings goal you'd like to reach: ");
         String input = scanner.nextLine();
 
         while(isInvalidAmount(input)) {
-            System.out.println("Enter a new value for your savings goal: ");
+            System.out.println("");
+            System.out.print("Enter a new value for your savings goal: ");
             input = scanner.nextLine();
         }
+        System.out.println("");
 
         double savings = roundToTwoDecimalDouble(input);
         this.setSavingsGoal(savings);

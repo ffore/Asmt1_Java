@@ -106,6 +106,9 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 ### Input Validation Class Tests
 <img src="/pics/input%20validation%20test.png" width="300">
 
+### Code Coverage Tests
+<img src="/pics/coverage%20test.png" width="300">
+
 ## Screencasts
 ### All Functions
 ![all functions](/pics/main.gif)

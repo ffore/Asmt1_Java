@@ -1,39 +1,49 @@
 # CISE4930 Continuous Integration and Software Testing Assignment 1
 
-## Naming and Organizational Conventions
+## System Requirements
 
-The language we used in this assignment is Java, and as a result, we've decided to use JUnit5 as our testing framework. Therefore,
-a majority of our naming conventions follow that of Java's best practices. We've also tried to modularize this assignment so that
-each class created has a single responsibility.
+Due to the language and framework of choice, our project can only be run on a **Windows 10 Machine**. Do **not** follow these setup instructions on a Linux Machine as they will not work.
 
+## How to Setup the Project
 
-### Naming Conventions
+1) Install the latest version of IntelliJ Community Version from [here](https://www.jetbrains.com/idea/download/#section=windows)
+2) After downloading your version, run the downloaded executable and follow the instructions to set IntelliJ up
+3) Once IntelliJ has been installed, you can choose your User Interface color scheme preference.
+4) Other than the color scheme preference, accept all the default options by clicking on the **Accept Defaults** button in the bottom left corner
+5) After IntelliJ has been installed, make sure to download the latest version of the Java SE, specifically JDK 12.0.2, from [here](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295952.html)
+    - You'll need to accept the license agreement before you can start the download.
+    - Make sure to choose the **.exe** download option and follow the steps on the screen
+6) The last piece of software that needs installation is Git. Download Git for Windows, version 2.23.0.windows.1, from [here](https://git-scm.com/download)
+    - Accept all the defaults, except for one. The only change we made while developing was we changed the default editor from **Vim** to **Nano** (our personal preference).
+    - NOTE: If you change the location of where you are saving Git, remember that **exact location**. We recommend **not** changing the default location so that it matches our setup
+7) Once Git Bash has been installed, open it and login with your GitHub Account Credentials if prompted. If you do not have a GitHub Account, you'll need to create one before moving on to the next step
+8) Now you can navigate to a location in your file system that you'd like to save our project.
+    - If you want to choose a new location, you can use the `cd` command to change directories, `ls` to print out the contents of the current directory, and `mkdir` to create a new directory.
+    - If you'd rather avoid the extra work, you can simply create a new directory in your current location without moving anything. Create a new directory and enter it like so:
+    ```
+    mkdir Assignment_1
+    cd Assignment_1
+    ```
+9) Once you are inside the folder / directory that you want the project to be saved, you'll need to clone our repository containing all our code using the command `git clone https://github.com/ffore/Asmt1_Java.git`. This will clone our repository to the current directory. Afterwards, make sure you also run `git pull origin master` to get the latest changes to the project
+10) Now that we have cloned our repository, Open up IntelliJ.
+    - On the right-hand side, you'll have 4 different options. Select **Import Project**, which will open a file explorer
+    - Navigate to the folder you cloned the GitHub Repository, select tat folder, and then click **Import**
+    - Back in IntelliJ, continue to click next on all the options as you won't need to make any changes.
+    - IntelliJ will then open the project if everything has been done correctly
+11) From here, you'll be able to run the program, any and all tests, and check our code coverage.
 
-- File Names start with a Capital Letter, should be a noun, and should not be an acronym
-- Methods should be in Camel Case, where the first letter in the first word is lowercase and subsequent words have their first letter capitalized
-- Variables should also follow the Camel Case convention
-- Constants should be written in all capitals
+## Execution Instructions
 
-The above naming convention follows the "official" [Java Naming Convention](https://www.javatpoint.com/java-naming-conventions)
+### How to Run the Tests
 
-### Testing Organizational Structure
+Now that the project is open in IntelliJ, on the left-hand side you will find the file system / file structure of our project. One of the folders should be highlighted green and labeled **tests**. Right click on the green folder labeled tests and select the option "Run All Tests". This option should have a small green play button next to it.
 
-- Each Source File will have its own Test File, meaning if a source file called Retirement.java is made, there us a RetirementTest.java file
-made specifically for it
-- Each @Test will function as a Unit Test and is described by the function's name
-- Tests with numbers in the name should be written out, i.e., Twenty instead of 20
-- Test names follow the Camel Case convention with the first word *always* being 'test' followed by the feature being tested
-```
-testSayHello(), testIfTwentyIsValidAge(), etc.
-```
+If you'd like to see an exact breakdown of our code coverage as well, you can Right click on the green folder labeled tests again and this time select the option "Run All Tests with Coverage".
 
-The above test naming convention was influenced by [popular JUnit conventions](https://dzone.com/articles/7-popular-unit-test-naming)
+### How to Run the Program
 
-### Project Organizational Structure
+Because IntelliJ is an IDE, it has its own built-in command line. We will be using this to run our application. On the left-hand side in the file system / file structure of our project, there should be a blue folder labeled **src**. Open that folder by Left clicking on it.
 
-- The MainMenu file serves as the starting point of the application and therefore contains our main function
-- The Main function will loop until the user chooses the exit option
-- Each of the functions are numbered, and the user must choose an option between 1-5 (5 being exit)
-- Once a function has been chosen, MainMenu calls 'acceptInput()', which is a function that exists in each of the 4 possible options
-- Each class file uses acceptInput() as its own 'main' loop that deals with error handling / input validation before performing its core functionality
-- Once valid input has been provided, the calculation will be performed, and control will be returned to MainMenu so that the user can choose other functions
+Opening the src folder will produce a list of files with different names. The only one of importance to run the application is **MainMenu**. Right-click on MainMenu and select the option "Run MainMenu.main()". This option should also have a green play button next to it. 
+
+Once you've selected that option, the built-in command line will appear from the bottom of the page. You will interact with the application through this. The main menu of the application will be displayed and is waiting for your input. From here, you'll be able to play with the 4 different functions we've chosen or simply exit the app.

@@ -1,5 +1,3 @@
-import org.junit.platform.commons.util.StringUtils;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.InputMismatchException;

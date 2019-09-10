@@ -27,7 +27,7 @@ Due to the language and framework of choice, our project can only be run on a **
 9) Once you are inside the folder / directory that you want the project to be saved, you'll need to clone our repository containing all our code using the command `git clone https://github.com/ffore/Asmt1_Java.git`. This will clone our repository to the current directory and save everything in a folder called 'Asmt1_Java'.
 10) Now that we have cloned our repository, Open up IntelliJ.
     - On the right-hand side, you'll have 4 different options. Select **Import Project**, which will open a file explorer
-    - Navigate to the folder you cloned the GitHub Repository, select the folder named 'Asmt1_Java', and then click **Import**
+    - Navigate to the folder you cloned the GitHub Repository, select the folder named `Asmt1_Java`, and then click **Import**
     - Back in IntelliJ, click next when prompted. There will be a warning that the chosen folder is not empty, and that is ok. You can overwrite it. 
     - Click Next 3 more times. You will be prompted again to overwrite another file. Choose the Reuse option.
     - You'll now be prompted to choose your Java JDK, which we downloaded earlier. On the left-hand side, there should be a folder with the number 12. Left click that folder and hit next.
@@ -39,9 +39,9 @@ Due to the language and framework of choice, our project can only be run on a **
     - Select the Modules tab on the left-hand side
     - In the main window, you should see 3 different tabs labeled Sources, Paths, and Dependencies respectively. Select the Dependencies tab
     - On the right-hand side of the main window, there is a small grey plus sign next to Scope. Press the plus sign.
-    - Choose the second option of 'Library...'
-    - Choose the second option of the new dropdown 'From Maven...'
-    - A search box will now appear. Copy and paste 'org.junit.jupiter:junit-jupiter:5.4.2' in the search box.
+    - Choose the second option of `Library...`
+    - Choose the second option of the new dropdown `From Maven...`
+    - A search box will now appear. Copy and paste `org.junit.jupiter:junit-jupiter:5.4.2` in the search box.
     - Click OK
     - A new popup will appear asking you to configure the library. Simply press OK.
     - Click Apply on the bottom right of the window, and then OK

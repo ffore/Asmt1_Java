@@ -24,7 +24,7 @@ Due to the language and framework of choice, our project can only be run on a **
     mkdir Assignment_1
     cd Assignment_1
     ```
-9) Once you are inside the folder / directory that you want the project to be saved, you'll need to clone our repository containing all our code using the command `git clone https://github.com/ffore/Asmt1_Java.git`. This will clone our repository to the current directory. Afterwards, make sure you also run `git pull origin master` to get the latest changes to the project
+9) Once you are inside the folder / directory that you want the project to be saved, you'll need to clone our repository containing all our code using the command `git clone https://github.com/ffore/Asmt1_Java.git`. This will clone our repository to the current directory and save everything in a folder called 'Asmt1_Java'.
 10) Now that we have cloned our repository, Open up IntelliJ.
     - On the right-hand side, you'll have 4 different options. Select **Import Project**, which will open a file explorer
     - Navigate to the folder you cloned the GitHub Repository, select that folder, and then click **Import**

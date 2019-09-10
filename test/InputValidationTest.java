@@ -21,7 +21,7 @@ public class InputValidationTest {
 
     @Test
     public void testStringFailsToConvertToInteger() {
-        assertEquals(InputValidation.convertToInteger("Hello World"), 0);
+        assertEquals(InputValidation.convertToInteger("Hello World"), -1);
     }
 
     @Test
@@ -99,25 +99,25 @@ public class InputValidationTest {
     }
 
     @Test
-    public void testTwentyTwoIsAValidAge() {
+    public void testTwentyTwoFallsInAgeRange() {
         int input = 22;
         assertTrue(InputValidation.fallsInAgeRange(input));
     }
 
     @Test
-    public void testTwentyOneIsAnInvalidAge() {
+    public void testTwentyOneDoesNotFallInAgeRange() {
         int input = 21;
         assertFalse(InputValidation.fallsInAgeRange(input));
     }
 
     @Test
-    public void testNinetyEightIsAValidAge() {
+    public void testNinetyEightFallsInAgeRange() {
         int input = 98;
         assertTrue(InputValidation.fallsInAgeRange(input));
     }
 
     @Test
-    public void testNinetyNineIsAnInvalidAge() {
+    public void testNinetyNineDoesNotFallInAgeRange() {
         int input = 99;
         assertFalse(InputValidation.fallsInAgeRange(input));
     }
@@ -150,7 +150,35 @@ public class InputValidationTest {
     @Test
     public void testCannotConvertWordsToAmount() {
         String input = "Hello World";
-        assertEquals(InputValidation.convertToAmount(input), 0);
+        assertEquals(InputValidation.convertToAmount(input), -1);
+    }
+
+    // Percentage Validation
+    @Test
+    public void testSimpleInputIsValidPercentage() {
+        assertTrue(InputValidation.isValidPercentage("1"));
+    }
+
+    @Test
+    public void testWordsAreInvalidPercentage() {
+        assertFalse(InputValidation.isValidPercentage("Hello World"));
+    }
+
+    @Test
+    public void testZeroIsValidAge() {
+        assertTrue(InputValidation.fallsInPercentageRange(0));
+    }
+
+    @Test
+    public void testPositiveNumbersFallInPercentageRange() {
+        assertTrue(InputValidation.fallsInPercentageRange(1));
+        assertTrue(InputValidation.fallsInPercentageRange(100));
+    }
+
+    @Test
+    public void testNegativeAndLargeNumbersDoNotFallInPercentageRange() {
+        assertFalse(InputValidation.fallsInPercentageRange(-1));
+        assertFalse(InputValidation.fallsInPercentageRange(101));
     }
 
     // Input Checking

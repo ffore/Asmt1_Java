@@ -2,12 +2,12 @@ public class InputValidation {
 
     public static boolean isValidMenuOption(String input) {
         int option = convertToInteger(input);
-        return option != 0 && fallsInOptionRange(option);
+        return option != -1 && fallsInOptionRange(option);
     }
 
     public static boolean isValidAge(String input) {
         int age = convertToInteger(input);
-        return age != 0 && fallsInAgeRange(age);
+        return age != -1 && fallsInAgeRange(age);
     }
 
     public static boolean isValidAmount(String input) {
@@ -15,8 +15,13 @@ public class InputValidation {
             return false;
         } else {
             double amount = convertToAmount(input);
-            return amount != 0;
+            return amount != -1;
         }
+    }
+
+    public static boolean isValidPercentage(String input) {
+        int percentage = convertToInteger(input);
+        return percentage != -1 && fallsInPercentageRange(percentage);
     }
 
     public static boolean containsExtraSymbols(String input) {
@@ -70,11 +75,22 @@ public class InputValidation {
         }
     }
 
+    public static boolean fallsInPercentageRange(int percentage) {
+        if(percentage > 0 && percentage <= 100) {
+            return true;
+        } else if(percentage == 0) {
+            System.out.println("A percentage of 0 leads in not reaching your savings goal");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static int convertToInteger(String input) {
         if(isValidInteger(input)) {
             return Integer.parseInt(input);
         } else {
-            return 0;
+            return -1;
         }
     }
 
@@ -94,7 +110,7 @@ public class InputValidation {
             double amount = Double.parseDouble(input);
             return Math.round(amount * 100.0) / 100.0;
         } else {
-            return 0;
+            return -1;
         }
     }
 

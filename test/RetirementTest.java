@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.annotation.Testable;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -30,7 +31,106 @@ public class RetirementTest {
         assertEquals(retirement.getCurrentAge(), 30);
     }
 
+    @Test
+    public void testInvalidSalaryLoopsUntilValid() {
+        String input = "1.0.0\r1.00\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkSalary();
+        assertEquals(retirement.getAnnualSalary(), 1.00);
+    }
+
+    @Test
+    public void testValidSalaryPassesAmountCheck() {
+        String input = "100\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkSalary();
+        assertEquals(retirement.getAnnualSalary(), 100);
+    }
+
+    @Test
+    public void testInvalidPercentageLoopsUntilValid() {
+        String input = "1001\r0\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkPercentage();
+        assertEquals(retirement.getPercentageSaved(), 0);
+    }
+
+    @Test
+    public void testValidPercentagePassesPercentageCheck() {
+        String input = "100\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkPercentage();
+        assertEquals(retirement.getPercentageSaved(), 100);
+    }
+
+    @Test
+    public void testInvalidSavingsGoalLoopsUntilValid() {
+        String input = "1.0.0\r1.00\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkSavings();
+        assertEquals(retirement.getSavingsGoal(), 1.00);
+    }
+
+    @Test
+    public void testValidSavingsGoalPassesSavingsCheck() {
+        String input = "11111.001111\r";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Retirement retirement = new Retirement();
+
+        retirement.checkSavings();
+        assertEquals(retirement.getSavingsGoal(), 11111.00);
+    }
+
+    @Test
+    public void testRoundSalary() {
+        // Input reaching this point is ALWAYS valid
+        String salary = "1000.0035";
+        Retirement retirement = new Retirement();
+        retirement.roundSalary(salary);
+        assertEquals(retirement.getAnnualSalary(), 1000.00);
+    }
+
+    @Test
+    public void testRoundToTwoDecimalDouble() {
+        String amount = "1000.123456";
+        Retirement retirement = new Retirement();
+        assertEquals(retirement.roundToTwoDecimalDouble(amount), 1000.12);
+    }
+
     // Input Validation
+    @Test
+    public void testBadSalaryInputIsInvalidAmount() {
+        assertTrue(Retirement.isInvalidAmount("$10"));
+        assertTrue(Retirement.isInvalidAmount("1.0.0"));
+        assertTrue(Retirement.isInvalidAmount("1,000.00"));
+    }
+
+    @Test
+    public void testSalaryIsValidAmount() {
+        assertFalse(Retirement.isInvalidAmount("1000.00"));
+    }
+
+    @Test
+    public void testWordsAreInvalidAmounts() {
+        assertTrue(Retirement.isInvalidAmount("Hello World"));
+    }
+
     @Test
     public void testThirtyIsValidAge() {
         assertFalse(Retirement.isInvalidAge("30"));
@@ -44,6 +144,22 @@ public class RetirementTest {
     @Test
     public void testWordsAreInvalidAges() {
         assertTrue(Retirement.isInvalidAge("Hello World"));
+    }
+
+    @Test
+    public void testDecimalIsInvalidPercentage() {
+        assertTrue(Retirement.isInvalidPercentage("1.5"));
+    }
+
+    @Test
+    public void testWholeNumberIsValidPercentage() {
+        assertFalse(Retirement.isInvalidPercentage("100"));
+    }
+
+    @Test
+    public void testLargeAndSmallNumbersAreInvalidPercentage() {
+        assertTrue(Retirement.isInvalidPercentage("-1"));
+        assertTrue(Retirement.isInvalidPercentage("1001"));
     }
 
     // Private Variable Interactions

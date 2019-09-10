@@ -84,6 +84,34 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 - Each class file uses acceptInput() as its own 'main' loop that deals with error handling / input validation before performing its core functionality
 - Once valid input has been provided, the calculation will be performed, and control will be returned to MainMenu so that the user can choose other functions
 
+## Screenshots
+### All Tests
+![All tests passing](/pics/all_tests_green.png)
+
+### Body Mass Index Tests
+<img src="/pics/bmi%20test.png" width="300">
+
+### Retirement Tests
+<img src="/pics/retirement%20test.png" width="300">
+
+### Shortest Distance Tests
+<img src="/pics/distance%20test.png" width="300">
+
+### Tip Splitter Tests
+<img src="/pics/tip%20splitter%20test.png" width="300">
+
+### Main Menu Tests
+<img src="/pics/main%20menu%20test.png" width="300">
+
+### Input Validation Class Tests
+<img src="/pics/input%20validation%20test.png" width="300">
+
+## Screencasts
+### Example 1
+![screencast 1](/pics/RGR_Example_1.gif)
+
+### Example 2
+![screencast 2](/pics/tdd.gif)
 
 ## Our Experience
 ### Describe your unit testing & TDD experience. What do you think of unit testing & TDD? Do you think it's useful for a real project? Discuss the Benefits & Drawbacks to TDD

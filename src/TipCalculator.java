@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class TipCalculator {
     public static void main(String args[]){
-        acceptInput();
+        Bill bill = acceptInput();
+        splitTip(bill.getPrice(), bill.getPeople());
     }
 
     public static Bill acceptInput(){
@@ -46,7 +47,7 @@ public class TipCalculator {
             count++;
         }
         Bill bill = new Bill(price, numOfPeople);
-        splitTip(price, numOfPeople);
+//        splitTip(price, numOfPeople);
         return bill;
     }
 
@@ -63,19 +64,6 @@ public class TipCalculator {
             && InputValidation.notZeroPeople(numOfPeople) ) return true;
         else return false;
     }
-
-//    public static boolean canSplitTip(String price, String numOfPeople){
-////        price will be a validated value
-//        BigDecimal bdPrice = new BigDecimal(price);
-////        numOfPeople is guaranteed to be a non-negative int
-//        BigDecimal bdPeople = new BigDecimal(numOfPeople);
-//        BigDecimal zero = new BigDecimal("0.00");
-//        BigDecimal piece = getPiece()
-//        if(piece.equals(zero)) {
-//            System.out.println("Can\'t divide by zero, too many people to split bill with");
-//            return false;
-//        }
-//    }
 
 //    returns boolean for testing
     public static boolean splitTip(String price, String numOfPeople){
@@ -114,10 +102,8 @@ public class TipCalculator {
         if(mod != 0){
             for(int i = 0; i < mod; i++){
                 BigDecimal old = dist[i];
-//                System.out.println("old: "+old);
                 BigDecimal cent = new BigDecimal("0.01");
                 dist[i] = old.add(cent);
-//                System.out.println("new: "+dist[i]);
             }
         }
         return dist;
@@ -132,7 +118,7 @@ public class TipCalculator {
     }
 
     public static void printResult(BigDecimal[] dist, BigDecimal total){
-        System.out.println("With gratuity, total is: " + total);
+        System.out.println("With gratuity, total is: $" + total);
 //        assumes dist is good
         for(int i = 0; i < dist.length; i++){
             int count = i+1;

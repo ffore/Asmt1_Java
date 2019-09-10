@@ -35,24 +35,37 @@ public class BodyMassIndexTest {
     }
 
     @Test
-    public void testCheckHeightInputHasSingleAndDoubleQuote() {
-//        using words
+    public void testWordsAreInvalidHeight() {
         assertFalse(BodyMassIndex.isValidHeight("6ft 3in"));
-//        no measurement units
+    }
+
+    @Test
+    public void testNoMeasurementUnitsAreInvalidHeights() {
         assertFalse(BodyMassIndex.isValidHeight("63"));
-//        using 2 single quotes instead of 1 double quote
+    }
+
+    @Test
+    public void testTwoSingleQuotesAreInvalidHeights() {
         assertFalse(BodyMassIndex.isValidHeight("6\'3\'\'"));
-//        using 2 double quotes
+    }
+
+    @Test
+    public void testTwoDoubleQuotesAreInvalidHeights() {
         assertFalse(BodyMassIndex.isValidHeight("6\"3\""));
-//        correct use
+    }
+
+    @Test
+    public void testCheckHeightInputHasSingleAndDoubleQuote() {
         assertTrue(BodyMassIndex.isValidHeight("4\'11\""));
     }
 
     @Test
     public void testCheckHeightInputQuotesAreInOrder() {
-//        correct order of quotes
         assertTrue(BodyMassIndex.isValidHeight("5\'3\""));
-//        incorrect order of quotes
+    }
+
+    @Test
+    public void testInputQuotesAreInWrongOrder() {
         assertFalse(BodyMassIndex.isValidHeight("5\"3\'"));
     }
 
@@ -66,41 +79,73 @@ public class BodyMassIndexTest {
 //    check input only has numbers && ' and "
     @Test
     public void testCheckHeightInputHasOnlyQuotesAndNumbers() {
+        assertTrue(BodyMassIndex.isValidHeight("5\'11\""));
+    }
+
+    @Test
+    public void testHeightInputFailsOnWords() {
         assertFalse(BodyMassIndex.isValidHeight("hello\'goodbye\""));
         assertFalse(BodyMassIndex.isValidHeight("5h\'1\""));
-//        spaces are not allowed
+    }
+
+    @Test
+    public void testHeightInputFailsOnExtraCharacters() {
         assertFalse(BodyMassIndex.isValidHeight("6\' 5\""));
         assertFalse(BodyMassIndex.isValidHeight("5\'11\"!"));
-        assertTrue(BodyMassIndex.isValidHeight("5\'11\""));
     }
 
 //    check input has quotes after numbers not before (not '5"3)
     @Test
     public void testCheckHeightInputQuotesAreAfterNumbers() {
-//      x'5"9  x'59" x5'"9 ->5'9"
-        assertFalse(BodyMassIndex.isValidHeight("\'5\"9"));
-        assertFalse(BodyMassIndex.isValidHeight("\'59\""));
-        assertFalse(BodyMassIndex.isValidHeight("5\'\"9"));
+//       ->5'9"
         assertTrue(BodyMassIndex.isValidHeight("5\'9\""));
     }
 
     @Test
+    public void testHeightInputCatchesWrongQuoteOrder() {
+//        x'5"9  x'59" x5'"9
+        assertFalse(BodyMassIndex.isValidHeight("\'5\"9"));
+        assertFalse(BodyMassIndex.isValidHeight("\'59\""));
+        assertFalse(BodyMassIndex.isValidHeight("5\'\"9"));
+    }
+
+    @Test
     public void testCheckHeightInputHasValidNumberMeasurements() {
-        assertFalse(BodyMassIndex.isValidHeight("5\'12\""));
-        assertFalse(BodyMassIndex.isValidHeight("3\'22\""));
-        assertFalse(BodyMassIndex.isValidHeight("0\'0\""));
         assertTrue(BodyMassIndex.isValidHeight("4\'0\""));
     }
 
     @Test
+    public void testCheckHeightInputStopsInvalidNumberMeasurements() {
+        assertFalse(BodyMassIndex.isValidHeight("5\'12\""));
+        assertFalse(BodyMassIndex.isValidHeight("3\'22\""));
+    }
+
+    @Test
+    public void testCheckHeightInputIsNotOnlyZero() {
+        assertFalse(BodyMassIndex.isValidHeight("0\'0\""));
+    }
+
+    @Test
     public void testCheckIfHeightIsZeroPreceding() {
-        assertFalse(BodyMassIndex.isValidHeight("5\'09\""));
-        assertFalse(BodyMassIndex.isValidHeight("04\'10\""));
-        assertFalse(BodyMassIndex.isValidHeight("0\'05\""));
-        assertFalse(BodyMassIndex.isValidHeight("06\'07\""));
-        assertFalse(BodyMassIndex.isValidHeight("005\'0009\""));
         assertTrue(BodyMassIndex.isValidHeight("10\'10\""));
         assertTrue(BodyMassIndex.isValidHeight("0\'10\""));
+    }
+
+    @Test
+    public void testFeetAndInchesDoNotStartWithZero() {
+        assertFalse(BodyMassIndex.isValidHeight("06\'07\""));
+        assertFalse(BodyMassIndex.isValidHeight("005\'0009\""));
+    }
+
+    @Test
+    public void testFeetDoesNotStartWithZero() {
+        assertFalse(BodyMassIndex.isValidHeight("04\'10\""));
+    }
+
+    @Test
+    public void testInchesDoesNotStartWithZero() {
+        assertFalse(BodyMassIndex.isValidHeight("5\'09\""));
+        assertFalse(BodyMassIndex.isValidHeight("0\'05\""));
     }
 
 
@@ -111,20 +156,33 @@ public class BodyMassIndexTest {
     }
 
     @Test
-    public void testCheckIfWeightIsOnlyNumbers(){
-        assertFalse(BodyMassIndex.isValidWeight("120 lbs"));
+    public void testCheckIfWeightContainsAbbreviations(){
         assertFalse(BodyMassIndex.isValidWeight("lbs 120"));
-        assertFalse(BodyMassIndex.isValidWeight("120lbs"));
-        assertFalse(BodyMassIndex.isValidWeight("120 pounds"));
         assertFalse(BodyMassIndex.isValidWeight("120 lbs"));
+    }
+
+    @Test
+    public void testCheckIfWeightIsNegative() {
         assertFalse(BodyMassIndex.isValidWeight("-120"));
+    }
+
+    @Test
+    public void testIfWeightIsWords() {
         assertFalse(BodyMassIndex.isValidWeight("one hundred and twenty pounds"));
     }
 
     @Test
     public void testCheckWeightIsNotZeroPreceding(){
         assertFalse(BodyMassIndex.isValidWeight("090"));
+    }
+
+    @Test
+    public void testCheckWeightIsNotZero() {
         assertFalse(BodyMassIndex.isValidWeight("0"));
+    }
+
+    @Test
+    public void testCheckWeightHasValidZeros() {
         assertTrue(BodyMassIndex.isValidWeight("100"));
     }
 
@@ -163,13 +221,21 @@ public class BodyMassIndexTest {
     }
 
     @Test
-    public void testRoundingHelper(){
+    public void testRoundingToOnePlace(){
         assertEquals(22.5, BodyMassIndex.round(22.4999, 1));
         assertEquals(29.1, BodyMassIndex.round(29.1222, 1));
-        assertEquals(0.112, BodyMassIndex.round(0.11223, 3));
-        assertEquals(3.789, BodyMassIndex.round(3.78877, 3));
+    }
+
+    @Test
+    public void testRoundingToTwoPlaces() {
         assertEquals(27.22, BodyMassIndex.round(27.2167, 2));
         assertEquals(0.22, BodyMassIndex.round(0.2222222, 2));
+    }
+
+    @Test
+    public void testRoundingToThreePlaces() {
+        assertEquals(0.112, BodyMassIndex.round(0.11223, 3));
+        assertEquals(3.789, BodyMassIndex.round(3.78877, 3));
     }
 
     @Test
@@ -180,17 +246,30 @@ public class BodyMassIndexTest {
     }
 
     @Test
-    public void testGetCategory(){
+    public void testGetUnderweight(){
 //        assertThrows()
         assertEquals("Underweight", BodyMassIndex.getBMICategory(17.2));
         assertNotEquals("Underweight", BodyMassIndex.getBMICategory(18.5));
+    }
+
+    @Test
+    public void testGetNormalWeight() {
         assertEquals("Normal weight", BodyMassIndex.getBMICategory(18.5));
         assertEquals("Normal weight", BodyMassIndex.getBMICategory(24.9));
         assertNotEquals("Normal weight", BodyMassIndex.getBMICategory(25.0));
+    }
+
+    @Test
+    public void testGetOverweight() {
         assertEquals("Overweight", BodyMassIndex.getBMICategory(25.0));
         assertEquals("Overweight", BodyMassIndex.getBMICategory(29.9));
         assertNotEquals("Overweight", BodyMassIndex.getBMICategory(30.0));
+    }
+
+    @Test
+    public void testGetObese() {
         assertEquals("Obese", BodyMassIndex.getBMICategory(30.0));
         assertEquals("Obese", BodyMassIndex.getBMICategory(38.1));
     }
+
 }

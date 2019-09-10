@@ -256,38 +256,75 @@ public class InputValidationTest {
 
     @Test
     public void testOnlyNumbersAndOnePeriod(){
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00"));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100"));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00."));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("hello"));
+
         assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.00"));
         assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.900"));
     }
 
     @Test
+    public void testPriceIsNotAWord() {
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("hello"));
+    }
+
+    @Test
+    public void testInputDoesNotHaveDollarSigns() {
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00"));
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100"));
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00."));
+    }
+    @Test
     public void testOnlyTwoDecimalPlaces(){
-        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("100.900"));
         assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("45.75"));
-        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("hell o45.75"));
+    }
+
+    @Test
+    public void testOneDecimalIsNotTwo() {
         assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("9.9"));
+
+    }
+
+    @Test
+    public void testThreeDecimalsAreNotTwo() {
+        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("100.900"));
+    }
+
+    @Test
+    public void testDecimalsDoNotHaveWords() {
+        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("hell o45.75"));
     }
 
     @Test
     public void testNotZero(){
         assertTrue(InputValidation.notZero("10.00"));
-        assertFalse(InputValidation.notZero("0.00"));
-        assertFalse(InputValidation.notZero("000.00"));
-        assertFalse(InputValidation.notZero(".00"));
         assertTrue(InputValidation.notZero(".15"));
     }
 
     @Test
+    public void testZeroIsNotValidPrice() {
+        assertFalse(InputValidation.notZero("0.00"));
+        assertFalse(InputValidation.notZero("000.00"));
+        assertFalse(InputValidation.notZero(".00"));
+    }
+
+    @Test
     public void testNumOfPeopleIsPositiveInt(){
-        assertFalse(InputValidation.isOnlyNumbers("hello"));
-        assertFalse(InputValidation.isOnlyNumbers("99.99"));
         assertTrue(InputValidation.isOnlyNumbers("44"));
-        assertFalse(InputValidation.isOnlyNumbers("-3"));
         assertTrue(InputValidation.isOnlyNumbers("0"));
+    }
+
+    @Test
+    public void testWordsAreNotPositiveIntegers() {
+        assertFalse(InputValidation.isOnlyNumbers("hello"));
+    }
+
+    @Test
+    public void testDecimalsAreNotPositiveIntegers() {
+        assertFalse(InputValidation.isOnlyNumbers("99.99"));
+    }
+
+    @Test
+    public void testNegativesAreNotPositiveIntegers() {
+        assertFalse(InputValidation.isOnlyNumbers("-3"));
     }
 
     @Test

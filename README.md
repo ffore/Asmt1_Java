@@ -137,7 +137,7 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 ## Our Experience
 ### Describe your unit testing & TDD experience. What do you think of unit testing & TDD? Do you think it's useful for a real project? Discuss the Benefits & Drawbacks to TDD
 
-### Bryan
+### Bryan Rooke
 
 I found myself always following the TDD methodology while working on this assignment. Even for simple functions like getters and setters on instance variables, I ended up writing a failing test for them first, and then wrote the source code for it. Most of these functions ended up being one line, but after spending so much time on this assignment, I had developed the habit. I've followed Test Driven Development while interning at different companies before so this process wasn't entirely new. However, based on the projects I had worked on, I didn't find immediate results from TDD. However, because of the scope of this project and the requirements for each function, I found that writing a test I thought would pass easily ended up being more difficult that I realized. TDD forced me to give each method a single responsibility and to keep them as small as possible to make testing easier. There were multiple times with floating precision errors where I had written a test first, then written the source code to pass at, and still found the test failing. If I had simply written the source code without having any tests, I surely would have missed multiple bugs.
 
@@ -146,7 +146,7 @@ I do think TDD can be useful in a real project. Having passing tests gives you t
 However, there are some drawbacks that I've found while working on this assignment. There were points in time that it felt like nothing but test cases were being written. The core functionality was being put on hold to make sure all the input validation, which comes before the calculations so that they run successfully, was working properly. While this did feel like my development time was being stretched, I think it was for the right reasons. If I hadn't done all that testing, there's no guarantee the program would work as expected otherwise.
 
 
-### Daniel
+### Daniel Geleroff
 
 Throughout the assignment I kept reflecting as to how my usual development process is. I normally write code with many console logs, and verify the output visually. Then once it’s up to my standards, I comment out the console logs and continue. There is no way for me to know if my new changes affect my old “tested” code. I usually add code, test the new functionality, and then go back and test the old functionality I had previously verified. This was always a tedious and daunting process for me. I knew of test driven development but thought the process would just add more work on my end, since I’d have to write code and then also write tests.
 

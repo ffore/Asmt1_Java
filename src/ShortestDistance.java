@@ -29,13 +29,15 @@ public class ShortestDistance {
     public double acceptCoordinate(String currentCoordinate) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter a value for " + currentCoordinate);
+        System.out.print("Please enter a value for " + currentCoordinate + ": ");
         String input = scanner.nextLine();
 
         while(isInvalidInput(input)) {
-            System.out.println("Enter a new value for " + currentCoordinate);
+            System.out.println("");
+            System.out.print("Enter a new value for " + currentCoordinate + ": ");
             input = scanner.nextLine();
         }
+        System.out.println("");
 
         return Double.parseDouble(input);
     }
@@ -44,7 +46,6 @@ public class ShortestDistance {
         this.calculateDistance();
         double result = this.getDistance();
         System.out.println("The resulting distance is: " + result);
-        System.out.println("Returning to the Main Menu...");
         return result;
     }
 

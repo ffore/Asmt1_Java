@@ -5,11 +5,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class TipCalculator {
-    public static void main(String args[]){
-//        Bill bill = acceptInput();
-//        splitTip(bill.getPrice(), bill.getPeople());
-        acceptInput();
-    }
 
     public static Bill acceptInput(){
         Scanner myScan = new Scanner(System.in);

@@ -68,6 +68,7 @@ public class MainMenu {
                 this.setIsStillRunning(false);
                 break;
         }
+        System.out.println("");
     }
 
     public static boolean isInvalidMenuOption(String input) {

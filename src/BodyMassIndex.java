@@ -7,14 +7,6 @@ import java.util.Scanner;
 
 public class BodyMassIndex {
 
-//    temporary main function to run BodyMassIndex.java
-    public static void main(String args[]){
-        acceptInput();
-//        double bmi = getBMI(userInput);
-//        String category = getBMICategory(bmi);
-//        System.out.println("BMI: " + bmi + " (" + category + ")");
-    }
-
     public static userInput acceptInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;

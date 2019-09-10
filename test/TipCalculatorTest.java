@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -8,30 +10,22 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TipCalculatorTest {
 
     @Test
-    public void testOnlyNumbersAndOnePeriod(){
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00"));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100"));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00."));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("hello"));
-        assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.00"));
-        assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.900"));
+    public void testBillObject(){
+        Bill bill = new Bill("19.39", "2");
+        assertEquals("19.39", bill.getPrice());
+        assertEquals("2", bill.getPeople());
     }
 
     @Test
-    public void testOnlyTwoDecimalPlaces(){
-        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("100.900"));
-        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("45.75"));
-        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("hell o45.75"));
-        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("9.9"));
-    }
+    public void testInput(){
+        String input = "26.17\r3\r";
+        //        following code inspired by: https://stackoverflow.com/a/31635737
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
 
-    @Test
-    public void testNotZero(){
-        assertTrue(InputValidation.notZero("10.00"));
-        assertFalse(InputValidation.notZero("0.00"));
-        assertFalse(InputValidation.notZero("000.00"));
-        assertFalse(InputValidation.notZero(".00"));
-        assertTrue(InputValidation.notZero(".15"));
+        Bill x = TipCalculator.acceptInput();
+        assertEquals("26.17", x.getPrice());
+        assertEquals("3", x.getPeople());
     }
 
     @Test
@@ -43,22 +37,6 @@ public class TipCalculatorTest {
         assertFalse(TipCalculator.isValidPrice("0.0"));
         assertFalse(TipCalculator.isValidPrice("0.00"));
         assertFalse(TipCalculator.isValidPrice("18.6"));
-    }
-
-    @Test
-    public void testNumOfPeopleIsPositiveInt(){
-        assertFalse(InputValidation.isOnlyNumbers("hello"));
-        assertFalse(InputValidation.isOnlyNumbers("99.99"));
-        assertTrue(InputValidation.isOnlyNumbers("44"));
-        assertFalse(InputValidation.isOnlyNumbers("-3"));
-        assertTrue(InputValidation.isOnlyNumbers("0"));
-    }
-
-    @Test
-    public void testNumOfPeopleNotZero(){
-        assertFalse(InputValidation.notZeroPeople("0"));
-        assertTrue(InputValidation.notZeroPeople("4"));
-        assertTrue(InputValidation.notZeroPeople("-2"));
     }
 
     @Test
@@ -133,47 +111,59 @@ public class TipCalculatorTest {
 
     @Test
     public void testGetDistribution(){
-//        double[] arr1 = {7.64, 7.63, 7.63, 7.63};
-//        assertArrayEquals( arr1, TipCalculator.getDistribution(30.53, 4));
         BigDecimal x1 = new BigDecimal("5.11");
         BigDecimal y1 = new BigDecimal("5.10");
         BigDecimal[] arr1 = {x1, x1, y1, y1, y1};
         BigDecimal total1 = new BigDecimal("25.52");
         BigDecimal people1 = new BigDecimal("5");
-        assertArrayEquals(arr1, TipCalculator.getDistribution(total1, people1));
+        BigDecimal piece1 = TipCalculator.getPiece(total1, people1);
+        assertArrayEquals(arr1, TipCalculator.getDistribution(total1, people1, piece1));
 
         BigDecimal x2 = new BigDecimal("7.64");
         BigDecimal y2 = new BigDecimal("7.63");
         BigDecimal[] arr2 = {x2, y2, y2, y2};
         BigDecimal total2 = new BigDecimal("30.53");
         BigDecimal people2 = new BigDecimal("4");
-        assertArrayEquals(arr2, TipCalculator.getDistribution(total2, people2));
+        BigDecimal piece2 = TipCalculator.getPiece(total2, people2);
+        assertArrayEquals(arr2, TipCalculator.getDistribution(total2, people2, piece2));
 
         BigDecimal x3 = new BigDecimal("0.86");
         BigDecimal y3 = new BigDecimal("0.85");
         BigDecimal[] arr3 = {x3, x3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3, y3};
         BigDecimal total3 = new BigDecimal("25.52");
         BigDecimal people3 = new BigDecimal("30");
-        assertArrayEquals(arr3, TipCalculator.getDistribution(total3, people3));
+        BigDecimal piece3 = TipCalculator.getPiece(total3, people3);
+        assertArrayEquals(arr3, TipCalculator.getDistribution(total3, people3, piece3));
 
         BigDecimal x4 = new BigDecimal("10.04");
         BigDecimal y4 = new BigDecimal("10.03");
         BigDecimal[] arr4 = {x4, y4, y4};
         BigDecimal total4 = new BigDecimal("30.10");
         BigDecimal people4 = new BigDecimal("3");
-        assertArrayEquals(arr4, TipCalculator.getDistribution(total4, people4));
+        BigDecimal piece4 = TipCalculator.getPiece(total4, people4);
+        assertArrayEquals(arr4, TipCalculator.getDistribution(total4, people4, piece4));
 
         BigDecimal x5 = new BigDecimal("6.20");
         BigDecimal[] arr5 = {x5, x5, x5};
         BigDecimal total5 = new BigDecimal("18.60");
         BigDecimal people5 = new BigDecimal("3");
-        assertArrayEquals(arr5, TipCalculator.getDistribution(total5, people5));
+        BigDecimal piece5 = TipCalculator.getPiece(total5, people5);
+        assertArrayEquals(arr5, TipCalculator.getDistribution(total5, people5, piece5));
+
+        BigDecimal x6 = new BigDecimal("1.13");
+        BigDecimal y6 = new BigDecimal("1.12");
+        BigDecimal[] arr6 = {x6, x6, x6, x6, y6, y6, y6, y6};
+        BigDecimal total6 = new BigDecimal("9.00");
+        BigDecimal people6 = new BigDecimal("8");
+        BigDecimal piece6 = TipCalculator.getPiece(total6, people6);
+        assertArrayEquals(arr6, TipCalculator.getDistribution(total6, people6, piece6));
     }
-//
-//    @Test
-//    public void testGetSprinkle(){
-//        assertEquals(2, TipCalculator.getSprinkle(25.52, 30, 0.85));
-//        assertEquals(1, TipCalculator.getSprinkle(30.53, 4, 7.63));
-//    }
+
+    @Test
+    public void testSplitTip(){
+        assertFalse(TipCalculator.splitTip("10.00", "10000"));
+        assertTrue(TipCalculator.splitTip("10.00", "1000"));
+    }
+
 
 }

@@ -4,11 +4,13 @@ public class MainMenu {
 
     private BodyMassIndex bodyMassIndex;
     private ShortestDistance shortestDistance;
+    private TipCalculator tipCalculator;
     private boolean isStillRunning;
 
     public MainMenu() {
         this.bodyMassIndex = new BodyMassIndex();
         this.shortestDistance = new ShortestDistance();
+        this.tipCalculator = new TipCalculator();
         this.isStillRunning = true;
     }
 
@@ -58,7 +60,7 @@ public class MainMenu {
                 this.startShortestDistance();
                 break;
             case 4:
-                // Split the Tip Function
+                this.getTipSplitter();
                 break;
             case 5:
                 this.setIsStillRunning(false);
@@ -103,5 +105,9 @@ public class MainMenu {
 
     public void getBodyMassIndex() {
         this.bodyMassIndex.acceptInput();
+    }
+
+    public void getTipSplitter() {
+        this.tipCalculator.acceptInput();
     }
 }

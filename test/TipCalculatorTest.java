@@ -29,33 +29,6 @@ public class TipCalculatorTest {
     }
 
     @Test
-    public void testOnlyNumbersAndOnePeriod(){
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00"));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100"));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00."));
-        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("hello"));
-        assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.00"));
-        assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.900"));
-    }
-
-    @Test
-    public void testOnlyTwoDecimalPlaces(){
-        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("100.900"));
-        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("45.75"));
-        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("hell o45.75"));
-        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("9.9"));
-    }
-
-    @Test
-    public void testNotZero(){
-        assertTrue(InputValidation.notZero("10.00"));
-        assertFalse(InputValidation.notZero("0.00"));
-        assertFalse(InputValidation.notZero("000.00"));
-        assertFalse(InputValidation.notZero(".00"));
-        assertTrue(InputValidation.notZero(".15"));
-    }
-
-    @Test
     public void testValidPrice(){
         assertFalse(TipCalculator.isValidPrice("hell o45.75"));
         assertFalse(TipCalculator.isValidPrice("100.900"));
@@ -64,22 +37,6 @@ public class TipCalculatorTest {
         assertFalse(TipCalculator.isValidPrice("0.0"));
         assertFalse(TipCalculator.isValidPrice("0.00"));
         assertFalse(TipCalculator.isValidPrice("18.6"));
-    }
-
-    @Test
-    public void testNumOfPeopleIsPositiveInt(){
-        assertFalse(InputValidation.isOnlyNumbers("hello"));
-        assertFalse(InputValidation.isOnlyNumbers("99.99"));
-        assertTrue(InputValidation.isOnlyNumbers("44"));
-        assertFalse(InputValidation.isOnlyNumbers("-3"));
-        assertTrue(InputValidation.isOnlyNumbers("0"));
-    }
-
-    @Test
-    public void testNumOfPeopleNotZero(){
-        assertFalse(InputValidation.notZeroPeople("0"));
-        assertTrue(InputValidation.notZeroPeople("4"));
-        assertTrue(InputValidation.notZeroPeople("-2"));
     }
 
     @Test
@@ -154,8 +111,6 @@ public class TipCalculatorTest {
 
     @Test
     public void testGetDistribution(){
-//        double[] arr1 = {7.64, 7.63, 7.63, 7.63};
-//        assertArrayEquals( arr1, TipCalculator.getDistribution(30.53, 4));
         BigDecimal x1 = new BigDecimal("5.11");
         BigDecimal y1 = new BigDecimal("5.10");
         BigDecimal[] arr1 = {x1, x1, y1, y1, y1};

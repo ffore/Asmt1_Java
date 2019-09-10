@@ -110,4 +110,47 @@ public class InputValidationTest {
         assertFalse(InputValidation.isValidAge(input));
     }
 
+    @Test
+    public void testOnlyNumbersAndOnePeriod(){
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00"));
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100"));
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("$100.00."));
+        assertFalse(InputValidation.hasOnlyNumbersAndOnePeriod("hello"));
+        assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.00"));
+        assertTrue(InputValidation.hasOnlyNumbersAndOnePeriod("100.900"));
+    }
+
+    @Test
+    public void testOnlyTwoDecimalPlaces(){
+        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("100.900"));
+        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("45.75"));
+        assertTrue(InputValidation.hasOnlyTwoDecimalPlaces("hell o45.75"));
+        assertFalse(InputValidation.hasOnlyTwoDecimalPlaces("9.9"));
+    }
+
+    @Test
+    public void testNotZero(){
+        assertTrue(InputValidation.notZero("10.00"));
+        assertFalse(InputValidation.notZero("0.00"));
+        assertFalse(InputValidation.notZero("000.00"));
+        assertFalse(InputValidation.notZero(".00"));
+        assertTrue(InputValidation.notZero(".15"));
+    }
+
+    @Test
+    public void testNumOfPeopleIsPositiveInt(){
+        assertFalse(InputValidation.isOnlyNumbers("hello"));
+        assertFalse(InputValidation.isOnlyNumbers("99.99"));
+        assertTrue(InputValidation.isOnlyNumbers("44"));
+        assertFalse(InputValidation.isOnlyNumbers("-3"));
+        assertTrue(InputValidation.isOnlyNumbers("0"));
+    }
+
+    @Test
+    public void testNumOfPeopleNotZero(){
+        assertFalse(InputValidation.notZeroPeople("0"));
+        assertTrue(InputValidation.notZeroPeople("4"));
+        assertTrue(InputValidation.notZeroPeople("-2"));
+    }
+
 }

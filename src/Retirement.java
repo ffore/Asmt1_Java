@@ -6,6 +6,7 @@ public class Retirement {
     private double annualSalary;
     private int percentageSaved;
     private double savingsGoal;
+    private double savingsPerYear;
     private double employerContributions;
     private Scanner scanner;
 
@@ -14,15 +15,22 @@ public class Retirement {
         this.annualSalary = 0;
         this.percentageSaved = 0;
         this.savingsGoal = 0;
+        this.savingsPerYear = 0;
         this.employerContributions = 0;
         this.scanner = new Scanner(System.in);
     }
 
-    // Check user's age is valid (loop) -> Round to integer
-    // Check user's salary is valid (loop) -> Round to double (2 digits)
-    // Check user's percentage is valid (loop) -> Round to double (1 digit)
-    // Check user's savings goal is valid (loop) -> Round to double (2 digits)
-    public static void main(String[] args) {
+    public Retirement(int age, double salary, int saved, double goal) {
+        this.currentAge = age;
+        this.annualSalary = salary;
+        this.percentageSaved = saved;
+        this.savingsGoal = goal;
+        this.savingsPerYear = 0;
+        this.employerContributions = 0;
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void acceptInput() {
         String[] parameters = {"age", "annual salary", "percentage saved per year", "savings goal"};
         Retirement retirement = new Retirement();
         retirement.setVariables();
@@ -36,19 +44,49 @@ public class Retirement {
         this.checkSavings();
     }
 
-    public void calculateRetirement() {
-        int finalAge = this.findFinalAge();
+    public int calculateRetirement() {
+        int finalAge;
+
+        if(this.getPercentageSaved() == 0) {
+            finalAge = -1;
+        } else {
+            finalAge = this.findFinalAge();
+        }
+
         this.printResults(finalAge);
+        return finalAge;
     }
 
     public int findFinalAge() {
-        return 1;
+        int years = 0, finalAge = 0, age;
+        double userSavingsPerYear, employerSavingsPerYear, savingsGoal, totalSavings = 0;
+
+        age = this.getCurrentAge();
+        savingsGoal = this.getSavingsGoal();
+        userSavingsPerYear = this.getSavingsPerYear();
+        employerSavingsPerYear = this.getEmployerContributions();;
+
+        while(age + years < 100) {
+            if(totalSavings >= savingsGoal) {
+                finalAge = age + years;
+                break;
+            }
+
+            totalSavings += userSavingsPerYear + employerSavingsPerYear;
+            totalSavings = Math.round(totalSavings * 100.0) / 100.0;
+            years++;
+        }
+
+        return finalAge;
     }
 
     public void printResults(int finalAge) {
-        if(finalAge >= 100) {
+        if(finalAge == 0) {
             System.out.println("Given the provided information, you will not reach your " +
                     "savings goal in your lifetime");
+        } else if(finalAge == -1) {
+            System.out.println("You cannot reach your savings goal because your percentage " +
+                    "saved from your annual salary is set to 0");
         } else {
             System.out.println("You will reach your savings goal by the age of " + finalAge);
         }
@@ -93,6 +131,8 @@ public class Retirement {
 
         int percentage = Integer.parseInt(input);
         this.setPercentageSaved(percentage);
+        this.setSavingsPerYear();
+        this.setEmployerContributions();
     }
 
     public void checkSavings() {
@@ -167,8 +207,18 @@ public class Retirement {
         return this.employerContributions;
     }
 
-    public void setEmployerContributions(double salary) {
-//        double amount = roundToTwoDecimalDouble(salary * 0.35);
-//        this.employerContributions = amount;
+    public void setEmployerContributions() {
+        double userAmount = this.getSavingsPerYear();
+        double employerAmount = userAmount * 0.35;
+        this.employerContributions = Math.round(employerAmount * 100.0) / 100.0;
+    }
+
+    public double getSavingsPerYear() {
+        return this.savingsPerYear;
+    }
+
+    public void setSavingsPerYear() {
+        double percent = this.getPercentageSaved() / 100.0;
+        this.savingsPerYear = this.getAnnualSalary() * percent;
     }
 }

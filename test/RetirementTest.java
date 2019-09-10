@@ -214,4 +214,95 @@ public class RetirementTest {
         user.setSavingsGoal(300);
         assertEquals(user.getSavingsGoal(), 300);
     }
+
+    @Test
+    public void testCanGetEmployerContribution() {
+        Retirement user = new Retirement();
+        assertEquals(user.getEmployerContributions(), 0);
+    }
+
+    @Test
+    public void testCanSetEmployerContributions() {
+        // Input is ALWAYS valid here
+        Retirement user = new Retirement();
+        user.setPercentageSaved(100);
+        user.setAnnualSalary(100);
+        user.setSavingsPerYear();
+        user.setEmployerContributions();
+        assertEquals(user.getEmployerContributions(), 35);
+    }
+
+    @Test
+    public void testCanGetSavingsPerYear() {
+        Retirement user = new Retirement();
+        assertEquals(user.getSavingsPerYear(), 0);
+    }
+
+    @Test
+    public void testCanSetSavingsPerYear() {
+        Retirement user = new Retirement();
+        user.setPercentageSaved(5);
+        user.setAnnualSalary(100);
+
+        user.setSavingsPerYear();
+        assertEquals(user.getSavingsPerYear(), 5);
+    }
+
+    // Retirement Calculation
+    @Test
+    public void testCalculateRetirementWhenSavingsIsNotReached() {
+        Retirement user = new Retirement(50, 1000, 10, 200000);
+        user.setSavingsPerYear();
+        user.setEmployerContributions();
+
+        assertEquals(user.calculateRetirement(), 0);
+    }
+
+    @Test
+    public void testCalculateRetirementIfUserDoesNotSave() {
+        Retirement user = new Retirement(30, 1000, 0, 2000);
+        user.setSavingsPerYear();
+        user.setEmployerContributions();
+
+        assertEquals(user.calculateRetirement(), -1);
+    }
+
+    @Test
+    public void testCalculateRetirementWithSimpleValues() {
+        Retirement user = new Retirement(30, 1000, 100, 2000);
+        user.setSavingsPerYear();
+        user.setEmployerContributions();
+
+        assertEquals(user.calculateRetirement(), 32);
+    }
+
+    @Test
+    public void testFindFinalAgeForSimpleValues() {
+        Retirement user = new Retirement(30, 1000, 100, 2000);
+        user.setSavingsPerYear();
+        user.setEmployerContributions();
+
+        assertEquals(user.findFinalAge(), 32);
+    }
+
+    @Test
+    public void testFindFinalAgeForMediumValues() {
+        Retirement user = new Retirement(30, 1000, 10, 2000);
+        user.setSavingsPerYear();
+        user.setEmployerContributions();
+
+        // Calculation is as follows:
+        // 100 (user supplied per year) + 35 (employer supplied)
+        // 135 * 15 = 2025, which meets our goal of 2000
+        assertEquals(user.findFinalAge(), 45);
+    }
+
+    @Test
+    public void testFindFinalAgeIfUserDoesNotSaveAnything() {
+        Retirement user = new Retirement(50, 1000, 10, 200000);
+        user.setSavingsPerYear();
+        user.setEmployerContributions();
+
+        assertEquals(user.findFinalAge(), 0);
+    }
 }

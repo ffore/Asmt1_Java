@@ -70,7 +70,7 @@ public class InputValidationTest {
     public void testPositiveWholeNumberIsValidInteger() {
         String input = "50", input2 = "-50";
         assertTrue(InputValidation.isValidInteger(input));
-        assertTrue(InputValidation.isValidInteger(input2));
+        assertFalse(InputValidation.isValidInteger(input2));
     }
 
     @Test
@@ -139,6 +139,12 @@ public class InputValidationTest {
     public void testValidSalaryIsValidAmount() {
         String input = "1000000";
         assertTrue(InputValidation.isValidAmount(input));
+    }
+
+    @Test
+    public void testNegativeValuesAreInvalid() {
+        String input = "-1";
+        assertFalse(InputValidation.isValidAmount(input));
     }
 
     @Test

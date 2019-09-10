@@ -82,6 +82,7 @@ public class InputValidation {
             System.out.println("A percentage of 0 leads in not reaching your savings goal");
             return true;
         } else {
+            System.out.println("Invalid Percentage. The provided value does not fall between 0 and 100");
             return false;
         }
     }
@@ -97,6 +98,11 @@ public class InputValidation {
     public static boolean isValidInteger(String input) {
         try {
             int check = Integer.parseInt(input);
+
+            if(check < 0) {
+                System.out.println("Invalid Input. Expected a positive number");
+                return false;
+            }
         } catch (NumberFormatException e) {
             System.out.println("Invalid Input. Expected a whole number.");
             return false;
@@ -108,7 +114,13 @@ public class InputValidation {
     public static double convertToAmount(String input) {
         if(isValidDouble(input)) {
             double amount = Double.parseDouble(input);
-            return Math.round(amount * 100.0) / 100.0;
+
+            if(amount < 0) {
+                System.out.println("Invalid Input. Expected a positive number");
+                return -1;
+            } else {
+                return Math.round(amount * 100.0) / 100.0;
+            }
         } else {
             return -1;
         }

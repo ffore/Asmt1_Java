@@ -107,11 +107,14 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 <img src="/pics/input%20validation%20test.png" width="300">
 
 ## Screencasts
-### Example 1
-![screencast 1](/pics/RGR_Example_1.gif)
+### All Functions
+![all functions](/pics/main.gif)
 
-### Example 2
-![screencast 2](/pics/tdd.gif)
+### RGR Example 1
+![rgr example 1](/pics/RGR_Example_1.gif)
+
+### RGR Example 2
+![rgr example 2](/pics/tdd.gif)
 
 ## Our Experience
 ### Describe your unit testing & TDD experience. What do you think of unit testing & TDD? Do you think it's useful for a real project? Discuss the Benefits & Drawbacks to TDD

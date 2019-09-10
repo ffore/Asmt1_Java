@@ -1,4 +1,4 @@
-# CISE4930 Continuous Integration and Software Testing Assignment 1
+# CIS4930 Continuous Integration and Software Testing Assignment 1
 
 ## System Requirements
 

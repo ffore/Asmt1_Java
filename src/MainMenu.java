@@ -53,15 +53,23 @@ public class MainMenu {
     public void runFunction(int option) {
         switch(option) {
             case 1:
+                System.out.println("BODY MASS INDEX");
+                System.out.println("------------");
                 this.startBodyMassIndex();
                 break;
             case 2:
+                System.out.println("RETIREMENT");
+                System.out.println("------------");
                 this.startRetirement();
                 break;
             case 3:
+                System.out.println("SHORTEST DISTANCE");
+                System.out.println("------------");
                 this.startShortestDistance();
                 break;
             case 4:
+                System.out.println("SPLIT THE TIP");
+                System.out.println("------------");
                 this.startTipSplitter();
                 break;
             case 5:

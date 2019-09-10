@@ -30,7 +30,7 @@ public class TipCalculator {
         boolean validNumOfPeople = false;
         while(!validNumOfPeople){
             if(count == 0){
-                System.out.println("Number of People");
+                System.out.println("\nNumber of People");
                 System.out.println("Input whole positive numbers only");
                 System.out.println("This is valid input --> 9");
                 System.out.print("Enter number of people: ");
@@ -114,7 +114,7 @@ public class TipCalculator {
     }
 
     public static void printResult(BigDecimal[] dist, BigDecimal total){
-        System.out.println("With gratuity, total is: $" + total);
+        System.out.println("\nWith gratuity, total is: $" + total);
 //        assumes dist is good
         for(int i = 0; i < dist.length; i++){
             int count = i+1;

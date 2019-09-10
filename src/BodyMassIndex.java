@@ -29,7 +29,7 @@ public class BodyMassIndex {
         count = 0;
         while(!validWeight){
             if(count == 0){
-                System.out.println("Weight Measurement");
+                System.out.println("\nWeight Measurement");
                 System.out.println("This is valid input --> 120");
                 System.out.print("Enter weight in lbs: ");
             }
@@ -104,7 +104,7 @@ public class BodyMassIndex {
     public static void printResult(String height, int weight){
         double bmi = getBMI(height, weight);
         String category = getBMICategory(bmi);
-        System.out.println("BMI: " + bmi + " (" + category + ")");
+        System.out.println("\nBMI: " + bmi + " (" + category + ")");
     }
 
     public static int getHeightIn(String height){

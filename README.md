@@ -47,3 +47,7 @@ Because IntelliJ is an IDE, it has its own built-in command line. We will be usi
 Opening the src folder will produce a list of files with different names. The only one of importance to run the application is **MainMenu**. Right-click on MainMenu and select the option "Run MainMenu.main()". This option should also have a green play button next to it. 
 
 Once you've selected that option, the built-in command line will appear from the bottom of the page. You will interact with the application through this. The main menu of the application will be displayed and is waiting for your input. From here, you'll be able to play with the 4 different functions we've chosen or simply exit the app.
+
+## More Information
+
+If you'd like to learn more about the project like different details about the structure, our testing habits, proof we followed TDD, and more, select the Wiki tab along the top of the page. You'll find different pages on the Wiki containing additional information you might find useful.

@@ -1,3 +1,5 @@
+import main.java.Bill;
+import main.java.TipCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

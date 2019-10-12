@@ -1,4 +1,5 @@
 import com.sun.tools.javac.Main;
+import main.java.MainMenu;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;

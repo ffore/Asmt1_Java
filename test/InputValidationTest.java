@@ -1,8 +1,9 @@
+import main.java.InputValidation;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class InputValidationTest {
-
+    InputValidation InputValidation = new InputValidation();
     // Menu Option
     @Test
     public void testValidNumberIsValidMenuOption() {

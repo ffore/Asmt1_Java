@@ -1,3 +1,5 @@
+package main.java;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.InputMismatchException;
@@ -116,30 +118,6 @@ public class BodyMassIndex {
         int singleQuoteIndex = height.indexOf('\'');
         String inchStr = height.substring(0, singleQuoteIndex);
         return Integer.parseInt(inchStr);
-    }
-
-}
-
-final class userInput {
-//    only good values will be here since
-//    checking is done before the instance
-//    of this object
-    private final String height;
-    private final int weight;
-    int singleQuoteIndex;
-    int doubleQuoteIndex;
-
-    public userInput(String height, int weight){
-        this.height = height;
-        this.weight = weight;
-    }
-
-    public String getHeight(){
-        return height;
-    }
-
-    public int getWeight(){
-        return weight;
     }
 
 }

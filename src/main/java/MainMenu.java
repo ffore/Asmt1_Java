@@ -1,20 +1,18 @@
-package main.java;
-
 import java.util.Scanner;
 
 public class MainMenu {
 
     private BodyMassIndex bodyMassIndex;
-    private Retirement retirement;
-    private ShortestDistance shortestDistance;
-    private TipCalculator tipCalculator;
+    private main.java.Retirement retirement;
+    private main.java.ShortestDistance shortestDistance;
+    private main.java.TipCalculator tipCalculator;
     private boolean isStillRunning;
 
     public MainMenu() {
         this.bodyMassIndex = new BodyMassIndex();
-        this.retirement = new Retirement();
-        this.shortestDistance = new ShortestDistance();
-        this.tipCalculator = new TipCalculator();
+        this.retirement = new main.java.Retirement();
+        this.shortestDistance = new main.java.ShortestDistance();
+        this.tipCalculator = new main.java.TipCalculator();
         this.isStillRunning = true;
     }
 
@@ -82,7 +80,7 @@ public class MainMenu {
     }
 
     public static boolean isInvalidMenuOption(String input) {
-        return !InputValidation.isValidMenuOption(input);
+        return !main.java.InputValidation.isValidMenuOption(input);
     }
 
     public static void displayMenuHeader() {

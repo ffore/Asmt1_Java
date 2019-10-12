@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.StringBufferInputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShortestDistanceTest {

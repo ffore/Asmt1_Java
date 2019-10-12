@@ -1,3 +1,5 @@
+package main.java;
+
 public class InputValidation {
 
     public static boolean isValidMenuOption(String input) {

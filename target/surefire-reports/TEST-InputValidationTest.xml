@@ -1,121 +1,118 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="56" failures="0" name="InputValidationTest" time="0.003" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="InputValidationTest" time="0.048" tests="56" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="java.vm.version" value="12.0.2+10"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="path.separator" value=";"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="user.script" value=""/>
-    <property name="user.country" value="US"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="12.0.2+10"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="C:\Users\xarga\AppData\Local\Temp\"/>
-    <property name="line.separator" value="
-"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="user.variant" value=""/>
-    <property name="os.name" value="Windows 10"/>
-    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven-event-listener.jar"/>
-    <property name="classworlds.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3\bin\m2.conf"/>
-    <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Python27;C:\windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\HashiCorp\Vagrant\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;C:\Python27;C:\Users\xarga\AppData\Local\atom\bin;C:\Program Files\CMake\bin;C:\Users\xarga\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Docker Toolbox;."/>
-    <property name="maven.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3/conf"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="java.class.version" value="56.0"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.0"/>
-    <property name="user.home" value="C:\Users\xarga"/>
-    <property name="user.timezone" value="America/New_York"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="12"/>
-    <property name="user.name" value="xarga"/>
-    <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar"/>
-    <property name="idea.version2019.2.1" value="true"/>
-    <property name="java.vm.specification.version" value="12"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\xarga\IdeaProjects\Asmt1_Java\target\test-classes;C:\Users\xarga\IdeaProjects\Asmt1_Java\target\classes;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\xarga\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\xarga\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.2.1 package"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="12"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
+    <property name="sun.java.command" value="C:\Users\xarga\AppData\Local\Temp\surefire2282605698275455402\surefirebooter10190812561760734908.jar C:\Users\xarga\AppData\Local\Temp\surefire2282605698275455402 2019-10-13T12-33-50_279-jvmRun1 surefire3083429273402510705tmp surefire_017340316055054211465tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\xarga\IdeaProjects\Asmt1_Java\target\test-classes;C:\Users\xarga\IdeaProjects\Asmt1_Java\target\classes;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\xarga\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\xarga\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\xarga"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.version" value="12.0.2"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3"/>
-    <property name="file.separator" value="\"/>
     <property name="java.version.date" value="2019-07-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
+    <property name="idea.version2019.2.1" value="true"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\xarga\AppData\Local\Temp\surefire2282605698275455402\surefirebooter10190812561760734908.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="12.0.2+10"/>
+    <property name="user.name" value="xarga"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\xarga\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\xarga\AppData\Local\Temp\"/>
+    <property name="java.version" value="12.0.2"/>
+    <property name="user.dir" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Python27;C:\windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\HashiCorp\Vagrant\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;C:\Python27;C:\Users\xarga\AppData\Local\atom\bin;C:\Program Files\CMake\bin;C:\Users\xarga\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Docker Toolbox;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="12.0.2+10"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="sun.cpu.endian" value="little"/>
-    <property name="sun.desktop" value="windows"/>
-    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="java.class.version" value="56.0"/>
   </properties>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testExtraCharactersAreInvalidAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeNumberInputCanConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNinetyNineDoesNotFallInAgeRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testCanConvertSalaryAndRoundToAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testPositiveNumbersFallInPercentageRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsMultipleDollarSigns" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testSpecialCharactersCannotConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testPositiveWholeNumberIsValidInteger" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativesAreNotPositiveIntegers" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalNumberInputCanConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInvalidOptionDoesNotFallInRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWholeNumberInputCanConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInvalidInputIsInvalidMenuOption" time="0.001"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeAndLargeNumbersDoNotFallInPercentageRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testZeroIsValidAge" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNotZero" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testValidSalaryIsValidAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoExtraSymbols" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoCommas" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsMultipleDecimals" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testOnlyNumbersAndOnePeriod" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testPriceIsNotAWord" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testOnlyTwoDecimalPlaces" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testStringsAreInvalidIntegers" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testThreeDecimalsAreNotTwo" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalsDoNotHaveWords" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWordsAreInvalidPercentage" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testCannotConvertWordsToAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoDollarSigns" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testZeroIsNotValidPrice" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWordsAreNotPositiveIntegers" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoDecimals" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNumOfPeopleNotZero" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testIntegerConvertsToInteger" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalsAreNotPositiveIntegers" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testOneDecimalIsNotTwo" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testValidNumberIsValidMenuOption" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWordIsInvalidAge" time="0.001"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testTwentyOneDoesNotFallInAgeRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNumOfPeopleIsPositiveInt" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testStringFailsToConvertToInteger" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testTwentyTwoFallsInAgeRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsAllExtraSymbols" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsMultipleCommas" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsOneComma" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWordsAreInvalidAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWordsCannotConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsOneDecimal" time="0.001"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputDoesNotHaveDollarSigns" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeValuesAreInvalid" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testSimpleInputIsValidPercentage" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testValidNumberIsValidAge" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsDollarSign" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testValidOptionFallsInRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalNumberIsInvalidInteger" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNinetyEightFallsInAgeRange" time="0"/>
+  <testcase name="testCannotConvertWordsToAmount" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testInvalidInputIsInvalidMenuOption" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testPositiveWholeNumberIsValidInteger" classname="InputValidationTest" time="0"/>
+  <testcase name="testPositiveNumbersFallInPercentageRange" classname="InputValidationTest" time="0"/>
+  <testcase name="testDecimalNumberInputCanConvertToDouble" classname="InputValidationTest" time="0"/>
+  <testcase name="testInputContainsNoExtraSymbols" classname="InputValidationTest" time="0"/>
+  <testcase name="testSpecialCharactersCannotConvertToDouble" classname="InputValidationTest" time="0"/>
+  <testcase name="testTwentyTwoFallsInAgeRange" classname="InputValidationTest" time="0"/>
+  <testcase name="testInputDoesNotHaveDollarSigns" classname="InputValidationTest" time="0"/>
+  <testcase name="testOnlyTwoDecimalPlaces" classname="InputValidationTest" time="0"/>
+  <testcase name="testDecimalsAreNotPositiveIntegers" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testWordsAreInvalidPercentage" classname="InputValidationTest" time="0"/>
+  <testcase name="testInputContainsNoCommas" classname="InputValidationTest" time="0"/>
+  <testcase name="testDecimalNumberIsInvalidInteger" classname="InputValidationTest" time="0"/>
+  <testcase name="testValidOptionFallsInRange" classname="InputValidationTest" time="0"/>
+  <testcase name="testZeroIsNotValidPrice" classname="InputValidationTest" time="0"/>
+  <testcase name="testIntegerConvertsToInteger" classname="InputValidationTest" time="0"/>
+  <testcase name="testNumOfPeopleIsPositiveInt" classname="InputValidationTest" time="0"/>
+  <testcase name="testNegativeNumberInputCanConvertToDouble" classname="InputValidationTest" time="0"/>
+  <testcase name="testInvalidOptionDoesNotFallInRange" classname="InputValidationTest" time="0"/>
+  <testcase name="testWholeNumberInputCanConvertToDouble" classname="InputValidationTest" time="0"/>
+  <testcase name="testStringsAreInvalidIntegers" classname="InputValidationTest" time="0"/>
+  <testcase name="testStringFailsToConvertToInteger" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testInputContainsAllExtraSymbols" classname="InputValidationTest" time="0"/>
+  <testcase name="testNegativesAreNotPositiveIntegers" classname="InputValidationTest" time="0"/>
+  <testcase name="testPriceIsNotAWord" classname="InputValidationTest" time="0"/>
+  <testcase name="testNinetyNineDoesNotFallInAgeRange" classname="InputValidationTest" time="0.004"/>
+  <testcase name="testValidNumberIsValidAge" classname="InputValidationTest" time="0"/>
+  <testcase name="testThreeDecimalsAreNotTwo" classname="InputValidationTest" time="0"/>
+  <testcase name="testNegativeValuesAreInvalid" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testWordsCannotConvertToDouble" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testWordsAreInvalidAmount" classname="InputValidationTest" time="0"/>
+  <testcase name="testNumOfPeopleNotZero" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testNegativeAndLargeNumbersDoNotFallInPercentageRange" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testExtraCharactersAreInvalidAmount" classname="InputValidationTest" time="0.006"/>
+  <testcase name="testInputContainsNoDollarSigns" classname="InputValidationTest" time="0"/>
+  <testcase name="testValidNumberIsValidMenuOption" classname="InputValidationTest" time="0"/>
+  <testcase name="testSimpleInputIsValidPercentage" classname="InputValidationTest" time="0"/>
+  <testcase name="testCanConvertSalaryAndRoundToAmount" classname="InputValidationTest" time="0"/>
+  <testcase name="testInputContainsOneComma" classname="InputValidationTest" time="0.004"/>
+  <testcase name="testInputContainsMultipleDecimals" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testInputContainsOneDecimal" classname="InputValidationTest" time="0"/>
+  <testcase name="testOneDecimalIsNotTwo" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testOnlyNumbersAndOnePeriod" classname="InputValidationTest" time="0"/>
+  <testcase name="testInputContainsMultipleCommas" classname="InputValidationTest" time="0.009"/>
+  <testcase name="testInputContainsNoDecimals" classname="InputValidationTest" time="0"/>
+  <testcase name="testInputContainsMultipleDollarSigns" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testTwentyOneDoesNotFallInAgeRange" classname="InputValidationTest" time="0.004"/>
+  <testcase name="testZeroIsValidAge" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testDecimalsDoNotHaveWords" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testValidSalaryIsValidAmount" classname="InputValidationTest" time="0"/>
+  <testcase name="testNotZero" classname="InputValidationTest" time="0"/>
+  <testcase name="testWordIsInvalidAge" classname="InputValidationTest" time="0"/>
+  <testcase name="testInputContainsDollarSign" classname="InputValidationTest" time="0.001"/>
+  <testcase name="testWordsAreNotPositiveIntegers" classname="InputValidationTest" time="0"/>
+  <testcase name="testNinetyEightFallsInAgeRange" classname="InputValidationTest" time="0"/>
 </testsuite>

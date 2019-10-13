@@ -1,95 +1,92 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="30" failures="0" name="ShortestDistanceTest" time="0.001" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ShortestDistanceTest" time="0.003" tests="30" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="java.vm.version" value="12.0.2+10"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="path.separator" value=";"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="user.script" value=""/>
-    <property name="user.country" value="US"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="12.0.2+10"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="C:\Users\xarga\AppData\Local\Temp\"/>
-    <property name="line.separator" value="
-"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="user.variant" value=""/>
-    <property name="os.name" value="Windows 10"/>
-    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven-event-listener.jar"/>
-    <property name="classworlds.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3\bin\m2.conf"/>
-    <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Python27;C:\windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\HashiCorp\Vagrant\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;C:\Python27;C:\Users\xarga\AppData\Local\atom\bin;C:\Program Files\CMake\bin;C:\Users\xarga\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Docker Toolbox;."/>
-    <property name="maven.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3/conf"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="java.class.version" value="56.0"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.0"/>
-    <property name="user.home" value="C:\Users\xarga"/>
-    <property name="user.timezone" value="America/New_York"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="12"/>
-    <property name="user.name" value="xarga"/>
-    <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar"/>
-    <property name="idea.version2019.2.1" value="true"/>
-    <property name="java.vm.specification.version" value="12"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\xarga\IdeaProjects\Asmt1_Java\target\test-classes;C:\Users\xarga\IdeaProjects\Asmt1_Java\target\classes;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\xarga\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\xarga\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.2.1 package"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="12"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
+    <property name="sun.java.command" value="C:\Users\xarga\AppData\Local\Temp\surefire2282605698275455402\surefirebooter10190812561760734908.jar C:\Users\xarga\AppData\Local\Temp\surefire2282605698275455402 2019-10-13T12-33-50_279-jvmRun1 surefire3083429273402510705tmp surefire_017340316055054211465tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\xarga\IdeaProjects\Asmt1_Java\target\test-classes;C:\Users\xarga\IdeaProjects\Asmt1_Java\target\classes;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.4.2\junit-jupiter-api-5.4.2.jar;C:\Users\xarga\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\xarga\.m2\repository\org\opentest4j\opentest4j\1.1.1\opentest4j-1.1.1.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-commons\1.4.2\junit-platform-commons-1.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.4.2\junit-jupiter-engine-5.4.2.jar;C:\Users\xarga\.m2\repository\org\junit\platform\junit-platform-engine\1.4.2\junit-platform-engine-1.4.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\xarga"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.version" value="12.0.2"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3"/>
-    <property name="file.separator" value="\"/>
     <property name="java.version.date" value="2019-07-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
+    <property name="idea.version2019.2.1" value="true"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\xarga\AppData\Local\Temp\surefire2282605698275455402\surefirebooter10190812561760734908.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="12.0.2+10"/>
+    <property name="user.name" value="xarga"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\xarga\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\xarga\AppData\Local\Temp\"/>
+    <property name="java.version" value="12.0.2"/>
+    <property name="user.dir" value="C:\Users\xarga\IdeaProjects\Asmt1_Java"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Python27;C:\windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\HashiCorp\Vagrant\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;C:\Python27;C:\Users\xarga\AppData\Local\atom\bin;C:\Program Files\CMake\bin;C:\Users\xarga\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\xarga\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Docker Toolbox;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="12.0.2+10"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="sun.cpu.endian" value="little"/>
-    <property name="sun.desktop" value="windows"/>
-    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="java.class.version" value="56.0"/>
   </properties>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithOppositeSignedNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithWholePositiveNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithSixDigitDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithMixedNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithSixDigitDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithOppositeSignedNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithSixDigitDecimalNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithSixDigitDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithDecimalNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithPositiveNumber" time="0.001"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithNegativeNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithPositiveNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testInvalidInputLoopsUntilValid" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testValidInputReturnsCoordinate" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithNegativeNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithPositiveNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithNegativeNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithPositiveNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithNegativeNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithDecimalNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithSixDigitDecimalNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testPrintingCalculationResults" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testGetDistance" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testIsInvalidInput" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSetDistance" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testGetCoordinate" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSetCoordinate" time="0"/>
+  <testcase name="testDistanceCalculationWithSixDigitDecimalNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSetCoordinate" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSubtractionWithSixDigitDecimalNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testIsInvalidInput" classname="ShortestDistanceTest" time="0.001"/>
+  <testcase name="testDistanceCalculationWithWholePositiveNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testPrintingCalculationResults" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testRoundWithNegativeNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testRoundWithPositiveNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testAdditionWithSixDigitDecimalNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testDistanceCalculationWithMixedNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSquareWithSixDigitDecimalNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testDistanceCalculationWithDecimalNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSquareWithDecimalNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSquareWithNegativeNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testRoundWithDecimalNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testAdditionWithOppositeSignedNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSubtractionWithDecimalNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSubtractionWithPositiveNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testAdditionWithDecimalNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testValidInputReturnsCoordinate" classname="ShortestDistanceTest" time="0.001"/>
+  <testcase name="testRoundWithSixDigitDecimalNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSetDistance" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSquareWithPositiveNumber" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSubtractionWithNegativeNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testGetDistance" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testAdditionWithPositiveNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testSubtractionWithOppositeSignedNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testGetCoordinate" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testAdditionWithNegativeNumbers" classname="ShortestDistanceTest" time="0"/>
+  <testcase name="testInvalidInputLoopsUntilValid" classname="ShortestDistanceTest" time="0.001"/>
 </testsuite>

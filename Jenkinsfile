@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building PPA2..."
-                sh 'mvn -B clean package'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
@@ -20,6 +20,11 @@ pipeline {
                 always {
                     junit 'target/surefire-reports/*.xml'
                 }
+            }
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
             }
         }
     }

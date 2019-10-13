@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TipCalculatorTest
 -------------------------------------------------------------------------------
-Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.141 s - in TipCalculatorTest
+Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 sec

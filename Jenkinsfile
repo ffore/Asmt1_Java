@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'echo "Cleaning target dir and packaging JAR file!! :)"'
                 sh 'mvn -B -DskipTests clean package'
             }
         }

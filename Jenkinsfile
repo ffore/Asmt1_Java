@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building PPA2..."
-                sh 'mvn -B -DskipTests clean package'
+                sh 'mvn -B clean package'
             }
         }
         stage('Test') {

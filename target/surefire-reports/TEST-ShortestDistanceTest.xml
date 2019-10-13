@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="30" failures="0" name="ShortestDistanceTest" time="0.002" errors="0" skipped="0">
+<testsuite tests="30" failures="0" name="ShortestDistanceTest" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -45,7 +45,7 @@
     <property name="idea.version2019.2.1" value="true"/>
     <property name="java.vm.specification.version" value="12"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.2.1 test"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.2.1 package"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -62,34 +62,34 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithSixDigitDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithMixedNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithOppositeSignedNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithSixDigitDecimalNumber" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithOppositeSignedNumbers" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithWholePositiveNumbers" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithSixDigitDecimalNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithMixedNumbers" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithSixDigitDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithOppositeSignedNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithPositiveNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithPositiveNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithOppositeSignedNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithSixDigitDecimalNumber" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithSixDigitDecimalNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testDistanceCalculationWithDecimalNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithDecimalNumbers" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithDecimalNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testInvalidInputLoopsUntilValid" time="0.001"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithPositiveNumber" time="0.001"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithNegativeNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithSixDigitDecimalNumber" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithNegativeNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithPositiveNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testInvalidInputLoopsUntilValid" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testValidInputReturnsCoordinate" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithNegativeNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithDecimalNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithPositiveNumbers" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithNegativeNumbers" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithPositiveNumber" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSquareWithNegativeNumber" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSubtractionWithDecimalNumbers" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testAdditionWithPositiveNumbers" time="0.001"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithDecimalNumber" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testRoundWithSixDigitDecimalNumber" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testPrintingCalculationResults" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testGetDistance" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testIsInvalidInput" time="0"/>
+  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSetDistance" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testGetCoordinate" time="0"/>
   <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSetCoordinate" time="0"/>
-  <testcase classname="ShortestDistanceTest" name="ShortestDistanceTest.testSetDistance" time="0"/>
 </testsuite>

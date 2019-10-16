@@ -1,5 +1,3 @@
-package main.java;
-
 import java.util.Scanner;
 
 public class ShortestDistance {
@@ -100,6 +98,6 @@ public class ShortestDistance {
     }
 
     public static boolean isInvalidInput(String input) {
-        return !InputValidation.isValidDouble(input);
+        return !main.java.InputValidation.isValidDouble(input);
     }
 }

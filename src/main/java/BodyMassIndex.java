@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class BodyMassIndex {
 
-    public static main.java.userInput acceptInput(){
+    public static userInput acceptInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;
         String height="";
@@ -40,7 +40,7 @@ public class BodyMassIndex {
         }
         int weight = Integer.parseInt(weightStr);
         printResult(height, weight);
-        return new main.java.userInput(height, weight);
+        return new userInput(height, weight);
     }
 
     public static boolean isValidHeight(String height){

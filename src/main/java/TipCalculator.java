@@ -1,5 +1,3 @@
-package main.java;
-
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -50,16 +48,16 @@ public class TipCalculator {
     }
 
     public static boolean isValidPrice(String price){
-        if( InputValidation.hasOnlyNumbersAndOnePeriod(price)
-            && InputValidation.hasOnlyTwoDecimalPlaces(price)
-            && InputValidation.notZero(price)
+        if( main.java.InputValidation.hasOnlyNumbersAndOnePeriod(price)
+            && main.java.InputValidation.hasOnlyTwoDecimalPlaces(price)
+            && main.java.InputValidation.notZero(price)
         ) return true;
         else return false;
     }
 
     public static boolean isValidNumOfPeople(String numOfPeople){
-        if( InputValidation.isOnlyNumbers(numOfPeople)
-            && InputValidation.notZeroPeople(numOfPeople) ) return true;
+        if( main.java.InputValidation.isOnlyNumbers(numOfPeople)
+            && main.java.InputValidation.notZeroPeople(numOfPeople) ) return true;
         else return false;
     }
 

@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class MainMenu {
 
     private BodyMassIndex bodyMassIndex;
-    private main.java.Retirement retirement;
-    private main.java.ShortestDistance shortestDistance;
-    private main.java.TipCalculator tipCalculator;
+    private Retirement retirement;
+    private ShortestDistance shortestDistance;
+    private TipCalculator tipCalculator;
     private boolean isStillRunning;
 
     public MainMenu() {
         this.bodyMassIndex = new BodyMassIndex();
-        this.retirement = new main.java.Retirement();
-        this.shortestDistance = new main.java.ShortestDistance();
-        this.tipCalculator = new main.java.TipCalculator();
+        this.retirement = new Retirement();
+        this.shortestDistance = new ShortestDistance();
+        this.tipCalculator = new TipCalculator();
         this.isStillRunning = true;
     }
 

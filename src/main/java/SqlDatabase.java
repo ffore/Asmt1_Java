@@ -16,7 +16,7 @@ public class SqlDatabase {
     }
 
     public static void startConnection() throws Exception {
-        String url = "jdbc:mysql://192.168.99.100:3306/testdb";
+        String url = "jdbc:mysql://192.168.99.100:3306/ppa2_db";
         String user = "root";
         String password = "password";
 

@@ -1,37 +1,43 @@
 import java.sql.*;
-
+import java.time.*;
 
 public class SqlDatabase {
 
-    public static void main(String[] args) {
-        connectToDatabase();
+    private String url;
+    private String user;
+    private String password;
+    private Connection connection;
+
+    public SqlDatabase() {
+        this.url = "jdbc:mysql://192.168.99.100:3306/ppa2_db";
+        this.user = "root";
+        this.password = "password";
     }
 
-    public static void connectToDatabase() {
+    public SqlDatabase(String url) {
+        this.url = url;
+        this.user = "root";
+        this.password = "password";
+    }
+
+//    Main only serves as a testing function
+//    public static void main(String[] args) {
+//        SqlDatabase db = new SqlDatabase();
+//        db.connectToDatabase();
+//    }
+
+    public void connectToDatabase() {
         try {
-            startConnection();
+            this.startConnection();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public static void startConnection() throws Exception {
-        String url = "jdbc:mysql://192.168.99.100:3306/ppa2_db";
-        String user = "root";
-        String password = "password";
-
+    public void startConnection() throws Exception {
         loadDriver();
-        Connection connection = establishConnection(url, user, password);
-        Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT * FROM example");
-
-        System.out.println("Results from Query...");
-        result.next();
-        System.out.println(result.getInt("id") + " " +
-                result.getString("name") + " " +
-                result.getInt("age"));
-
-        closeConnection(connection);
+        Connection connection = this.establishConnection();
+        this.setConnection(connection);
     }
 
     public static void loadDriver() throws Exception {
@@ -40,14 +46,76 @@ public class SqlDatabase {
         System.out.println("Driver loaded!");
     }
 
-    public static Connection establishConnection(String url, String user, String password) throws Exception {
+    public Connection establishConnection() throws Exception {
         System.out.println("Attempting to connect to Database...");
-        Connection connection = DriverManager.getConnection(url, user, password);
+        Connection connection = DriverManager.getConnection(this.getUrl(), this.getUser(), this.getPassword());
         System.out.println("Database connected!");
         return connection;
     }
 
-    public static void closeConnection(Connection connection) throws Exception {
+    public void closeConnection() throws Exception {
+        Connection connection = this.getConnection();
         connection.close();
     }
+
+    public void writeToDistanceTable(String timestamp, double result, double[] input) throws Exception {
+        Statement statement = this.createStatement();
+        String query = this.createDistanceQuery(timestamp, result, input);
+        ResultSet resultSet = statement.executeQuery(query);
+    }
+
+//    Uncomment when createBodyMassIndexQuery() is finished
+//    public void writeToBodyMassIndexTable(String timestamp, String result, String input) throws Exception {
+//        Statement statement = this.createStatement();
+//        String query = this.createBodyMassIndexQuery();
+//        ResultSet resultSet = statement.executeQuery(query);
+//    }
+
+    public Statement createStatement() throws Exception {
+        Connection c = this.getConnection();
+        return c.createStatement();
+    }
+
+    public String createDistanceQuery(String timestamp, double result, double[] input) {
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO distance VALUES (").append(timestamp).append(", ");
+
+        for(int i = 0; i < 4; i++) {
+            query.append(input[i]).append(", ");
+        }
+
+        query.append(result).append(")");
+
+        return query.toString();
+    }
+
+//    Populate accordingly
+//    public String createBodyMassIndexQuery() {
+//        StringBuilder query = new StringBuilder();
+//        query.append("INSERT INTO bmi VALUES (");
+//
+//        return query.toString();
+//    }
+
+    public String getUrl() {
+        return this.url;
+    }
+
+    public String getUser() {
+        return this.user;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public Connection getConnection() {
+        return this.connection;
+    }
+
+    public void setConnection(Connection c) {
+        this.connection = c;
+    }
+
+
 }

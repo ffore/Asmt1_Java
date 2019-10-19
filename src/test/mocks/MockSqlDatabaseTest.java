@@ -128,5 +128,4 @@ public class MockSqlDatabaseTest {
         verify(connection, times(1)).createStatement();
         verify(statement, times(1)).executeUpdate(query);
     }
-    
 }

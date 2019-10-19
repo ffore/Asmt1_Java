@@ -12,9 +12,21 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Test') {
+        stage('Unit Testing') {
             steps {
-                sh 'mvn test'
+                echo "Running unit tests..."
+                sh 'mvn -Dtest=BodyMassIndexTest, InputValidationTest, MainMenuTest, RetirementTest, ShortestDistanceTest, SqlDatabaseTest, TipCalculatorTest test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('Integration Testing') {
+            steps {
+                echo "Now testing Mocks and Database usage..."
+                sh 'mvn -Dtest=MockMainMenuTest, MockShortestDistanceTest, MockSqlDatabaseTest test'
             }
             post {
                 always {

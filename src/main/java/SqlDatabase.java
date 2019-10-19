@@ -20,6 +20,13 @@ public class SqlDatabase {
         this.password = "password";
     }
 
+    public SqlDatabase(Connection c) {
+        this.url = "jdbc:mysql://192.168.99.100:3306/ppa2_db";
+        this.user = "root";
+        this.password = "password";
+        this.connection = c;
+    }
+
 //    Main only serves as a testing function
 //    public static void main(String[] args) {
 //        SqlDatabase db = new SqlDatabase();

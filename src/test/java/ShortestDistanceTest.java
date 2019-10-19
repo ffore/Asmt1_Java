@@ -2,6 +2,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShortestDistanceTest {
@@ -211,5 +214,26 @@ public class ShortestDistanceTest {
 
         double result = shortestDistance.printResults();
         assertEquals(result, 1.414);
+    }
+
+    @Test
+    public void testCreateTimeStamp() {
+        ShortestDistance distance = new ShortestDistance();
+        String expectedResult = getFormattedTime();
+        String result = distance.createTimeStamp();
+        assertEquals(result, expectedResult);
+    }
+
+    public String getFormattedTime() {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        LocalDateTime timestamp = LocalDateTime.now();
+        return timestamp.format(format);
+    }
+
+    @Test
+    public void testCanGetDatabase() {
+        SqlDatabase database = new SqlDatabase();
+        ShortestDistance distance = new ShortestDistance(database);
+        assertEquals(distance.getDatabase(), database);
     }
 }

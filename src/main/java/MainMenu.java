@@ -127,6 +127,12 @@ public class MainMenu {
     }
 
     public void startShortestDistance() {
+        try{
+            this.database.printDistanceTable();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
         this.shortestDistance.acceptInput();
     }
 

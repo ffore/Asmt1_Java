@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 public class MockMainMenuTest {
 
     @Mock
-    private static SqlDatabase database;
+    private static SqlDatabase database = mock(SqlDatabase.class);
 
     @Test
     public void testCanConnectToDatabase() {

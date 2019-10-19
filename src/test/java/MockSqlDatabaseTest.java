@@ -19,10 +19,10 @@ import static org.mockito.Mockito.*;
 public class MockSqlDatabaseTest {
 
     @Mock
-    private static Connection connection;
+    private static Connection connection = mock(Connection.class);
 
     @Mock
-    private static Statement statement;
+    private static Statement statement = mock(Statement.class);
 
     @Test
     public void testCanGetConnection() {
@@ -81,16 +81,22 @@ public class MockSqlDatabaseTest {
         verify(connection, times(1)).close();
     }
 
+    @Mock
+    private static Connection createDistanceConnection = mock(Connection.class);
+
+    @Mock
+    private static Statement createDistanceStatement = mock(Statement.class);
+
     @Test
     public void testCanCreateDistanceTable() throws Exception {
-        SqlDatabase database = new SqlDatabase(connection);
+        SqlDatabase database = new SqlDatabase(createDistanceConnection);
         String query = getDistanceTableCreationQuery();
-        when(connection.createStatement()).thenReturn(statement);
+        when(createDistanceConnection.createStatement()).thenReturn(createDistanceStatement);
 
         database.createDistanceTable();
 
-        verify(connection, times(1)).createStatement();
-        verify(statement, times(1)).executeUpdate(query);
+        verify(createDistanceConnection, times(1)).createStatement();
+        verify(createDistanceStatement, times(1)).executeUpdate(query);
 
     }
 
@@ -100,16 +106,22 @@ public class MockSqlDatabaseTest {
                 "x2 DECIMAL(10,3), y2 DECIMAL(10,3), Result DECIMAL(10,3));";
     }
 
+    @Mock
+    private static Connection createBMIConnection = mock(Connection.class);
+
+    @Mock
+    private static Statement createBMIStatement = mock(Statement.class);
+
     @Test
     public void testCanCreateBMITable() throws Exception {
-        SqlDatabase database = new SqlDatabase(connection);
+        SqlDatabase database = new SqlDatabase(createBMIConnection);
         String query = getBMITableCreationQuery();
-        when(connection.createStatement()).thenReturn(statement);
+        when(createBMIConnection.createStatement()).thenReturn(createBMIStatement);
 
         database.createBMITable();
 
-        verify(connection, times(1)).createStatement();
-        verify(statement, times(1)).executeUpdate(query);
+        verify(createBMIConnection, times(1)).createStatement();
+        verify(createBMIStatement, times(1)).executeUpdate(query);
     }
 
     public String getBMITableCreationQuery() {
@@ -117,16 +129,21 @@ public class MockSqlDatabaseTest {
                 "Timestamp VARCHAR(20), Height VARCHAR(10), Weight INT, Result DECIMAL(10,3));";
     }
 
+    @Mock
+    private static Connection createDatabaseConnection = mock(Connection.class);
+
+    @Mock
+    private static Statement createDatabaseStatement = mock(Statement.class);
+
     @Test
     public void testCanCreatePPA2Database() throws Exception {
-        SqlDatabase database = new SqlDatabase(connection);
+        SqlDatabase database = new SqlDatabase(createDatabaseConnection);
         String query = "CREATE DATABASE ppa2_db;";
-        when(connection.createStatement()).thenReturn(statement);
+        when(createDatabaseConnection.createStatement()).thenReturn(createDatabaseStatement);
 
         database.createPpa2_db();
 
-        verify(connection, times(1)).createStatement();
-        verify(statement, times(1)).executeUpdate(query);
+        verify(createDatabaseConnection, times(1)).createStatement();
+        verify(createDatabaseStatement, times(1)).executeUpdate(query);
     }
-    
 }

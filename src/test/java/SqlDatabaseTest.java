@@ -21,7 +21,7 @@ public class SqlDatabaseTest {
     @Test
     public void testCanGetDatabaseUrl() {
         SqlDatabase database = new SqlDatabase();
-        assertEquals(database.getUrl(), "jdbc:mysql://192.168.99.100:3306/ppa2_db");
+        assertEquals(database.getUrl(), "jdbc:mysql://192.168.99.100:3306/");
     }
 
     @Test
@@ -48,7 +48,8 @@ public class SqlDatabaseTest {
         String formattedTime = getFormattedTime();
         double result = 3.0;
         double[] input = {1.0, 1.0, 2.0, 2.0};
-        String expectedQuery = "INSERT INTO distance VALUES (" + formattedTime + ", 1.0, 1.0, 2.0, 2.0, 3.0)";
+        String expectedQuery = "INSERT INTO ppa2_db.Distance (Timestamp, x1, y1, x2, y2, Result) VALUES (\""
+                + formattedTime + "\", 1.0, 1.0, 2.0, 2.0, 3.0);";
         String query = database.createDistanceQuery(formattedTime, result, input);
         assertEquals(query, expectedQuery);
     }
@@ -68,9 +69,6 @@ public class SqlDatabaseTest {
 
     @Mock
     private static Statement statement;
-
-    @Mock
-    private static ResultSet resultSet;
 
     @Test
     public void testCanGetConnection() {
@@ -99,14 +97,14 @@ public class SqlDatabaseTest {
         SqlDatabase database = new SqlDatabase(connection);
         String query = this.createTestQuery(database);
         when(connection.createStatement()).thenReturn(statement);
-        when(statement.executeQuery(query)).thenReturn(resultSet);
+        when(statement.executeUpdate(query)).thenReturn(1);
 
         String formattedTime = getFormattedTime();
         double result = 3.0;
         double[] input = {1.0, 1.0, 2.0, 2.0};
 
-        ResultSet testSet = database.writeToDistanceTable(formattedTime, result, input);
-        assertEquals(testSet, resultSet);
+        int res = database.writeToDistanceTable(formattedTime, result, input);
+        assertEquals(res, 1);
     }
 
     public String createTestQuery(SqlDatabase database) {

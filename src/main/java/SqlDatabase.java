@@ -3,13 +3,14 @@ import java.time.*;
 
 public class SqlDatabase {
 
+
     private String url;
     private String user;
     private String password;
     private Connection connection;
 
     public SqlDatabase() {
-        this.url = "jdbc:mysql://192.168.99.100:3306/ppa2_db";
+        this.url = "jdbc:mysql://192.168.99.100:3306/";
         this.user = "root";
         this.password = "password";
     }
@@ -21,7 +22,7 @@ public class SqlDatabase {
     }
 
     public SqlDatabase(Connection c) {
-        this.url = "jdbc:mysql://192.168.99.100:3306/ppa2_db";
+        this.url = "jdbc:mysql://192.168.99.100:3306/";
         this.user = "root";
         this.password = "password";
         this.connection = c;
@@ -35,9 +36,18 @@ public class SqlDatabase {
 
     public void connectToDatabase() {
         try {
-            this.startConnection();
+            this.startConnection(); // does it need to be this.startConnection()??
+            Connection connection = getConnection();
+            if(!this.ppa2_dbExists(connection)){
+                System.out.println("ppa2_db not found \ncreating one now...");
+                this.createPpa2_db(connection);
+                this.createDistanceTable(connection);
+                this.createBMITable(connection);
+            }
+            else System.out.println("pap2_db found");
         } catch (Exception e) {
             System.out.println(e);
+            return;
         }
     }
 
@@ -53,16 +63,52 @@ public class SqlDatabase {
         return connection;
     }
 
+
+    public boolean ppa2_dbExists(Connection connection) throws Exception {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SHOW DATABASES;");
+        Boolean dbExists = false;
+        while(rs.next()){
+            String db = rs.getString(1);
+            if(db.equals("ppa2_db")) dbExists = true;
+        }
+        return dbExists;
+    }
+
+    public void createPpa2_db(Connection connection) throws Exception {
+        Statement statement = connection.createStatement();
+        statement.executeUpdate("CREATE DATABASE ppa2_db;");
+        System.out.println("Created ppa2_db");
+    }
+
+    public void createDistanceTable(Connection connection) throws Exception {
+        Statement statement = connection.createStatement();
+        String stmt = "CREATE TABLE ppa2_db.Distance ( id INT AUTO_INCREMENT PRIMARY KEY, " +
+                "Timestamp VARCHAR(20), x1 DECIMAL(10,3), y1 DECIMAL(10,3), " +
+                "x2 DECIMAL(10,3), y2 DECIMAL(10,3), Result DECIMAL(10,3));";
+        statement.executeUpdate(stmt);
+        System.out.println("Created Distance table");
+    }
+
+    public void createBMITable(Connection connection) throws Exception {
+        Statement statement = connection.createStatement();
+        String stmt = "CREATE TABLE ppa2_db.Bmi ( id INT AUTO_INCREMENT PRIMARY KEY, " +
+                "Timestamp VARCHAR(20), Height VARCHAR(10), Weight INT, Result DECIMAL(10,3));";
+        statement.executeUpdate(stmt);
+        System.out.println("Created Bmi table");
+    }
+
+
     public void closeConnection() throws Exception {
         Connection connection = this.getConnection();
         connection.close();
     }
 
-    public ResultSet writeToDistanceTable(String timestamp, double result, double[] input) throws Exception {
+    public int writeToDistanceTable(String timestamp, double result, double[] input) throws Exception {
         Statement statement = this.createStatement();
         String query = this.createDistanceQuery(timestamp, result, input);
-        ResultSet resultSet = statement.executeQuery(query);
-        return resultSet;
+        int res = statement.executeUpdate(query);
+        return res;
     }
 
 //    Uncomment when createBodyMassIndexQuery() is finished
@@ -79,14 +125,13 @@ public class SqlDatabase {
 
     public String createDistanceQuery(String timestamp, double result, double[] input) {
         StringBuilder query = new StringBuilder();
-        query.append("INSERT INTO distance VALUES (").append(timestamp).append(", ");
+        query.append("INSERT INTO ppa2_db.Distance (Timestamp, x1, y1, x2, y2, Result) VALUES (\"").append(timestamp).append("\", ");
 
         for(int i = 0; i < 4; i++) {
             query.append(input[i]).append(", ");
         }
 
-        query.append(result).append(")");
-
+        query.append(result).append(");");
         return query.toString();
     }
 

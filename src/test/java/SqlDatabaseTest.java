@@ -69,6 +69,9 @@ public class SqlDatabaseTest {
     @Mock
     private static Statement statement;
 
+    @Mock
+    private static ResultSet resultSet;
+
     @Test
     public void testCanGetConnection() {
         SqlDatabase database = new SqlDatabase(connection);
@@ -89,6 +92,28 @@ public class SqlDatabaseTest {
 
         Statement s = database.createStatement();
         assertEquals(s, statement);
+    }
+
+    @Test
+    public void testCanWriteToTable() throws Exception {
+        SqlDatabase database = new SqlDatabase(connection);
+        String query = this.createTestQuery(database);
+        when(connection.createStatement()).thenReturn(statement);
+        when(statement.executeQuery(query)).thenReturn(resultSet);
+
+        String formattedTime = getFormattedTime();
+        double result = 3.0;
+        double[] input = {1.0, 1.0, 2.0, 2.0};
+
+        ResultSet testSet = database.writeToDistanceTable(formattedTime, result, input);
+        assertEquals(testSet, resultSet);
+    }
+
+    public String createTestQuery(SqlDatabase database) {
+        String formattedTime = getFormattedTime();
+        double result = 3.0;
+        double[] input = {1.0, 1.0, 2.0, 2.0};
+        return database.createDistanceQuery(formattedTime, result, input);
     }
 
 }

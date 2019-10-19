@@ -65,10 +65,11 @@ public class SqlDatabase {
         connection.close();
     }
 
-    public void writeToDistanceTable(String timestamp, double result, double[] input) throws Exception {
+    public ResultSet writeToDistanceTable(String timestamp, double result, double[] input) throws Exception {
         Statement statement = this.createStatement();
         String query = this.createDistanceQuery(timestamp, result, input);
         ResultSet resultSet = statement.executeQuery(query);
+        return resultSet;
     }
 
 //    Uncomment when createBodyMassIndexQuery() is finished

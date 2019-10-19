@@ -16,7 +16,10 @@ import static org.mockito.Mockito.*;
 public class MockShortestDistanceTest {
 
     @Mock
-    private static SqlDatabase database;
+    private static SqlDatabase database = mock(SqlDatabase.class);
+
+    @Mock
+    private static SqlDatabase verifyDatabaseCall = mock(SqlDatabase.class);
 
     @Test
     public void testWriteToTable() throws Exception {
@@ -77,17 +80,23 @@ public class MockShortestDistanceTest {
 
     @Test
     public void testWriteToTableActuallyWrites() throws Exception {
-        ShortestDistance distance = createShortestDistance();
+        ShortestDistance distance = createShortestDistanceForVerification();
 
         String timestamp = getFormattedTime();
         double dist = distance.getDistance();
         double[] input = distance.getCoordinates();
 
-        when(database.writeToDistanceTable(timestamp, dist, input)).thenReturn(1);
+        when(verifyDatabaseCall.writeToDistanceTable(timestamp, dist, input)).thenReturn(1);
 
         distance.writeToDatabase();
 
-        verify(database, times(1)).writeToDistanceTable(timestamp, dist, input);
+        verify(verifyDatabaseCall, times(1)).writeToDistanceTable(timestamp, dist, input);
+    }
+
+    public ShortestDistance createShortestDistanceForVerification() {
+        double[] input = {1, 1, 2, 2};
+        double result = 1.414;
+        return new ShortestDistance(verifyDatabaseCall, input, result);
     }
 
 }

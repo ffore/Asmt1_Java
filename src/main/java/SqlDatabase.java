@@ -22,10 +22,10 @@ public class SqlDatabase {
     }
 
 //    Main only serves as a testing function
-    public static void main(String[] args) {
-        SqlDatabase db = new SqlDatabase();
-        db.connectToDatabase();
-    }
+//    public static void main(String[] args) {
+//        SqlDatabase db = new SqlDatabase();
+//        db.connectToDatabase();
+//    }
 
     public void connectToDatabase() {
         try {
@@ -104,7 +104,7 @@ public class SqlDatabase {
     public void writeToDistanceTable(String timestamp, double result, double[] input) throws Exception {
         Statement statement = this.createStatement();
         String query = this.createDistanceQuery(timestamp, result, input);
-        ResultSet resultSet = statement.executeQuery(query);
+        int res = statement.executeUpdate(query);
     }
 
 //    Uncomment when createBodyMassIndexQuery() is finished
@@ -121,14 +121,14 @@ public class SqlDatabase {
 
     public String createDistanceQuery(String timestamp, double result, double[] input) {
         StringBuilder query = new StringBuilder();
-        query.append("INSERT INTO distance VALUES (").append(timestamp).append(", ");
+        query.append("INSERT INTO ppa2_db.Distance (Timestamp, x1, x2, y1, y2, Result) VALUES (\"").append(timestamp).append("\" , ");
 
         for(int i = 0; i < 4; i++) {
             query.append(input[i]).append(", ");
         }
 
-        query.append(result).append(")");
-
+        query.append(result).append(");");
+        System.out.println(query.toString());
         return query.toString();
     }
 

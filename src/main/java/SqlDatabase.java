@@ -37,14 +37,6 @@ public class SqlDatabase {
     public void connectToDatabase() {
         try {
             this.startConnection();
-//            Connection connection = getConnection();
-//            if(!this.ppa2_dbExists(connection)){
-//                System.out.println("ppa2_db not found \ncreating one now...");
-//                this.createPpa2_db(connection);
-//                this.createDistanceTable(connection);
-//                this.createBMITable(connection);
-//            }
-//            else System.out.println("pap2_db found");
         } catch (Exception e) {
             System.out.println(e);
             return;
@@ -61,6 +53,9 @@ public class SqlDatabase {
         if(!this.ppa2_dbExists(connection)) {
             System.out.println("ppa2_db not found \ncreating one now...");
             this.createDatabaseSchema(connection);
+        }
+        else {
+            System.out.println("ppa2_db found");
         }
     }
 

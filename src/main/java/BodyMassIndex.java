@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class BodyMassIndex {
 
-    public static userInput acceptInput(){
+    public userInput acceptInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;
         String height="";
@@ -43,7 +43,7 @@ public class BodyMassIndex {
         return new userInput(height, weight);
     }
 
-    public static boolean isValidHeight(String height){
+    public boolean isValidHeight(String height){
         int singleQuoteIndex = height.indexOf('\'');
         int doubleQuoteIndex = height.indexOf('\"');
 
@@ -56,30 +56,30 @@ public class BodyMassIndex {
         else return true;
     }
 
-    public static boolean isValidWeight(String weight){
+    public boolean isValidWeight(String weight){
         if( InputValidation.isOnlyNumbers(weight) &&
             InputValidation.isFirstCharValidDigit(weight) ) return true;
         return false;
     }
 
-    public static double getHeightInMeters(int ft, int in){
+    public double getHeightInMeters(int ft, int in){
         double totalHeightInches = (double) getHeightInInches(ft, in);
         double htInMeters = totalHeightInches*0.025;
         return round(htInMeters, 3);
     }
 
-    public static int getHeightInInches(int ft, int in){
+    public int getHeightInInches(int ft, int in){
         return (ft*12 + in);
     }
 
-    public static double getWeightInKilos(int lbs){
+    public double getWeightInKilos(int lbs){
         double lbsInDbl = (double) lbs;
         double kilos = lbsInDbl*0.45;
         return round(kilos, 2);
 
     }
 
-    public static double getBMI(String height, int weight){
+    public double getBMI(String height, int weight){
         double heightInMeters = getHeightInMeters(getHeightFt(height), getHeightIn(height));
         double weightInKilos = getWeightInKilos(weight);
         double metersSquared = heightInMeters*heightInMeters;
@@ -87,34 +87,34 @@ public class BodyMassIndex {
         return round(rawBMI, 1);
     }
 
-    public static double round(double value, int places){
+    public double round(double value, int places){
 //      following is inspired by https://www.baeldung.com/java-round-decimal-number
         BigDecimal bdRounded = new BigDecimal(Double.toString(value));
         bdRounded = bdRounded.setScale(places, RoundingMode.HALF_UP);
         return bdRounded.doubleValue();
     }
 
-    public static String getBMICategory(double bmi){
+    public String getBMICategory(double bmi){
         if(bmi<18.5) return "Underweight";
         else if(bmi >= 18.5 && bmi <= 24.9) return "Normal weight";
         else if(bmi >= 25 && bmi <= 29.9) return "Overweight";
         else return "Obese";
     }
 
-    public static void printResult(String height, int weight){
+    public void printResult(String height, int weight){
         double bmi = getBMI(height, weight);
         String category = getBMICategory(bmi);
         System.out.println("\nBMI: " + bmi + " (" + category + ")");
     }
 
-    public static int getHeightIn(String height){
+    public int getHeightIn(String height){
         int singleQuoteIndex = height.indexOf('\'');
         int doubleQuoteIndex = height.indexOf('\"');
         String inchStr = height.substring(singleQuoteIndex+1, doubleQuoteIndex);
         return Integer.parseInt(inchStr);
     }
 
-    public static int getHeightFt(String height){
+    public int getHeightFt(String height){
         int singleQuoteIndex = height.indexOf('\'');
         String inchStr = height.substring(0, singleQuoteIndex);
         return Integer.parseInt(inchStr);

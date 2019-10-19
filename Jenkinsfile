@@ -15,7 +15,7 @@ pipeline {
         stage('Unit Testing') {
             steps {
                 echo "Running unit tests..."
-                sh 'mvn -Dtest=BodyMassIndexTest, InputValidationTest, MainMenuTest, RetirementTest, ShortestDistanceTest, SqlDatabaseTest, TipCalculatorTest test'
+                sh 'mvn -Dtest=BodyMassIndexTest,InputValidationTest,MainMenuTest,RetirementTest,ShortestDistanceTest,SqlDatabaseTest,TipCalculatorTest test'
             }
             post {
                 always {
@@ -26,7 +26,7 @@ pipeline {
         stage('Integration Testing') {
             steps {
                 echo "Now testing Mocks and Database usage..."
-                sh 'mvn -Dtest=MockMainMenuTest, MockShortestDistanceTest, MockSqlDatabaseTest test'
+                sh 'mvn -Dtest=MockMainMenuTest,MockShortestDistanceTest,MockSqlDatabaseTest test'
             }
             post {
                 always {

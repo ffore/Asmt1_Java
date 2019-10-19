@@ -27,7 +27,6 @@ public class ShortestDistance {
     }
 
     public void acceptInput() {
-        // Print values in table
         String[] parameter = {"x1", "y1", "x2", "y2"};
 
         for(int i = 0; i < 4; i++) {

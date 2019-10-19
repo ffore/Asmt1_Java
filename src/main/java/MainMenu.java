@@ -3,22 +3,26 @@ import java.util.Scanner;
 public class MainMenu {
 
     private BodyMassIndex bodyMassIndex;
-    private main.java.Retirement retirement;
-    private main.java.ShortestDistance shortestDistance;
-    private main.java.TipCalculator tipCalculator;
+    private Retirement retirement;
+    private ShortestDistance shortestDistance;
+    private SqlDatabase database;
+    private TipCalculator tipCalculator;
     private boolean isStillRunning;
 
     public MainMenu() {
         this.bodyMassIndex = new BodyMassIndex();
-        this.retirement = new main.java.Retirement();
-        this.shortestDistance = new main.java.ShortestDistance();
-        this.tipCalculator = new main.java.TipCalculator();
+        this.database = new SqlDatabase();
+        this.retirement = new Retirement();
+        this.shortestDistance = new ShortestDistance(this.database);
+        this.tipCalculator = new TipCalculator();
         this.isStillRunning = true;
     }
 
     public static void main(String[] args) {
         MainMenu menu = new MainMenu();
+        menu.openDatabaseConnection();
         menu.start();
+        menu.closeDatabaseConnection();
     }
 
     public void start() {
@@ -95,6 +99,18 @@ public class MainMenu {
         System.out.println("3 - Shortest Distance Function");
         System.out.println("4 - Split the Tip Function");
         System.out.println("5 - Quit the program");
+    }
+
+    public void openDatabaseConnection() {
+        this.database.connectToDatabase();
+    }
+
+    public void closeDatabaseConnection() {
+        try {
+            this.database.closeConnection();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void closeMenu() {

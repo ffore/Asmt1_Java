@@ -1,5 +1,3 @@
-package main.java;
-
 public class Bill {
 //    only good values
 //    this is created after validation

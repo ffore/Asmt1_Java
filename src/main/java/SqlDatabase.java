@@ -109,7 +109,7 @@ public class SqlDatabase {
 
     public void printDistanceTable() throws Exception{
         ResultSet resultSet = readDistanceTable();
-        System.out.println("id\tTimestamp\t\t\t\t\tx1\t\tx2\t\ty1\t\ty2\t\t\tResult");
+        System.out.println("id\tTimestamp\t\t\t\t\tx1\t\ty1\t\tx2\t\ty2\t\t\tResult");
         System.out.println("---------------------------------------------------------------------------------------");
         while(resultSet.next()){
             String id = resultSet.getString("id");
@@ -119,7 +119,7 @@ public class SqlDatabase {
             String y1 = resultSet.getString("y1");
             String y2 = resultSet.getString("y2");
             String Result = resultSet.getString("Result");
-            System.out.println(id + "\t" + TimeStamp + "\t\t\t" + x1 + "\t" + x2 + "\t" + y1 + "\t" + y2 + "\t\t" + Result);
+            System.out.println(id + "\t" + TimeStamp + "\t\t\t" + x1 + "\t" + y1 + "\t" + x2 + "\t" + y2 + "\t\t" + Result);
             System.out.println("---------------------------------------------------------------------------------------");
         }
     }

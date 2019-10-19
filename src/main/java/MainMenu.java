@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import main.java.SqlDatabase;
 
 public class MainMenu {
 
@@ -14,6 +15,15 @@ public class MainMenu {
         this.bodyMassIndex = new BodyMassIndex(this.database);
         this.retirement = new Retirement();
         this.shortestDistance = new ShortestDistance(this.database);
+        this.tipCalculator = new TipCalculator();
+        this.isStillRunning = true;
+    }
+
+    public MainMenu(SqlDatabase database) {
+        this.bodyMassIndex = new BodyMassIndex();
+        this.database = database;
+        this.retirement = new Retirement();
+        this.shortestDistance = new ShortestDistance(database);
         this.tipCalculator = new TipCalculator();
         this.isStillRunning = true;
     }

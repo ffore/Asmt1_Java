@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.time.*;
 import java.time.format.*;
+import main.java.SqlDatabase;
 
 public class ShortestDistance {
 
@@ -26,8 +27,13 @@ public class ShortestDistance {
         this.db = database;
     }
 
+    public ShortestDistance(SqlDatabase database, double[] coordinates, double distance) {
+        this.distance = distance;
+        this.coordinates = coordinates;
+        this.db = database;
+    }
+
     public void acceptInput() {
-        // Print values in table
         String[] parameter = {"x1", "y1", "x2", "y2"};
 
         for(int i = 0; i < 4; i++) {
@@ -62,29 +68,30 @@ public class ShortestDistance {
         return result;
     }
 
-    public void writeToDatabase() {
+    public int writeToDatabase() {
         String timestamp = this.createTimeStamp();
-        this.writeToTable(timestamp);
+        return this.writeToTable(timestamp);
     }
 
     public String createTimeStamp() {
         // https://www.geeksforgeeks.org/new-date-time-api-java8/
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         LocalDateTime timestamp = LocalDateTime.now();
-        String formattedTime = timestamp.format(format);
-        return formattedTime;
+        return timestamp.format(format);
     }
 
-    public void writeToTable(String timestamp) {
+    public int writeToTable(String timestamp) {
         SqlDatabase db = this.getDatabase();
         double distance = this.getDistance();
         double[] input = this.getCoordinates();
 
         try {
-            db.writeToDistanceTable(timestamp, distance, input);
+            return db.writeToDistanceTable(timestamp, distance, input);
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        return -1;
     }
 
     public void calculateDistance() {

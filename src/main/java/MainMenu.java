@@ -10,8 +10,8 @@ public class MainMenu {
     private boolean isStillRunning;
 
     public MainMenu() {
-        this.bodyMassIndex = new BodyMassIndex();
         this.database = new SqlDatabase();
+        this.bodyMassIndex = new BodyMassIndex(this.database);
         this.retirement = new Retirement();
         this.shortestDistance = new ShortestDistance(this.database);
         this.tipCalculator = new TipCalculator();
@@ -139,6 +139,12 @@ public class MainMenu {
     public void startRetirement() { this.retirement.acceptInput(); }
 
     public void startBodyMassIndex() {
+//        try{
+//            this.database.printBmiTable();
+//        }
+//        catch(Exception e){
+//            System.out.println(e);
+//        }
         this.bodyMassIndex.acceptInput();
     }
 

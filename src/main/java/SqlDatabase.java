@@ -102,7 +102,7 @@ public class SqlDatabase {
     public void createBMITable(Connection connection) throws Exception {
         Statement statement = connection.createStatement();
         String stmt = "CREATE TABLE ppa2_db.Bmi ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-                "Timestamp VARCHAR(20), Height VARCHAR(10), Weight INT, Result DECIMAL(10,3));";
+                "Timestamp VARCHAR(20), Height VARCHAR(10), Weight INT, BmiCategory VARCHAR(20), Result DECIMAL(10,3));";
         statement.executeUpdate(stmt);
         System.out.println("Created Bmi table");
     }
@@ -116,6 +116,14 @@ public class SqlDatabase {
     public int writeToDistanceTable(String timestamp, double result, double[] input) throws Exception {
         Statement statement = this.createStatement();
         String query = this.createDistanceQuery(timestamp, result, input);
+        int res = statement.executeUpdate(query);
+        return res;
+    }
+
+    public int writeToBmiTable(String timestamp, double bmi, String bmiCategory, String height, int weight) throws Exception {
+        Statement statement = this.createStatement();
+        String query = this.createBmiQuery(timestamp, height, weight, bmi, bmiCategory);
+        System.out.println(query);
         int res = statement.executeUpdate(query);
         return res;
     }
@@ -158,7 +166,7 @@ public class SqlDatabase {
 
     public String createDistanceQuery(String timestamp, double result, double[] input) {
         StringBuilder query = new StringBuilder();
-        query.append("INSERT INTO ppa2_db.Distance (Timestamp, x1, y1, x2, y2, Result) VALUES (\"").append(timestamp).append("\", ");
+        query.append("INSERT INTO ppa2_db.Distance (Timestamp, x1, y1, x2, y2, Bmicategory, Result) VALUES (\"").append(timestamp).append("\", ");
 
         for(int i = 0; i < 4; i++) {
             query.append(input[i]).append(", ");
@@ -166,6 +174,19 @@ public class SqlDatabase {
 
         query.append(result).append(");");
         return query.toString();
+    }
+
+    public String createBmiQuery(String timestamp, String height, int weight, double bmi, String bmiCategory) {
+        String escapedHeight = escapeHeight(height);
+        String query = "INSERT INTO ppa2_db.Bmi (Timestamp, Height, Weight, Bmicategory, Result) VALUES (\"" +
+                timestamp + "\", \"" + escapedHeight + "\", " + weight + ", " + "\"" + bmiCategory + "\", "  + bmi + ");";
+        return query;
+    }
+
+    public String escapeHeight(String height) {
+        int len = height.length();
+        String escaped = height.substring(0,len-1)+"\\\"";
+        return escaped;
     }
 
 //    Populate accordingly

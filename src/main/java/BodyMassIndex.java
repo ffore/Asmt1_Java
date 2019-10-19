@@ -2,10 +2,23 @@ import main.java.InputValidation;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BodyMassIndex {
+
+    private SqlDatabase db;
+    private String height;
+    private int weight;
+    private double bmi;
+
+    public BodyMassIndex() {}
+
+    public BodyMassIndex(SqlDatabase database) {
+        this.db = database;
+    }
 
     public userInput acceptInput(){
         Scanner myScan = new Scanner(System.in);
@@ -24,6 +37,7 @@ public class BodyMassIndex {
             height = myScan.nextLine();
             validHeight = isValidHeight(height);
         }
+        setHeight(height);
         boolean validWeight = false;
         String weightStr = "";
         count = 0;
@@ -39,7 +53,9 @@ public class BodyMassIndex {
             validWeight = isValidWeight(weightStr);
         }
         int weight = Integer.parseInt(weightStr);
+        setWeight(weight);
         printResult(height, weight);
+        writeToDatabase();
         return new userInput(height, weight);
     }
 
@@ -103,6 +119,7 @@ public class BodyMassIndex {
 
     public void printResult(String height, int weight){
         double bmi = getBMI(height, weight);
+        setBmi(bmi);
         String category = getBMICategory(bmi);
         System.out.println("\nBMI: " + bmi + " (" + category + ")");
     }
@@ -118,6 +135,61 @@ public class BodyMassIndex {
         int singleQuoteIndex = height.indexOf('\'');
         String inchStr = height.substring(0, singleQuoteIndex);
         return Integer.parseInt(inchStr);
+    }
+
+    public void writeToDatabase() {
+        String timestamp = createTimeStamp();
+        writeToTable(timestamp);
+    }
+
+    public String createTimeStamp() {
+        // https://www.geeksforgeeks.org/new-date-time-api-java8/
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        LocalDateTime timestamp = LocalDateTime.now();
+        String formattedTime = timestamp.format(format);
+        return formattedTime;
+    }
+
+    public void writeToTable(String timestamp) {
+        SqlDatabase db = getDatabase();
+        String height = getHeight();
+        int weight = getWeight();
+        double bmi = getBmi();
+        String bmiCategory = getBMICategory(bmi);
+        try {
+            db.writeToBmiTable(timestamp, bmi, bmiCategory, height, weight);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public SqlDatabase getDatabase() {
+        return this.db;
+    }
+
+    public String getHeight() {
+        return this.height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public int getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public double getBmi() {
+        return this.bmi;
+    }
+
+    public void setBmi(double bmi) {
+        this.bmi = bmi;
     }
 
 }

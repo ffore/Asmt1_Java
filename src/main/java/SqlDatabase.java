@@ -42,15 +42,8 @@ public class SqlDatabase {
     }
 
     public void startConnection() throws Exception {
-        loadDriver();
         Connection connection = this.establishConnection();
         this.setConnection(connection);
-    }
-
-    public static void loadDriver() throws Exception {
-        System.out.println("Attempting to load Driver...");
-        Class.forName("com.mysql.jdbc.Driver");
-        System.out.println("Driver loaded!");
     }
 
     public Connection establishConnection() throws Exception {

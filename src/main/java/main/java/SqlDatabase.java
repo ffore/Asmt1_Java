@@ -172,7 +172,7 @@ public class SqlDatabase {
 
     public String createDistanceQuery(String timestamp, double result, double[] input) {
         StringBuilder query = new StringBuilder();
-        query.append("INSERT INTO ppa2_db.Distance (Timestamp, x1, y1, x2, y2, Bmicategory, Result) VALUES (\"").append(timestamp).append("\", ");
+        query.append("INSERT INTO ppa2_db.Distance (Timestamp, x1, y1, x2, y2, Result) VALUES (\"").append(timestamp).append("\", ");
 
         for(int i = 0; i < 4; i++) {
             query.append(input[i]).append(", ");

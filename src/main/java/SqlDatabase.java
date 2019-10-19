@@ -36,15 +36,15 @@ public class SqlDatabase {
 
     public void connectToDatabase() {
         try {
-            this.startConnection(); // does it need to be this.startConnection()??
-            Connection connection = getConnection();
-            if(!this.ppa2_dbExists(connection)){
-                System.out.println("ppa2_db not found \ncreating one now...");
-                this.createPpa2_db(connection);
-                this.createDistanceTable(connection);
-                this.createBMITable(connection);
-            }
-            else System.out.println("pap2_db found");
+            this.startConnection();
+//            Connection connection = getConnection();
+//            if(!this.ppa2_dbExists(connection)){
+//                System.out.println("ppa2_db not found \ncreating one now...");
+//                this.createPpa2_db(connection);
+//                this.createDistanceTable(connection);
+//                this.createBMITable(connection);
+//            }
+//            else System.out.println("pap2_db found");
         } catch (Exception e) {
             System.out.println(e);
             return;
@@ -54,6 +54,20 @@ public class SqlDatabase {
     public void startConnection() throws Exception {
         Connection connection = this.establishConnection();
         this.setConnection(connection);
+        this.checkIfDatabaseExists(connection);
+    }
+
+    public void checkIfDatabaseExists(Connection connection) throws Exception {
+        if(!this.ppa2_dbExists(connection)) {
+            System.out.println("ppa2_db not found \ncreating one now...");
+            this.createDatabaseSchema(connection);
+        }
+    }
+
+    public void createDatabaseSchema(Connection connection) throws Exception {
+        this.createPpa2_db(connection);
+        this.createDistanceTable(connection);
+        this.createBMITable(connection);
     }
 
     public Connection establishConnection() throws Exception {

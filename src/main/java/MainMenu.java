@@ -19,6 +19,15 @@ public class MainMenu {
         this.isStillRunning = true;
     }
 
+    public MainMenu(SqlDatabase database) {
+        this.bodyMassIndex = new BodyMassIndex();
+        this.database = database;
+        this.retirement = new Retirement();
+        this.shortestDistance = new ShortestDistance(database);
+        this.tipCalculator = new TipCalculator();
+        this.isStillRunning = true;
+    }
+
     public static void main(String[] args) {
         MainMenu menu = new MainMenu();
         menu.openDatabaseConnection();

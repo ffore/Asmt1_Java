@@ -48,20 +48,20 @@ public class SqlDatabase {
     public void startConnection() throws Exception {
         Connection connection = this.establishConnection();
         this.setConnection(connection);
-        this.checkIfDatabaseExists(connection);
+        this.checkIfDatabaseExists();
     }
 
-    public void checkIfDatabaseExists(Connection connection) throws Exception {
-        if(!this.ppa2_dbExists(connection)) {
+    public void checkIfDatabaseExists() throws Exception {
+        if(!this.ppa2_dbExists()) {
             System.out.println("ppa2_db not found \ncreating one now...");
-            this.createDatabaseSchema(connection);
+            this.createDatabaseSchema();
         }
     }
 
-    public void createDatabaseSchema(Connection connection) throws Exception {
-        this.createPpa2_db(connection);
-        this.createDistanceTable(connection);
-        this.createBMITable(connection);
+    public void createDatabaseSchema() throws Exception {
+        this.createPpa2_db();
+        this.createDistanceTable();
+        this.createBMITable();
     }
 
     public Connection establishConnection() throws Exception {
@@ -72,7 +72,8 @@ public class SqlDatabase {
     }
 
 
-    public boolean ppa2_dbExists(Connection connection) throws Exception {
+    public boolean ppa2_dbExists() throws Exception {
+        Connection connection = this.getConnection();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SHOW DATABASES;");
         Boolean dbExists = false;
@@ -83,13 +84,15 @@ public class SqlDatabase {
         return dbExists;
     }
 
-    public void createPpa2_db(Connection connection) throws Exception {
+    public void createPpa2_db() throws Exception {
+        Connection connection = this.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate("CREATE DATABASE ppa2_db;");
         System.out.println("Created ppa2_db");
     }
 
-    public void createDistanceTable(Connection connection) throws Exception {
+    public void createDistanceTable() throws Exception {
+        Connection connection = this.getConnection();
         Statement statement = connection.createStatement();
         String stmt = "CREATE TABLE ppa2_db.Distance ( id INT AUTO_INCREMENT PRIMARY KEY, " +
                 "Timestamp VARCHAR(20), x1 DECIMAL(10,3), y1 DECIMAL(10,3), " +
@@ -98,7 +101,8 @@ public class SqlDatabase {
         System.out.println("Created Distance table");
     }
 
-    public void createBMITable(Connection connection) throws Exception {
+    public void createBMITable() throws Exception {
+        Connection connection = this.getConnection();
         Statement statement = connection.createStatement();
         String stmt = "CREATE TABLE ppa2_db.Bmi ( id INT AUTO_INCREMENT PRIMARY KEY, " +
                 "Timestamp VARCHAR(20), Height VARCHAR(10), Weight INT, Result DECIMAL(10,3));";

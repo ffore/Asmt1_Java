@@ -2,13 +2,9 @@ import main.java.SqlDatabase;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.Assertions.*;
 
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.sql.Connection;
-import java.sql.Statement;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

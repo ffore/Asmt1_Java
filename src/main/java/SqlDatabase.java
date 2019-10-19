@@ -27,7 +27,7 @@ public class SqlDatabase {
     public static Connection startConnection() throws Exception {
         String url = "jdbc:mysql://192.168.99.100:3306/";
         String user = "root";
-        String password = "pass"; // probably gotta switch to 'password'
+        String password = "password"; // probably gotta switch to 'password'
 
         loadDriver();
         Connection connection = establishConnection(url, user, password);

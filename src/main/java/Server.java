@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.ResultSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import com.mysql.cj.xdevapi.JsonValue;
 import com.mysql.cj.xdevapi.Result;
@@ -97,14 +99,15 @@ public class Server {
 //        https://stackoverflow.com/questions/3948206/json-order-mixed-up
         JSONArray array = new JSONArray();
         while(resultSet.next()) {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("ID", resultSet.getString("id"));
-            jsonObject.put("TimeStamp", resultSet.getString("Timestamp"));
-            jsonObject.put("X1", resultSet.getString("x1"));
-            jsonObject.put("Y1", resultSet.getString("y1"));
-            jsonObject.put("X2", resultSet.getString("x2"));
-            jsonObject.put("Y2", resultSet.getString("y2"));
-            jsonObject.put("Result", resultSet.getString("Result"));
+            Map map = new LinkedHashMap();
+            map.put("ID", resultSet.getString("id"));
+            map.put("TimeStamp", resultSet.getString("Timestamp"));
+            map.put("X1", resultSet.getString("x1"));
+            map.put("Y1", resultSet.getString("y1"));
+            map.put("X2", resultSet.getString("x2"));
+            map.put("Y2", resultSet.getString("y2"));
+            map.put("Result", resultSet.getString("Result"));
+            JSONObject jsonObject = new JSONObject(map);
             array.put(jsonObject);
         }
         System.out.println(array.toString());

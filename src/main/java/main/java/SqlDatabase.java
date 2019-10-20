@@ -129,7 +129,7 @@ public class SqlDatabase {
     public int writeToBmiTable(String timestamp, double bmi, String bmiCategory, String height, int weight) throws Exception {
         Statement statement = this.createStatement();
         String query = this.createBmiQuery(timestamp, height, weight, bmi, bmiCategory);
-        System.out.println(query);
+//        System.out.println(query);
         int res = statement.executeUpdate(query);
         return res;
     }
@@ -151,9 +151,40 @@ public class SqlDatabase {
         }
     }
 
+    public void printBmiTable() throws Exception {
+        ResultSet resultSet = readBmiTable();
+        System.out.println("id\tTimestamp\t\t\t\t\tHeight\t\tWeight\t\tBmiCategory\t\t\tResult");
+        System.out.println("---------------------------------------------------------------------------------------");
+        while(resultSet.next()){
+            String id = resultSet.getString("id");
+            String TimeStamp = resultSet.getString("Timestamp");
+            String Height = resultSet.getString("Height");
+            String Weight = resultSet.getString("Weight");
+            String BmiCategory = resultSet.getString("BmiCategory");
+            String Result = resultSet.getString("Result");
+            if(BmiCategory.equals("Normal weight")) {
+                System.out.println(id + "\t" + TimeStamp + "\t\t\t" + Height + "\t\t" + Weight + "\t\t\t" + BmiCategory + "\t\t" + Result);
+            }
+            else if(BmiCategory.equals("Underweight") || BmiCategory.equals("Overweight")) {
+                System.out.println(id + "\t" + TimeStamp + "\t\t\t" + Height + "\t\t" + Weight + "\t\t\t" + BmiCategory + "\t\t\t" + Result);
+            }
+            else {
+                System.out.println(id + "\t" + TimeStamp + "\t\t\t" + Height + "\t\t" + Weight + "\t\t\t" + BmiCategory + "\t\t\t\t" + Result);
+            }
+            System.out.println("---------------------------------------------------------------------------------------");
+        }
+    }
+
     public ResultSet readDistanceTable() throws Exception {
         Statement statement = this.createStatement();
         String query = "SELECT * FROM ppa2_db.Distance;";
+        ResultSet rs = statement.executeQuery(query);
+        return rs;
+    }
+
+    public ResultSet readBmiTable() throws Exception {
+        Statement statement = this.createStatement();
+        String query = "SELECT * FROM ppa2_db.Bmi;";
         ResultSet rs = statement.executeQuery(query);
         return rs;
     }

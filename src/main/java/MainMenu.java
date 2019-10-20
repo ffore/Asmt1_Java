@@ -149,12 +149,12 @@ public class MainMenu {
     public void startRetirement() { this.retirement.acceptInput(); }
 
     public void startBodyMassIndex() {
-//        try{
-//            this.database.printBmiTable();
-//        }
-//        catch(Exception e){
-//            System.out.println(e);
-//        }
+        try{
+            this.database.printBmiTable();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
         this.bodyMassIndex.acceptInput();
     }
 

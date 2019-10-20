@@ -1,10 +1,25 @@
+import com.mysql.cj.xdevapi.JsonArray;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import main.java.SqlDatabase;
+
 public class Server {
 
     private ServerSocket server;
+    private SqlDatabase database;
+
+    public Server(SqlDatabase database) {
+        this.database = database;
+        try{
+            this.server = createServerSocket();
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
+    }
 
     public Server() {
         try{
@@ -13,19 +28,34 @@ public class Server {
         catch(IOException e){
             System.out.println(e);
         }
-
     }
 
-    public static void main(String args[]) throws IOException {
-        Server x = new Server();
-        ServerSocket server = x.getServer();
-        acceptRequests(server);
+//    public static void main(String args[]) throws IOException {
+//        Server x = new Server();
+//        ServerSocket server = x.getServer();
+//        acceptRequests(server);
+//
+//    }
 
+    public void startServer() throws IOException{
+        ServerSocket server = this.getServer();
+        this.acceptRequests(server);
+    }
+
+    public void getDistanceTable() {
+        System.out.println("server about to print distance table");
+        try {
+            this.database.printDistanceTable();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void acceptRequests(ServerSocket server) throws IOException {
         while (true){
             try (Socket socket = server.accept()) {
+                System.out.println(socket.getInetAddress().getHostName());
                 sendMessage(socket);
             }
         }

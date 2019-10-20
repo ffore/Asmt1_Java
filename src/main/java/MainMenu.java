@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 import main.java.SqlDatabase;
 
@@ -8,6 +9,7 @@ public class MainMenu {
     private ShortestDistance shortestDistance;
     private SqlDatabase database;
     private TipCalculator tipCalculator;
+    private Server server;
     private boolean isStillRunning;
 
     public MainMenu() {
@@ -16,6 +18,7 @@ public class MainMenu {
         this.retirement = new Retirement();
         this.shortestDistance = new ShortestDistance(this.database);
         this.tipCalculator = new TipCalculator();
+        this.server = new Server(this.database);
         this.isStillRunning = true;
     }
 
@@ -25,12 +28,16 @@ public class MainMenu {
         this.retirement = new Retirement();
         this.shortestDistance = new ShortestDistance(database);
         this.tipCalculator = new TipCalculator();
+        this.server = new Server(database);
         this.isStillRunning = true;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         MainMenu menu = new MainMenu();
         menu.openDatabaseConnection();
+
+        menu.spawnServerThread(menu);
+
         menu.start();
         menu.closeDatabaseConnection();
     }
@@ -113,6 +120,26 @@ public class MainMenu {
 
     public void openDatabaseConnection() {
         this.database.connectToDatabase();
+    }
+
+    public void spawnServerThread(MainMenu menu) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    menu.getDistanceForServer();
+                }
+                catch (IOException e){
+                    System.out.println(e);
+                }
+            }
+        });
+        thread.start();
+    }
+
+    public void getDistanceForServer() throws IOException {
+        this.server.startServer();
+        this.server.getDistanceTable();
     }
 
     public void closeDatabaseConnection() {

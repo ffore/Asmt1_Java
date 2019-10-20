@@ -1,5 +1,3 @@
-import com.mysql.cj.xdevapi.JsonArray;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,8 +7,6 @@ import java.sql.ResultSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.mysql.cj.xdevapi.JsonValue;
-import com.mysql.cj.xdevapi.Result;
 import main.java.SqlDatabase;
 
 import org.json.*;
@@ -77,8 +73,7 @@ public class Server {
             return this.getDistanceTableInfo();
         } else if (tableName.contains("bmi")) {
             System.out.println("User wants BMI Table!");
-//            return this.getBMITableInfo();
-            return new JSONArray();
+            return this.getBMITableInfo();
         } else {
             System.out.println("User wants something not supported!");
             return new JSONArray();
@@ -90,7 +85,7 @@ public class Server {
         JSONArray json = new JSONArray();
         try {
             ResultSet resultSet = database.readDistanceTable();
-            json = this.convertToJson(resultSet);
+            json = this.convertToDistanceJson(resultSet);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -98,7 +93,20 @@ public class Server {
         return json;
     }
 
-    public JSONArray convertToJson(ResultSet resultSet) throws Exception{
+    public JSONArray getBMITableInfo() {
+        SqlDatabase database = this.getDatabase();
+        JSONArray json = new JSONArray();
+        try {
+            ResultSet resultSet = database.readBmiTable();
+            json = this.convertToBmiJson(resultSet);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return json;
+    }
+
+    public JSONArray convertToDistanceJson(ResultSet resultSet) throws Exception{
 //        https://stackoverflow.com/questions/3948206/json-order-mixed-up
         JSONArray array = new JSONArray();
         while(resultSet.next()) {
@@ -109,6 +117,24 @@ public class Server {
             map.put("Y1", resultSet.getString("y1"));
             map.put("X2", resultSet.getString("x2"));
             map.put("Y2", resultSet.getString("y2"));
+            map.put("Result", resultSet.getString("Result"));
+            JSONObject jsonObject = new JSONObject(map);
+            array.put(jsonObject);
+        }
+        System.out.println(array.toString());
+        return array;
+    }
+
+    public JSONArray convertToBmiJson(ResultSet resultSet) throws Exception{
+//        https://stackoverflow.com/questions/3948206/json-order-mixed-up
+        JSONArray array = new JSONArray();
+        while(resultSet.next()) {
+            Map map = new LinkedHashMap();
+            map.put("ID", resultSet.getString("id"));
+            map.put("TimeStamp", resultSet.getString("Timestamp"));
+            map.put("Height", resultSet.getString("Height"));
+            map.put("Weight", resultSet.getString("Weight"));
+            map.put("BmiCategory", resultSet.getString("BmiCategory"));
             map.put("Result", resultSet.getString("Result"));
             JSONObject jsonObject = new JSONObject(map);
             array.put(jsonObject);

@@ -123,6 +123,7 @@ public class MainMenu {
     }
 
     public void spawnServerThread(MainMenu menu) {
+//        https://stackoverflow.com/a/29060130
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {

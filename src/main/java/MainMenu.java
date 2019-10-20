@@ -127,9 +127,9 @@ public class MainMenu {
             @Override
             public void run() {
                 try {
-                    menu.getDistanceForServer();
+                    menu.startServer();
                 }
-                catch (IOException e){
+                catch (Exception e){
                     System.out.println(e);
                 }
             }
@@ -137,9 +137,8 @@ public class MainMenu {
         thread.start();
     }
 
-    public void getDistanceForServer() throws IOException {
+    public void startServer() throws Exception {
         this.server.startServer();
-        this.server.getDistanceTable();
     }
 
     public void closeDatabaseConnection() {

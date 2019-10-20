@@ -1,10 +1,17 @@
 import com.mysql.cj.xdevapi.JsonArray;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.ResultSet;
 
+import com.mysql.cj.xdevapi.JsonValue;
+import com.mysql.cj.xdevapi.Result;
 import main.java.SqlDatabase;
+
+import org.json.*;
 
 public class Server {
 
@@ -21,23 +28,7 @@ public class Server {
         }
     }
 
-    public Server() {
-        try{
-            this.server = createServerSocket();
-        }
-        catch(IOException e){
-            System.out.println(e);
-        }
-    }
-
-//    public static void main(String args[]) throws IOException {
-//        Server x = new Server();
-//        ServerSocket server = x.getServer();
-//        acceptRequests(server);
-//
-//    }
-
-    public void startServer() throws IOException{
+    public void startServer() throws Exception{
         ServerSocket server = this.getServer();
         this.acceptRequests(server);
     }
@@ -52,16 +43,75 @@ public class Server {
         }
     }
 
-    public static void acceptRequests(ServerSocket server) throws IOException {
+    public void acceptRequests(ServerSocket server) throws Exception {
         while (true){
             try (Socket socket = server.accept()) {
-                System.out.println(socket.getInetAddress().getHostName());
-                sendMessage(socket);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                this.divertToProperRequest(in);
+                this.sendMessage(socket);
             }
         }
     }
 
-    public static void sendMessage(Socket socket) throws IOException {
+    public void divertToProperRequest(BufferedReader in) throws Exception {
+        String originalRequest = in.readLine();
+        String[] requestInfo = originalRequest.split(" ");
+
+        if(requestInfo[0].equals("GET")) {
+            System.out.println("Received Get Request!");
+            this.getTableInfo(requestInfo[1]);
+        } else {
+            System.out.println("Received Post Request!");
+//            postToTable(requestInfo[1]);
+        }
+
+
+    }
+
+    public void getTableInfo(String tableName) {
+        if(tableName.contains("distance")) {
+            System.out.println("User wants Distance Table!");
+            this.getDistanceTableInfo();
+        } else if (tableName.contains("bmi")) {
+            System.out.println("User wants BMI Table!");
+//            getBMITableInfo();
+        } else {
+            System.out.println("User wants something not supported!");
+        }
+    }
+
+    public void getDistanceTableInfo() {
+        SqlDatabase database = this.getDatabase();
+
+        try {
+            ResultSet resultSet = database.readDistanceTable();
+            JSONArray json = this.convertToJson(resultSet);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+    public JSONArray convertToJson(ResultSet resultSet) throws Exception{
+//        https://stackoverflow.com/questions/3948206/json-order-mixed-up
+        JSONArray array = new JSONArray();
+        while(resultSet.next()) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("ID", resultSet.getString("id"));
+            jsonObject.put("TimeStamp", resultSet.getString("Timestamp"));
+            jsonObject.put("X1", resultSet.getString("x1"));
+            jsonObject.put("Y1", resultSet.getString("y1"));
+            jsonObject.put("X2", resultSet.getString("x2"));
+            jsonObject.put("Y2", resultSet.getString("y2"));
+            jsonObject.put("Result", resultSet.getString("Result"));
+            array.put(jsonObject);
+        }
+        System.out.println(array.toString());
+        return array;
+    }
+
+    public void sendMessage(Socket socket) throws IOException {
         String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + "hello how r u";
         socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
     }
@@ -73,5 +123,9 @@ public class Server {
 
     public ServerSocket getServer() {
         return this.server;
+    }
+
+    public SqlDatabase getDatabase() {
+        return this.database;
     }
 }

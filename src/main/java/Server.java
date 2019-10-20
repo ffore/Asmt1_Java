@@ -49,50 +49,53 @@ public class Server {
         while (true){
             try (Socket socket = server.accept()) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                this.divertToProperRequest(in);
-                this.sendMessage(socket);
+                JSONArray result = this.divertToProperRequest(in);
+                this.sendMessage(socket, result);
             }
         }
     }
 
-    public void divertToProperRequest(BufferedReader in) throws Exception {
+    public JSONArray divertToProperRequest(BufferedReader in) throws Exception {
         String originalRequest = in.readLine();
         String[] requestInfo = originalRequest.split(" ");
+        JSONArray result = new JSONArray();
 
         if(requestInfo[0].equals("GET")) {
             System.out.println("Received Get Request!");
-            this.getTableInfo(requestInfo[1]);
+            result = this.getTableInfo(requestInfo[1]);
         } else {
             System.out.println("Received Post Request!");
 //            postToTable(requestInfo[1]);
         }
 
-
+        return result;
     }
 
-    public void getTableInfo(String tableName) {
+    public JSONArray getTableInfo(String tableName) {
         if(tableName.contains("distance")) {
             System.out.println("User wants Distance Table!");
-            this.getDistanceTableInfo();
+            return this.getDistanceTableInfo();
         } else if (tableName.contains("bmi")) {
             System.out.println("User wants BMI Table!");
-//            getBMITableInfo();
+//            return this.getBMITableInfo();
+            return new JSONArray();
         } else {
             System.out.println("User wants something not supported!");
+            return new JSONArray();
         }
     }
 
-    public void getDistanceTableInfo() {
+    public JSONArray getDistanceTableInfo() {
         SqlDatabase database = this.getDatabase();
-
+        JSONArray json = new JSONArray();
         try {
             ResultSet resultSet = database.readDistanceTable();
-            JSONArray json = this.convertToJson(resultSet);
+            json = this.convertToJson(resultSet);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-
+        return json;
     }
 
     public JSONArray convertToJson(ResultSet resultSet) throws Exception{
@@ -114,8 +117,8 @@ public class Server {
         return array;
     }
 
-    public void sendMessage(Socket socket) throws IOException {
-        String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + "hello how r u";
+    public void sendMessage(Socket socket, JSONArray result) throws IOException {
+        String httpResponse = "HTTP/1.1 200 OK\r\n\r\n" + result.toString();
         socket.getOutputStream().write(httpResponse.getBytes("UTF-8"));
     }
 

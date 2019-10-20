@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.sql.ResultSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -44,15 +45,24 @@ public class Server {
     public void acceptRequests(ServerSocket server) throws Exception {
         while (true){
             try (Socket socket = server.accept()) {
+                System.out.println("Client found");
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 JSONArray result = this.divertToProperRequest(in);
                 this.sendMessage(socket, result);
+            } catch (SocketException e) {
+                System.out.println("Closing server socket");
+                break;
             }
         }
     }
 
     public JSONArray divertToProperRequest(BufferedReader in) throws Exception {
         String originalRequest = in.readLine();
+
+        if(originalRequest == null)
+            return new JSONArray();
+
+        System.out.println("Request is:" + originalRequest);
         String[] requestInfo = originalRequest.split(" ");
         JSONArray result = new JSONArray();
 
@@ -159,5 +169,9 @@ public class Server {
 
     public SqlDatabase getDatabase() {
         return this.database;
+    }
+
+    public void closeConnection() throws Exception {
+        this.server.close();
     }
 }

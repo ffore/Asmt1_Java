@@ -34,12 +34,14 @@ public class MainMenu {
 
     public static void main(String[] args) throws Exception{
         MainMenu menu = new MainMenu();
-        menu.openDatabaseConnection();
 
+        menu.openDatabaseConnection();
         menu.spawnServerThread(menu);
 
         menu.start();
+
         menu.closeDatabaseConnection();
+        menu.closeServerConnection();
     }
 
     public void start() {
@@ -128,7 +130,9 @@ public class MainMenu {
             @Override
             public void run() {
                 try {
-                    menu.startServer();
+                    while(menu.isStillRunning) {
+                        menu.startServer();
+                    }
                 }
                 catch (Exception e){
                     System.out.println(e);
@@ -148,6 +152,15 @@ public class MainMenu {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public void closeServerConnection() {
+        try {
+            this.server.closeConnection();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 
     public static void closeMenu() {

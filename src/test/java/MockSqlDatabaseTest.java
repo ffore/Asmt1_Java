@@ -126,7 +126,7 @@ public class MockSqlDatabaseTest {
 
     public String getBMITableCreationQuery() {
         return "CREATE TABLE ppa2_db.Bmi ( id INT AUTO_INCREMENT PRIMARY KEY, " +
-                "Timestamp VARCHAR(20), Height VARCHAR(10), Weight INT, Result DECIMAL(10,3));";
+                "Timestamp VARCHAR(20), Height VARCHAR(10), Weight INT, BmiCategory VARCHAR(20), Result DECIMAL(10,3));";
     }
 
     @Mock

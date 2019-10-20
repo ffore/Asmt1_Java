@@ -20,6 +20,12 @@ public class BodyMassIndex {
         this.db = database;
     }
 
+    public BodyMassIndex(SqlDatabase database, String height, int weight) {
+        this.db = database;
+        this.height = height;
+        this.weight = weight;
+    }
+
     public userInput acceptInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;
@@ -150,18 +156,19 @@ public class BodyMassIndex {
         return formattedTime;
     }
 
-    public void writeToTable(String timestamp) {
+    public int writeToTable(String timestamp) {
         SqlDatabase db = getDatabase();
         String height = getHeight();
         int weight = getWeight();
-        double bmi = getBmi();
+        double bmi = getBMI(height, weight);
         String bmiCategory = getBMICategory(bmi);
         try {
-            db.writeToBmiTable(timestamp, bmi, bmiCategory, height, weight);
+            return db.writeToBmiTable(timestamp, bmi, bmiCategory, height, weight);
         }
         catch(Exception e) {
             System.out.println(e);
         }
+        return -1;
     }
 
     public SqlDatabase getDatabase() {

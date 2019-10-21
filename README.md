@@ -160,6 +160,7 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 
 ## Helpful Links Referenced During PPA2's Creation
 - [Creating a MySQL Docker Database](https://dev.mysql.com/doc/mysql-installation-excerpt/5.5/en/docker-mysql-getting-started.html)
+- [Concepts of MySQL Container in Docker](https://severalnines.com/database-blog/mysql-docker-containers-understanding-basics)
 - [Connecting to the Database with Java Database Connectivity (JDBC)](https://stackoverflow.com/questions/2839321/connect-java-to-a-mysql-database)
 - [Simple Example using JDBC](https://www.javatpoint.com/example-to-connect-to-the-mysql-database)
 - [Adding Required Dependency to use JDBC in Maven Project](https://www.mkyong.com/jdbc/how-to-connect-to-mysql-with-jdbc-driver-java/)

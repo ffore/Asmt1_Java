@@ -37,7 +37,6 @@ public class Server {
     }
 
     public void getDistanceTable() {
-        System.out.println("server about to print distance table");
         try {
             this.database.printDistanceTable();
         }
@@ -49,7 +48,6 @@ public class Server {
     public void acceptRequests(ServerSocket server) throws Exception {
         while (true){
             try (Socket socket = server.accept()) {
-                System.out.println("Client found");
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 JSONArray result = this.divertToProperRequest(in);
                 this.sendMessage(socket, result);
@@ -66,16 +64,13 @@ public class Server {
         if(originalRequest == null)
             return new JSONArray();
 
-        System.out.println("Request is:" + originalRequest);
         String[] requestInfo = originalRequest.split(" ");
         JSONArray result = new JSONArray();
 
         if(requestInfo[0].equals("GET")) {
-            System.out.println("Received Get Request!");
             result = this.getTableInfo(requestInfo[1]);
         }
         if (requestInfo[0].equals("POST")) {
-            System.out.println("Received Post Request!");
             result = parsePostRequest(requestInfo[1]);
         }
 
@@ -194,13 +189,10 @@ public class Server {
 
     public JSONArray getTableInfo(String tableName) {
         if(tableName.contains("distance")) {
-            System.out.println("User wants Distance Table!");
             return this.getDistanceTableInfo();
         } else if (tableName.contains("bmi")) {
-            System.out.println("User wants BMI Table!");
             return this.getBMITableInfo();
         } else {
-            System.out.println("User wants something not supported!");
             return new JSONArray();
         }
     }
@@ -246,7 +238,6 @@ public class Server {
             JSONObject jsonObject = new JSONObject(map);
             array.put(jsonObject);
         }
-        System.out.println(array.toString());
         return array;
     }
 
@@ -264,7 +255,6 @@ public class Server {
             JSONObject jsonObject = new JSONObject(map);
             array.put(jsonObject);
         }
-        System.out.println(array.toString());
         return array;
     }
 

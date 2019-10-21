@@ -157,6 +157,24 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 ### Phase 4
 ![Phase 4](/pics/phase4.gif)
 
+
+## Helpful Links Referenced During PPA2's Creation
+- [Creating a MySQL Docker Database](https://dev.mysql.com/doc/mysql-installation-excerpt/5.5/en/docker-mysql-getting-started.html)
+- [Connecting to the Database with Java Database Connectivity (JDBC)](https://stackoverflow.com/questions/2839321/connect-java-to-a-mysql-database)
+- [Simple Example using JDBC](https://www.javatpoint.com/example-to-connect-to-the-mysql-database)
+- [Adding Required Dependency to use JDBC in Maven Project](https://www.mkyong.com/jdbc/how-to-connect-to-mysql-with-jdbc-driver-java/)
+- [Downloading the Actual Dependency in case Maven Failed to](https://dev.mysql.com/downloads/connector/j/)
+- [Opening the Ports of the MySQL Database on Docker](https://docs.docker.com/engine/reference/commandline/run/#publish-or-expose-port--p---expose)
+- [Deciding on What Mock Framework to Use](https://www.baeldung.com/java-spring-mockito-mock-mockbean)
+- [How to Use Mockito to Mock Objects and JDBC](https://dzone.com/articles/mockito-basic-example-using-jdbc)
+- [Another example of Mockito and JDBC](https://stackoverflow.com/questions/34919664/how-to-mock-jdbc-connection-and-resultset-using-mockito-in-testng)
+- [How to Get Mockito to Work With Junit5](https://stackoverflow.com/questions/40961057/how-to-use-mockito-with-junit5)
+- [How to Setup a Localhost Server in Java](https://javarevisited.blogspot.com/2015/06/how-to-create-http-server-in-java-serversocket-example.html?fbclid=IwAR3eohbI1QHj9bM41ODSSFpkfcmG8dAIH6A4DRAuYX-oaPFjp86NAd4dhLw)
+- [Examples Using JSON Objects in Java](https://stackoverflow.com/questions/20117148/how-to-create-json-object-using-string)
+- [How to Set Order to a JSON Array](https://stackoverflow.com/questions/3948206/json-order-mixed-up)
+- [Example of Testing Sockets](https://stackoverflow.com/questions/5577274/testing-java-sockets)
+
+
 ## More Information
 
 If you'd like to learn more about the project like different details about the structure, our testing habits, proof we followed TDD, the README from PPA#1 and more, select the Wiki tab along the top of the page. You'll find different pages on the Wiki containing additional information you might find useful.

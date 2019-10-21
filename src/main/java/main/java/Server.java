@@ -84,15 +84,18 @@ public class Server {
 
     public JSONArray parsePostRequest(String req) throws Exception {
         int questionMark = req.indexOf('?');
+
+        if(questionMark == -1) {
+            return new JSONArray();
+        }
+
         String function = req.substring(1, questionMark);
 
         if(function.equals("distance")){
             return handleDistance(req);
-        }
-        if(function.equals("bmi")){
+        } else if(function.equals("bmi")){
             return handleBmi(req);
-        }
-        else{
+        } else{
             return new JSONArray();
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="41" failures="0" name="BodyMassIndexTest" time="0.082" errors="0" skipped="0">
+<testsuite tests="41" failures="0" name="BodyMassIndexTest" time="0.051" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -62,45 +62,45 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasSingleAndDoubleQuote" time="0.007"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfWeightContainsAbbreviations" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasValidNumberMeasurements" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasOnlyQuotesAndNumbers" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputFailsOnExtraCharacters" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputStopsInvalidNumberMeasurements" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testFeetAndInchesDoNotStartWithZero" time="0.002"/>
   <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testTwoSingleQuotesAreInvalidHeights" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputCatchesWrongQuoteOrder" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testFeetAndInchesDoNotStartWithZero" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testNoMeasurementUnitsAreInvalidHeights" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testTwoDoubleQuotesAreInvalidHeights" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputQuotesAreInOrder" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputStopsInvalidNumberMeasurements" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfWeightContainsAbbreviations" time="0"/>
   <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasCorrectNumberOfQuotes" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasSingleAndDoubleQuote" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputQuotesAreInOrder" time="0"/>
   <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputQuotesAreAfterNumbers" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfHeightIsZeroPreceding" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputReturnsBoolean" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInputQuotesAreInWrongOrder" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testFeetDoesNotStartWithZero" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightInputReturnsBoolean" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfWeightIsNegative" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testIfWeightIsWords" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightIsNotZero" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightIsNotZeroPreceding" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputFailsOnWords" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputIsNotOnlyZero" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testWordsAreInvalidHeight" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInchesDoesNotStartWithZero" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToOnePlace" time="0.008"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInInchesConversion" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testUserInputObject" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInMetersConversion" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToThreePlaces" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightHasValidZeros" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToTwoPlaces" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testWeightToKiloConversion" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetNormalWeight" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInput" time="0.056"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasValidNumberMeasurements" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testNoMeasurementUnitsAreInvalidHeights" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputFailsOnExtraCharacters" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasOnlyQuotesAndNumbers" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputCatchesWrongQuoteOrder" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testTwoDoubleQuotesAreInvalidHeights" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInput" time="0.043"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetBMI" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetUnderweight" time="0.001"/>
   <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetObese" time="0"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetBMI" time="0.001"/>
-  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetUnderweight" time="0"/>
   <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetOverweight" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfWeightIsNegative" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightIsNotZeroPreceding" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightIsNotZero" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightHasValidZeros" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testIfWeightIsWords" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputReturnsBoolean" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputIsNotOnlyZero" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfHeightIsZeroPreceding" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testFeetDoesNotStartWithZero" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testWordsAreInvalidHeight" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInputQuotesAreInWrongOrder" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInchesDoesNotStartWithZero" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputFailsOnWords" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightInputReturnsBoolean" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetNormalWeight" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToTwoPlaces" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testUserInputObject" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInInchesConversion" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToThreePlaces" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testWeightToKiloConversion" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInMetersConversion" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToOnePlace" time="0"/>
 </testsuite>

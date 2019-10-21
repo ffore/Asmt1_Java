@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="25" failures="0" name="TipCalculatorTest" time="0.032" errors="0" skipped="0">
+<testsuite tests="25" failures="0" name="TipCalculatorTest" time="0.052" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -62,29 +62,29 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testGratuityOnRealisticValues" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateOneDecimalToTwo" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateFourDecimalsToTwo" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testWordsAreInvalidPeople" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitOnSmallGroup" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testWordsAreInvalidPrice" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitOnMediumGroup" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testIsValidNumOfPeople" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateThreeDecimalsToTwo" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testNegativePeopleIsInvalid" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testPriceNeedsTwoDecimalPlaces" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateNonTerminatingToTwo" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitOnLargeGroup" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testZerosAreInvalidPrice" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testZeroIsInvalidPeople" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testDecimalsAreInvalidPeople" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testInput" time="0.002"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testValidPrice" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testInput" time="0.004"/>
   <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testAddGratuity" time="0"/>
   <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testBillObject" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testEvenSplit" time="0.001"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitTip" time="0.029"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testValidPrice" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testEvenSplit" time="0.003"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitTip" time="0.043"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testEvenNumberOfPeopleLeadsToUnevenSplit" time="0"/>
   <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testMoreThanTwoDecimalsAreInvalidPrice" time="0"/>
   <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testOddNumberOfPeopleLeadsToUnevenSplit" time="0"/>
-  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testEvenNumberOfPeopleLeadsToUnevenSplit" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitOnSmallGroup" time="0.001"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testZeroIsInvalidPeople" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testPriceNeedsTwoDecimalPlaces" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testDecimalsAreInvalidPeople" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateFourDecimalsToTwo" time="0.001"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitOnLargeGroup" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testSplitOnMediumGroup" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testWordsAreInvalidPeople" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testIsValidNumOfPeople" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateOneDecimalToTwo" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testGratuityOnRealisticValues" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testWordsAreInvalidPrice" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateThreeDecimalsToTwo" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testZerosAreInvalidPrice" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testTruncateNonTerminatingToTwo" time="0"/>
+  <testcase classname="TipCalculatorTest" name="TipCalculatorTest.testNegativePeopleIsInvalid" time="0"/>
 </testsuite>

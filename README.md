@@ -58,7 +58,7 @@ If you'd like to see an exact breakdown of our code coverage as well, you can Ri
 
 Because IntelliJ is an IDE, it has its own built-in command line. We will be using this to run our application. On the left-hand side in the file system / file structure of our project, there should be a blue folder labeled **src**. Open that folder by Left clicking on it.
 
-Opening the src folder will produce a list of files with different names. The only one of importance to run the application is **MainMenu**. Right-click on MainMenu and select the option "Run MainMenu.main()". This option should also have a green play button next to it. 
+Opening the src folder will produce a list of files with different names. The only one of importance to run the application is **main.java.MainMenu**. Right-click on main.java.MainMenu and select the option "Run main.java.MainMenu.main()". This option should also have a green play button next to it. 
 
 Once you've selected that option, the built-in command line will appear from the bottom of the page. You will interact with the application through this. The main menu of the application will be displayed and is waiting for your input. From here, you'll be able to play with the 4 different functions we've chosen or simply exit the app.
 
@@ -79,7 +79,7 @@ The above naming convention follows the "official" [Java Naming Convention](http
 
 ### Testing Organizational Structure
 
-- Each Source File will have its own Test File, meaning if a source file called Retirement.java is made, there us a RetirementTest.java file
+- Each Source File will have its own Test File, meaning if a source file called main.java.Retirement.java is made, there us a RetirementTest.java file
 made specifically for it
 - Each @Test will function as a Unit Test and is described by the function's name
 - Tests with numbers in the name should be written out, i.e., Twenty instead of 20
@@ -92,12 +92,12 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 
 ### Project Organizational Structure
 
-- The MainMenu file serves as the starting point of the application and therefore contains our main function
+- The main.java.MainMenu file serves as the starting point of the application and therefore contains our main function
 - The Main function will loop until the user chooses the exit option
 - Each of the functions are numbered, and the user must choose an option between 1-5 (5 being exit)
-- Once a function has been chosen, MainMenu calls 'acceptInput()', which is a function that exists in each of the 4 possible options
+- Once a function has been chosen, main.java.MainMenu calls 'acceptInput()', which is a function that exists in each of the 4 possible options
 - Each class file uses acceptInput() as its own 'main' loop that deals with error handling / input validation before performing its core functionality
-- Once valid input has been provided, the calculation will be performed, and control will be returned to MainMenu so that the user can choose other functions
+- Once valid input has been provided, the calculation will be performed, and control will be returned to main.java.MainMenu so that the user can choose other functions
 
 ## Screenshots
 ### All Tests
@@ -106,7 +106,7 @@ The above test naming convention was influenced by [popular JUnit conventions](h
 ### Body Mass Index Tests
 <img src="/pics/bmi%20test.png" width="300">
 
-### Retirement Tests
+### main.java.Retirement Tests
 <img src="/pics/retirement%20test.png" width="300">
 
 ### Shortest Distance Tests

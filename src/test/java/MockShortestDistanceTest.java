@@ -1,3 +1,4 @@
+import main.java.ShortestDistance;
 import main.java.SqlDatabase;
 
 import org.junit.jupiter.api.Test;
@@ -17,9 +18,6 @@ public class MockShortestDistanceTest {
 
     @Mock
     private static SqlDatabase database = mock(SqlDatabase.class);
-
-    @Mock
-    private static SqlDatabase verifyDatabaseCall = mock(SqlDatabase.class);
 
     @Test
     public void testWriteToTable() throws Exception {
@@ -47,12 +45,15 @@ public class MockShortestDistanceTest {
         return timestamp.format(format);
     }
 
+    @Mock
+    private static SqlDatabase db = mock(SqlDatabase.class);
+
     @Test
     public void testWriteToDatabase() throws Exception {
-        ShortestDistance distance = createShortestDistance();
+        ShortestDistance distance = createShortestDistanceToWriteToDatabase();
         String timestamp = getFormattedTime();
 
-        when(database.writeToDistanceTable(timestamp,
+        when(db.writeToDistanceTable(timestamp,
                 distance.getDistance(),
                 distance.getCoordinates()))
                 .thenReturn(1);
@@ -61,12 +62,21 @@ public class MockShortestDistanceTest {
         assertEquals(result, 1);
     }
 
+    public ShortestDistance createShortestDistanceToWriteToDatabase() {
+        double[] input = {1, 1, 2, 2};
+        double result = 1.414;
+        return new ShortestDistance(db, input, result);
+    }
+
+    @Mock
+    private static SqlDatabase verifyDatabaseFails = mock(SqlDatabase.class);
+
     @Test
     public void testWriteToTableFails() throws Exception {
-        ShortestDistance distance = createShortestDistance();
+        ShortestDistance distance = createShortestDistanceForWriteFailure();
         String timestamp = getFormattedTime();
 
-        when(database.writeToDistanceTable(timestamp,
+        when(verifyDatabaseFails.writeToDistanceTable(timestamp,
                 distance.getDistance(),
                 distance.getCoordinates()))
                 .thenThrow(new Exception("Writing Failed!"));
@@ -77,6 +87,15 @@ public class MockShortestDistanceTest {
             assertEquals(e.getMessage(), "Writing Failed!");
         }
     }
+
+    public ShortestDistance createShortestDistanceForWriteFailure() {
+        double[] input = {1, 1, 2, 2};
+        double result = 1.414;
+        return new ShortestDistance(verifyDatabaseFails, input, result);
+    }
+
+    @Mock
+    private static SqlDatabase verifyDatabaseCall = mock(SqlDatabase.class);
 
     @Test
     public void testWriteToTableActuallyWrites() throws Exception {

@@ -1,9 +1,10 @@
+import main.java.Bill;
+import main.java.TipCalculator;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.*;
 

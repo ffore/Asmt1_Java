@@ -1,3 +1,5 @@
+package main.java;
+
 public class userInput {
 //    only good values will be here since
 //    checking is done before the instance

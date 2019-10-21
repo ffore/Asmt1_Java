@@ -59,7 +59,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>bryan.daniel.groupId.MainMenu</mainClass>
+                            <mainClass>bryan.daniel.groupId.main.java.MainMenu</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,3 +1,5 @@
+package main.java;
+
 import main.java.InputValidation;
 import main.java.SqlDatabase;
 import java.math.BigDecimal;

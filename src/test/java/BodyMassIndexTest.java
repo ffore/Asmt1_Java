@@ -1,3 +1,5 @@
+import main.java.BodyMassIndex;
+import main.java.userInput;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -9,12 +11,12 @@ public class BodyMassIndexTest {
 
 //    @Test
 //    public void testHeightPrompt() {
-//        assertEquals("Height Measurement\nUse single quote (\') for feet & double quote (\") for inches\nThis is valid input --> 5\'8\" (no spaces!)\nEnter height: ", BodyMassIndex.getHeightPrompt());
+//        assertEquals("Height Measurement\nUse single quote (\') for feet & double quote (\") for inches\nThis is valid input --> 5\'8\" (no spaces!)\nEnter height: ", main.java.BodyMassIndex.getHeightPrompt());
 //    }
 //
 //    @Test
 //    public void testHeightRetryPrompt() {
-//        assertEquals("Something went wrong, please enter height again: ", BodyMassIndex.getHeightRetryPrompt());
+//        assertEquals("Something went wrong, please enter height again: ", main.java.BodyMassIndex.getHeightRetryPrompt());
 //    }
 
     @Test
@@ -217,7 +219,7 @@ public class BodyMassIndexTest {
 
     @Test
     public void testUserInputObject(){
-//        assuming only valid height and weight will be fed into userInput object
+//        assuming only valid height and weight will be fed into main.java.userInput object
 //        all bad inputs would have been prevented by acceptUserInput function
         userInput userInput = new userInput("5\'11\"", 120);
         assertEquals(120, userInput.getWeight());

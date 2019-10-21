@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="56" failures="0" name="InputValidationTest" time="0.002" errors="0" skipped="0">
+<testsuite tests="56" failures="0" name="InputValidationTest" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -63,59 +63,59 @@
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
   <testcase classname="InputValidationTest" name="InputValidationTest.testInvalidInputIsInvalidMenuOption" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testPositiveWholeNumberIsValidInteger" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testWholeNumberInputCanConvertToDouble" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testSpecialCharactersCannotConvertToDouble" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeNumberInputCanConvertToDouble" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsMultipleDollarSigns" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testExtraCharactersAreInvalidAmount" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativesAreNotPositiveIntegers" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInvalidOptionDoesNotFallInRange" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalNumberInputCanConvertToDouble" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testPositiveWholeNumberIsValidInteger" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testNinetyNineDoesNotFallInAgeRange" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testCanConvertSalaryAndRoundToAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testExtraCharactersAreInvalidAmount" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testPositiveNumbersFallInPercentageRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsMultipleDollarSigns" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeNumberInputCanConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWholeNumberInputCanConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativesAreNotPositiveIntegers" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testSpecialCharactersCannotConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInvalidOptionDoesNotFallInRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoExtraSymbols" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsAllExtraSymbols" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testSimpleInputIsValidPercentage" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testWordsAreInvalidPercentage" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeAndLargeNumbersDoNotFallInPercentageRange" time="0.001"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNotZero" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeAndLargeNumbersDoNotFallInPercentageRange" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testZeroIsValidAge" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testNotZero" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testTwentyTwoFallsInAgeRange" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalNumberIsInvalidInteger" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testTwentyOneDoesNotFallInAgeRange" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testIntegerConvertsToInteger" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testValidOptionFallsInRange" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testWordsCannotConvertToDouble" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testIntegerConvertsToInteger" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testStringsAreInvalidIntegers" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testStringFailsToConvertToInteger" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testValidNumberIsValidAge" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testTwentyTwoFallsInAgeRange" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testValidNumberIsValidMenuOption" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalNumberIsInvalidInteger" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWordIsInvalidAge" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testTwentyOneDoesNotFallInAgeRange" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testNinetyEightFallsInAgeRange" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testWordsAreInvalidAmount" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testValidSalaryIsValidAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeValuesAreInvalid" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testCannotConvertWordsToAmount" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoCommas" time="0.001"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputDoesNotHaveDollarSigns" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testPriceIsNotAWord" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testWordsAreNotPositiveIntegers" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testWordIsInvalidAge" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testSimpleInputIsValidPercentage" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testNegativeValuesAreInvalid" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testValidNumberIsValidMenuOption" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testStringFailsToConvertToInteger" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testStringsAreInvalidIntegers" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsOneComma" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNumOfPeopleNotZero" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoDollarSigns" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoDecimals" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testNumOfPeopleIsPositiveInt" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalsAreNotPositiveIntegers" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsOneDecimal" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsDollarSign" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testOnlyNumbersAndOnePeriod" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testOnlyTwoDecimalPlaces" time="0.001"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testNumOfPeopleNotZero" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsMultipleCommas" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testOnlyTwoDecimalPlaces" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testOnlyNumbersAndOnePeriod" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testWordsAreNotPositiveIntegers" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalsDoNotHaveWords" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testNumOfPeopleIsPositiveInt" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testPriceIsNotAWord" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testZeroIsNotValidPrice" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testOneDecimalIsNotTwo" time="0"/>
-  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalsDoNotHaveWords" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsDollarSign" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputDoesNotHaveDollarSigns" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsMultipleDecimals" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsOneDecimal" time="0"/>
   <testcase classname="InputValidationTest" name="InputValidationTest.testThreeDecimalsAreNotTwo" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsAllExtraSymbols" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoDollarSigns" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoCommas" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testDecimalsAreNotPositiveIntegers" time="0"/>
+  <testcase classname="InputValidationTest" name="InputValidationTest.testInputContainsNoExtraSymbols" time="0"/>
 </testsuite>

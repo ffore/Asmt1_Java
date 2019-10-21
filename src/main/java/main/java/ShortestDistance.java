@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.Scanner;
 import java.time.*;
 import java.time.format.*;

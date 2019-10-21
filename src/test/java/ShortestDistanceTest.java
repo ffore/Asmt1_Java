@@ -1,3 +1,4 @@
+import main.java.ShortestDistance;
 import main.java.SqlDatabase;
 
 import org.junit.jupiter.api.Test;

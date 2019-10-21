@@ -114,7 +114,7 @@ public class MainMenu {
     public static void displayOptions() {
         System.out.println("Please choose an option:");
         System.out.println("1 - Body Mass Index Function");
-        System.out.println("2 - main.java.Retirement Function");
+        System.out.println("2 - Retirement Function");
         System.out.println("3 - Shortest Distance Function");
         System.out.println("4 - Split the Tip Function");
         System.out.println("5 - Quit the program");

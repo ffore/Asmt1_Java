@@ -65,7 +65,7 @@ public class BodyMassIndex {
         return new userInput(height, weight);
     }
 
-    public boolean isValidHeight(String height){
+    public static boolean isValidHeight(String height){
         int singleQuoteIndex = height.indexOf('\'');
         int doubleQuoteIndex = height.indexOf('\"');
 
@@ -78,7 +78,7 @@ public class BodyMassIndex {
         else return true;
     }
 
-    public boolean isValidWeight(String weight){
+    public static boolean isValidWeight(String weight){
         if( InputValidation.isOnlyNumbers(weight) &&
             InputValidation.isFirstCharValidDigit(weight) ) return true;
         return false;
@@ -106,7 +106,9 @@ public class BodyMassIndex {
         double weightInKilos = getWeightInKilos(weight);
         double metersSquared = heightInMeters*heightInMeters;
         double rawBMI = weightInKilos/metersSquared;
-        return round(rawBMI, 1);
+        double bmi = round(rawBMI, 1);
+        this.setBmi(bmi);
+        return bmi;
     }
 
     public double round(double value, int places){
@@ -144,8 +146,8 @@ public class BodyMassIndex {
     }
 
     public void writeToDatabase() {
-        String timestamp = createTimeStamp();
-        writeToTable(timestamp);
+        String timestamp = this.createTimeStamp();
+        this.writeToTable(timestamp);
     }
 
     public String createTimeStamp() {
@@ -157,11 +159,11 @@ public class BodyMassIndex {
     }
 
     public int writeToTable(String timestamp) {
-        SqlDatabase db = getDatabase();
-        String height = getHeight();
-        int weight = getWeight();
-        double bmi = getBMI(height, weight);
-        String bmiCategory = getBMICategory(bmi);
+        SqlDatabase db = this.getDatabase();
+        String height = this.getHeight();
+        int weight = this.getWeight();
+        double bmi = this.getBMI(height, weight);
+        String bmiCategory = this.getBMICategory(bmi);
         try {
             return db.writeToBmiTable(timestamp, bmi, bmiCategory, height, weight);
         }

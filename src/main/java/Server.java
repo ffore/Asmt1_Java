@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.mysql.cj.xdevapi.JsonArray;
+import main.java.InputValidation;
 import main.java.SqlDatabase;
 
 import org.json.*;
@@ -69,12 +71,74 @@ public class Server {
         if(requestInfo[0].equals("GET")) {
             System.out.println("Received Get Request!");
             result = this.getTableInfo(requestInfo[1]);
-        } else {
+        }
+        if (requestInfo[0].equals("POST")) {
             System.out.println("Received Post Request!");
+            result = parsePostRequest(requestInfo[1]);
 //            postToTable(requestInfo[1]);
         }
 
         return result;
+    }
+
+    public JSONArray parsePostRequest(String req) throws Exception{
+        System.out.println("parse function");
+        System.out.println(req);
+        int questionMark = req.indexOf('?');
+        String function = req.substring(1, questionMark);
+        if(function.equals("distance")){
+            return handleDistance(req, questionMark);
+        }
+        if(function.equals("bmi")){
+//            return handleBmi(req, questionMark);
+            return new JSONArray();
+        }
+        else{
+            return new JSONArray();
+        }
+    }
+
+    public JSONArray handleDistance(String req, int queryStartIndex) throws Exception{
+        double[] coordinates = new double[4];
+        String[] input = req.split("=");
+        if(input.length != 5) {
+            return invalidDistanceInput();
+        }
+
+        for(int i = 1; i < 4; i++){
+            int amperIndex = input[i].indexOf('&');
+            String point = input[i].substring(0, amperIndex);
+            if(InputValidation.isValidDouble(point)){
+                coordinates[i-1] = Double.parseDouble(point);
+            }
+            else{
+                return invalidDoubleInput();
+            }
+        }
+        if(InputValidation.isValidDouble(input[4]))
+            coordinates[3] = Double.parseDouble(input[4]);
+        else return invalidDoubleInput();
+
+        ShortestDistance shortestDistance = new ShortestDistance(this.getDatabase(), coordinates);
+        shortestDistance.calculateDistance();
+        shortestDistance.writeToDatabase();
+        double distance = shortestDistance.getDistance();
+        return createJsonDistance(distance);
+    }
+
+    public JSONArray invalidDistanceInput() throws Exception{
+        JSONObject jsonObject = new JSONObject().put("Error", "invalid number of inputs");
+        return new JSONArray().put(jsonObject);
+    }
+
+    public JSONArray invalidDoubleInput() throws Exception{
+        JSONObject jsonObject = new JSONObject().put("Error", "one or more coordinates is not a double");
+        return new JSONArray().put(jsonObject);
+    }
+
+    public JSONArray createJsonDistance(double distance) throws Exception{
+        JSONObject jsonObject = new JSONObject().put("Distance", distance);
+        return new JSONArray().put(jsonObject);
     }
 
     public JSONArray getTableInfo(String tableName) {

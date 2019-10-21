@@ -27,6 +27,12 @@ public class ShortestDistance {
         this.db = database;
     }
 
+    public ShortestDistance(SqlDatabase database, double[] coordinates) {
+        this.distance = 0.0;
+        this.coordinates = coordinates;
+        this.db = database;
+    }
+
     public ShortestDistance(SqlDatabase database, double[] coordinates, double distance) {
         this.distance = distance;
         this.coordinates = coordinates;

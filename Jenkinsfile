@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building PPA2..."
+                sh 'echo "Cleaning target dir and packaging JAR file!! :)"'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
@@ -26,7 +26,7 @@ pipeline {
         stage('Integration Testing') {
             steps {
                 echo "Now testing Mocks and Database usage..."
-                sh 'mvn -Dtest=MockMainMenuTest,MockShortestDistanceTest,MockSqlDatabaseTest test'
+                sh 'mvn -Dtest=MockMainMenuTest,MockShortestDistanceTest,MockBodyMassIndex,MockSqlDatabaseTest test'
             }
             post {
                 always {

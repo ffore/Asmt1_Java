@@ -1,4 +1,4 @@
-# CIS4930 Continuous Integration and Software Testing Assignment 1
+# CIS4930 Continuous Integration and Software Testing Assignment 2
 
 ## System Requirements
 
@@ -32,7 +32,7 @@ Due to the language and framework of choice, our project can only be run on a **
     - You'll now be prompted to choose your Java JDK, which we downloaded earlier. On the left-hand side, there should be a folder with the number 12. Left click that folder and hit next.
     - Press Finish
     - IntelliJ will then open the project if everything has been done correctly
-11) Now that IntelliJ has the application, you should see a small popup in the bottom right corner. Make sure to sync the Maven project by clicking Import Changes. If the popup disapears before you can click it, on the right-hand side of IntelliJ, there is a tab called Maven (it is vertical). Open it and click the top left upon. When you hover your mouse over it, it should say "Reimport All Maven Projects". This will import all the required dependencies so that the app can run without issue.
+11) Now that IntelliJ has the application, you should see a small popup in the bottom right corner. If it does appear, make sure to sync the Maven project by clicking Import Changes. More importantly, on the right-hand side of IntelliJ, navigate to a tab called Maven (it is written verticallly). Open it and click the top left button. When you hover your mouse over it, it should say "Reimport All Maven Projects". This will import all the required dependencies so that the app can run without issue.
 12) From here, you'll be able to run the program, any and all tests, and check our code coverage.
 
 ## Execution Instructions

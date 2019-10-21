@@ -75,25 +75,21 @@ public class Server {
         if (requestInfo[0].equals("POST")) {
             System.out.println("Received Post Request!");
             result = parsePostRequest(requestInfo[1]);
-//            postToTable(requestInfo[1]);
         }
 
         return result;
     }
 
-    public JSONArray parsePostRequest(String req) throws Exception{
-        System.out.println("parse function");
-        System.out.println(req);
+    public JSONArray parsePostRequest(String req) throws Exception {
         int questionMark = req.indexOf('?');
         String function = req.substring(1, questionMark);
+
         if(function.equals("distance")){
             return handleDistance(req, questionMark);
-        }
-        if(function.equals("bmi")){
+        } else if(function.equals("bmi")){
 //            return handleBmi(req, questionMark);
             return new JSONArray();
-        }
-        else{
+        } else{
             return new JSONArray();
         }
     }
@@ -101,6 +97,7 @@ public class Server {
     public JSONArray handleDistance(String req, int queryStartIndex) throws Exception{
         double[] coordinates = new double[4];
         String[] input = req.split("=");
+
         if(input.length != 5) {
             return invalidDistanceInput();
         }
@@ -108,17 +105,27 @@ public class Server {
         for(int i = 1; i < 4; i++){
             int amperIndex = input[i].indexOf('&');
             String point = input[i].substring(0, amperIndex);
-            if(InputValidation.isValidDouble(point)){
-                coordinates[i-1] = Double.parseDouble(point);
-            }
-            else{
+
+            if(point.contains("%")){
                 return invalidDoubleInput();
+            } else {
+                if(InputValidation.isValidDouble(point)){
+                    coordinates[i-1] = Double.parseDouble(point);
+                } else{
+                    return invalidDoubleInput();
+                }
             }
         }
+
         if(InputValidation.isValidDouble(input[4]))
             coordinates[3] = Double.parseDouble(input[4]);
-        else return invalidDoubleInput();
+        else
+            return invalidDoubleInput();
 
+        return this.calculateDistance(coordinates);
+    }
+
+    public JSONArray calculateDistance(double[] coordinates) throws Exception {
         ShortestDistance shortestDistance = new ShortestDistance(this.getDatabase(), coordinates);
         shortestDistance.calculateDistance();
         shortestDistance.writeToDatabase();

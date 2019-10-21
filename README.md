@@ -27,24 +27,12 @@ Due to the language and framework of choice, our project can only be run on a **
 9) Once you are inside the folder / directory that you want the project to be saved, you'll need to clone our repository containing all our code using the command `git clone https://github.com/ffore/Asmt1_Java.git`. This will clone our repository to the current directory and save everything in a folder called 'Asmt1_Java'.
 10) Now that we have cloned our repository, Open up IntelliJ.
     - On the right-hand side, you'll have 4 different options. Select **Import Project**, which will open a file explorer
-    - Navigate to the folder you cloned the GitHub Repository, select the folder named `Asmt1_Java`, and then click **OK**
-    - Back in IntelliJ, click next 2 times. There will be a warning that the chosen folder is not empty, and that is ok. You can overwrite it. 
-    - Click Next 3 more times. You will be prompted again to overwrite another file. Choose the Reuse option.
+    - Navigate to the folder you cloned the GitHub Repository, open the folder named `Asmt1_Java`, select the file named `pom.xml` and then click **OK**
+    - Back in IntelliJ, click next. You should see a folder selected now on the current screen. Make sure it is selected, otherwise the project cannot be imported. Click next. 
     - You'll now be prompted to choose your Java JDK, which we downloaded earlier. On the left-hand side, there should be a folder with the number 12. Left click that folder and hit next.
     - Press Finish
     - IntelliJ will then open the project if everything has been done correctly
-11) Now you need to add the JUnit framework to the project. Do so by:
-    - Selecting File in the top left corner
-    - Choose Project Structure, which is the 6th option in the dropdown.
-    - Select the Modules tab on the left-hand side
-    - In the main window, you should see 3 different tabs labeled Sources, Paths, and Dependencies respectively. Select the Dependencies tab
-    - On the right-hand side of the main window, there is a small grey plus sign next to Scope. Press the plus sign.
-    - Choose the second option of `Library...`
-    - Choose the second option of the new dropdown `From Maven...`
-    - A search box will now appear. Copy and paste `org.junit.jupiter:junit-jupiter:5.4.2` in the search box.
-    - Click OK
-    - A new popup will appear asking you to configure the library. Simply press OK.
-    - Click Apply on the bottom right of the window, and then OK
+11) Now that IntelliJ has the application, you should see a small popup in the bottom right corner. Make sure to sync the Maven project by clicking Import Changes. If the popup disapears before you can click it, on the right-hand side of IntelliJ, there is a tab called Maven (it is vertical). Open it and click the top left upon. When you hover your mouse over it, it should say "Reimport All Maven Projects". This will import all the required dependencies so that the app can run without issue.
 12) From here, you'll be able to run the program, any and all tests, and check our code coverage.
 
 ## Execution Instructions

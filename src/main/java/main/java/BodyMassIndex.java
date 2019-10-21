@@ -28,6 +28,13 @@ public class BodyMassIndex {
         this.weight = weight;
     }
 
+    public BodyMassIndex(SqlDatabase database, String height, int weight, double bmi) {
+        this.db = database;
+        this.height = height;
+        this.weight = weight;
+        this.bmi = bmi;
+    }
+
     public userInput acceptInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;
@@ -147,9 +154,9 @@ public class BodyMassIndex {
         return Integer.parseInt(inchStr);
     }
 
-    public void writeToDatabase() {
+    public int writeToDatabase() {
         String timestamp = this.createTimeStamp();
-        this.writeToTable(timestamp);
+        return this.writeToTable(timestamp);
     }
 
     public String createTimeStamp() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="37" failures="0" name="RetirementTest" time="0.019" errors="0" skipped="0">
+<testsuite tests="37" failures="0" name="RetirementTest" time="0.005" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -62,41 +62,41 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanGetAnnualSalary" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanGetEmployerContribution" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanGetSavingsGoal" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testRoundToTwoDecimalDouble" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testInvalidAgeLoopsUntilValid" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testWordsAreInvalidAmounts" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testDecimalIsInvalidPercentage" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testInvalidSalaryLoopsUntilValid" time="0.002"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testValidSalaryPassesAmountCheck" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testBadSalaryInputIsInvalidAmount" time="0.002"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testTenIsInvalidAge" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testWholeNumberIsValidPercentage" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanSetCurrentAge" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testValidAgePassesAgeCheck" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanSetAnnualSalary" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testSalaryIsValidAmount" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testThirtyIsValidAge" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanGetPercentageSaved" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanSetPercentageSaved" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testWordsAreInvalidAges" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanGetCurrentAge" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanSetSavingsGoal" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanSetSavingsPerYear" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanSetEmployerContributions" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCanGetSavingsPerYear" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testFindFinalAgeForMediumValues" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testFindFinalAgeForSimpleValues" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testInvalidPercentageLoopsUntilValid" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testLargeAndSmallNumbersAreInvalidPercentage" time="0.001"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCalculateRetirementWithSimpleValues" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCalculateRetirementIfUserDoesNotSave" time="0"/>
   <testcase classname="RetirementTest" name="RetirementTest.testCalculateRetirementWhenSavingsIsNotReached" time="0"/>
   <testcase classname="RetirementTest" name="RetirementTest.testFindFinalAgeIfUserDoesNotSaveAnything" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testValidSavingsGoalPassesSavingsCheck" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCalculateRetirementIfUserDoesNotSave" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testCalculateRetirementWithSimpleValues" time="0.001"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testInvalidPercentageLoopsUntilValid" time="0.001"/>
   <testcase classname="RetirementTest" name="RetirementTest.testValidPercentagePassesPercentageCheck" time="0"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testInvalidSavingsGoalLoopsUntilValid" time="0.001"/>
-  <testcase classname="RetirementTest" name="RetirementTest.testRoundSalary" time="0.004"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testInvalidSavingsGoalLoopsUntilValid" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testValidSavingsGoalPassesSavingsCheck" time="0.001"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testLargeAndSmallNumbersAreInvalidPercentage" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testRoundSalary" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testBadSalaryInputIsInvalidAmount" time="0.001"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testWordsAreInvalidAmounts" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testTenIsInvalidAge" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testWholeNumberIsValidPercentage" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testInvalidSalaryLoopsUntilValid" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testValidSalaryPassesAmountCheck" time="0.001"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testSalaryIsValidAmount" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testThirtyIsValidAge" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testWordsAreInvalidAges" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testDecimalIsInvalidPercentage" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testValidAgePassesAgeCheck" time="0.001"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testInvalidAgeLoopsUntilValid" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testRoundToTwoDecimalDouble" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanSetSavingsGoal" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanSetEmployerContributions" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanSetSavingsPerYear" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testFindFinalAgeForMediumValues" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanGetSavingsPerYear" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanGetSavingsGoal" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testFindFinalAgeForSimpleValues" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanSetCurrentAge" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanGetEmployerContribution" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanGetCurrentAge" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanGetAnnualSalary" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanGetPercentageSaved" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanSetPercentageSaved" time="0"/>
+  <testcase classname="RetirementTest" name="RetirementTest.testCanSetAnnualSalary" time="0"/>
 </testsuite>

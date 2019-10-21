@@ -26,7 +26,7 @@ pipeline {
         stage('Integration Testing') {
             steps {
                 echo "Now testing Mocks and Database usage..."
-                sh 'mvn -Dtest=MockMainMenuTest,MockShortestDistanceTest,MockSqlDatabaseTest test'
+                sh 'mvn -Dtest=MockMainMenuTest,MockShortestDistanceTest,MockBodyMassIndex,MockSqlDatabaseTest test'
             }
             post {
                 always {

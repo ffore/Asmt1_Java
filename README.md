@@ -55,9 +55,31 @@ Now that the project is open in IntelliJ, on the left-hand side you will find th
 If you'd like to see an exact breakdown of our code coverage as well, you can Right click on the green folder labeled tests again and this time select the option "Run All Tests with Coverage".
 
 #### PPA#2 Changes
-PPA#2 does not have a required coverage report that we need to meet. We therefore focused on making sure the desired functionality was achieved and wrote the required tests only. All the additional mock tests and Http mock tests will be run with the existing unit tests by following the above directions.
+PPA#2 does not have a required coverage report that we need to meet. We therefore focused on making sure the desired functionality was achieved and wrote the required tests only. All the additional mock tests and Http mock tests will be run with the existing unit tests by following the above directions. A live database instance is not required to run the tests (new and old).
+
+### Running the JenkinsCI on Docker
+
+To run our pipeline, open a docker terminal and paste the following to create the required container:
+```
+docker run \
+  --rm \
+  -u root \
+  -p 8080:8080 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v "$HOME":/home \
+  jenkinsci/blueocean
+```
+Follow the remainder of [this](https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/) but instead of creating a new Jenkinsfile, you will use the one we have created. Our Jenkinsfile has 4 separate stages, 1 for Build and 3 for Testing. If you have not already made a User, you will have to create one.
 
 ### How to Run the Program
+
+#### PPA2 Changes
+To run the application successfully, you must first have Docker installed. The databsae we have decided to use is MySQL, and the specific image is maintained by docker. To have a docker container running that the application can interact with, run the following command in a Docker Terminal:
+```
+docker run --detach -p 3306:3306 --name=pensive_buck --env="MYSQL_ROOT_PASSWORD=password" mysql
+```
+Once the command has been executed, wait a few seconds for the database to spin up properly. Once the container is up, when the application is run, it will connect to the container, generate the database and its tables appropriately, or it will use the previously generated database and table from a previous execution of the application (meaning, we have persistent data from one execution to another).
 
 Because IntelliJ is an IDE, it has its own built-in command line. We will be using this to run our application. On the left-hand side in the file system / file structure of our project, there should be a blue folder labeled **src**. Open that folder by Left clicking on it.
 
@@ -65,7 +87,7 @@ Opening the src folder will produce a list of files with different names. The on
 
 Once you've selected that option, the built-in command line will appear from the bottom of the page. You will interact with the application through this. The main menu of the application will be displayed and is waiting for your input. From here, you'll be able to play with the 4 different functions we've chosen or simply exit the app.
 
-#### PPA#2 Changes
+#### Using Postman with the Running Application
 The application now has added functionality to read and write to a database. The 2 functions we have decided to rewrite are **Shortest Distance** and **Body Mass Index**. When you choose either of these functions, with the database docker image running detached, you will be able to see the current contents of the respective tables. After you run through the function, we write that input and result, along with a timestamp, to the database. The next time you run either function, you can see the updated table.
 
 When accessing the running application with **Postman**, we have a specific format you **must** adhere to for the application to work. For **GET** requests, the only valid URLs that the application will respond to are:

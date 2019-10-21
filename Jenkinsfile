@@ -34,16 +34,6 @@ pipeline {
                 }
             }
         }
-        stage('Server Testing') {
-            steps {
-                echo "Now testing HTTP Server and GET/POST Requests..."
-                sh 'mvn -Dtest=ServerTest test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
+       
     }
 }

@@ -87,22 +87,21 @@ public class Server {
         int questionMark = req.indexOf('?');
         String function = req.substring(1, questionMark);
         if(function.equals("distance")){
-            return handleDistance(req, questionMark);
+            return handleDistance(req);
         }
         if(function.equals("bmi")){
-//            return handleBmi(req, questionMark);
-            return new JSONArray();
+            return handleBmi(req);
         }
         else{
             return new JSONArray();
         }
     }
 
-    public JSONArray handleDistance(String req, int queryStartIndex) throws Exception{
+    public JSONArray handleDistance(String req) throws Exception{
         double[] coordinates = new double[4];
         String[] input = req.split("=");
         if(input.length != 5) {
-            return invalidDistanceInput();
+            return invalidInputNumber();
         }
 
         for(int i = 1; i < 4; i++){
@@ -126,7 +125,27 @@ public class Server {
         return createJsonDistance(distance);
     }
 
-    public JSONArray invalidDistanceInput() throws Exception{
+    public JSONArray handleBmi(String req) throws Exception{
+        String[] input = req.split("=");
+        if(input.length != 3) return invalidInputNumber();
+
+        String[] feet = input[1].split("%27");
+        String[] inches = feet[1].split("%22");
+
+        String height = feet[0] + "\'"+  inches[0] + "\"";
+        if(!BodyMassIndex.isValidHeight(height)) return invalidHeightInput();
+        if(!BodyMassIndex.isValidWeight(input[2])) return invalidWeightInput();
+        int weight = Integer.parseInt(input[2]);
+        BodyMassIndex bodyMassIndex = new BodyMassIndex(this.getDatabase());
+        double bmi = bodyMassIndex.getBMI(height, weight);
+        String category = bodyMassIndex.getBMICategory(bmi);
+        bodyMassIndex.setHeight(height);
+        bodyMassIndex.setWeight(weight);
+        bodyMassIndex.writeToDatabase();
+        return createJsonBmi(bmi, category);
+    }
+
+    public JSONArray invalidInputNumber() throws Exception{
         JSONObject jsonObject = new JSONObject().put("Error", "invalid number of inputs");
         return new JSONArray().put(jsonObject);
     }
@@ -136,8 +155,26 @@ public class Server {
         return new JSONArray().put(jsonObject);
     }
 
+    public JSONArray invalidHeightInput() throws Exception{
+        JSONObject jsonObject = new JSONObject().put("Error", "height is not formatted correctly");
+        return new JSONArray().put(jsonObject);
+    }
+
+    public JSONArray invalidWeightInput() throws Exception{
+        JSONObject jsonObject = new JSONObject().put("Error", "weight is not formatted correctly");
+        return new JSONArray().put(jsonObject);
+    }
+
     public JSONArray createJsonDistance(double distance) throws Exception{
         JSONObject jsonObject = new JSONObject().put("Distance", distance);
+        return new JSONArray().put(jsonObject);
+    }
+
+    public JSONArray createJsonBmi(double bmi, String category) throws Exception{
+        Map map = new LinkedHashMap();
+        map.put("Bmi", bmi);
+        map.put("Category", category);
+        JSONObject jsonObject = new JSONObject(map);
         return new JSONArray().put(jsonObject);
     }
 

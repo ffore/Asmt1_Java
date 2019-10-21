@@ -1,20 +1,44 @@
 package main.java;
 
 import java.util.Scanner;
+import java.time.*;
+import java.time.format.*;
+import main.java.SqlDatabase;
 
 public class ShortestDistance {
 
     private double distance;
     private double[] coordinates;
+    private SqlDatabase db;
 
     public ShortestDistance() {
         this.distance = 0.0;
         this.coordinates = new double[4];
+        this.db = new SqlDatabase();
     }
 
     public ShortestDistance(double[] coordinates) {
         this.distance = 0.0;
         this.coordinates = coordinates;
+        this.db = new SqlDatabase();
+    }
+
+    public ShortestDistance(SqlDatabase database) {
+        this.distance = 0.0;
+        this.coordinates = new double[4];
+        this.db = database;
+    }
+
+    public ShortestDistance(SqlDatabase database, double[] coordinates) {
+        this.distance = 0.0;
+        this.coordinates = coordinates;
+        this.db = database;
+    }
+
+    public ShortestDistance(SqlDatabase database, double[] coordinates, double distance) {
+        this.distance = distance;
+        this.coordinates = coordinates;
+        this.db = database;
     }
 
     public void acceptInput() {
@@ -26,6 +50,7 @@ public class ShortestDistance {
         }
 
         this.printResults();
+        this.writeToDatabase();
     }
 
     public double acceptCoordinate(String currentCoordinate) {
@@ -49,6 +74,32 @@ public class ShortestDistance {
         double result = this.getDistance();
         System.out.println("The resulting distance is: " + result);
         return result;
+    }
+
+    public int writeToDatabase() {
+        String timestamp = this.createTimeStamp();
+        return this.writeToTable(timestamp);
+    }
+
+    public String createTimeStamp() {
+        // https://www.geeksforgeeks.org/new-date-time-api-java8/
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        LocalDateTime timestamp = LocalDateTime.now();
+        return timestamp.format(format);
+    }
+
+    public int writeToTable(String timestamp) {
+        SqlDatabase db = this.getDatabase();
+        double distance = this.getDistance();
+        double[] input = this.getCoordinates();
+
+        try {
+            return db.writeToDistanceTable(timestamp, distance, input);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return -1;
     }
 
     public void calculateDistance() {
@@ -95,11 +146,15 @@ public class ShortestDistance {
         return this.coordinates;
     }
 
+    public SqlDatabase getDatabase() {
+        return this.db;
+    }
+
     public void setCoordinate(int position, double coordinate) {
         this.coordinates[position] = coordinate;
     }
 
     public static boolean isInvalidInput(String input) {
-        return !InputValidation.isValidDouble(input);
+        return !main.java.InputValidation.isValidDouble(input);
     }
 }

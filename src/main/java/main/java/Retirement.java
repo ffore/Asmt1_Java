@@ -170,15 +170,15 @@ public class Retirement {
     }
 
     public static boolean isInvalidAge(String age) {
-        return !InputValidation.isValidAge(age);
+        return !main.java.InputValidation.isValidAge(age);
     }
 
     public static boolean isInvalidAmount(String input) {
-        return !InputValidation.isValidAmount(input);
+        return !main.java.InputValidation.isValidAmount(input);
     }
 
     public static boolean isInvalidPercentage(String input) {
-        return !InputValidation.isValidPercentage(input);
+        return !main.java.InputValidation.isValidPercentage(input);
     }
 
     public int getCurrentAge() {

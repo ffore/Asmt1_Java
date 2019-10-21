@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="41" failures="0" name="BodyMassIndexTest" time="0.077" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="12.0.2+10"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\Daniel\Documents\FALL 19\CIS4930\Asmt1_Java"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\Daniel\Documents\FALL 19\CIS4930\Asmt1_Java"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="java.runtime.version" value="12.0.2+10"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Daniel\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-12.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;c:\Program Files\Intel\WiFi\bin\;c:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Windows Live\Shared;c:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;c:\Program Files\Microsoft SQL Server\110\Tools\Binn\;c:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_101\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\TDM-GCC-32\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\Daniel\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\Daniel\AppData\Local\Programs\Microsoft VS Code\bin;;C:\Program Files\Docker Toolbox;."/>
+    <property name="maven.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="56.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Daniel"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="12"/>
+    <property name="user.name" value="Daniel"/>
+    <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar"/>
+    <property name="idea.version2019.2.1" value="true"/>
+    <property name="java.vm.specification.version" value="12"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.2.1 test"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="12.0.2"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.2.1\plugins\maven\lib\maven3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2019-07-16"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputFailsOnWords" time="0.012"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightInputReturnsBoolean" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightIsNotZeroPreceding" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetNormalWeight" time="0.006"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testWordsAreInvalidHeight" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightHasValidZeros" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInputQuotesAreInWrongOrder" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testUserInputObject" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testFeetDoesNotStartWithZero" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testWeightToKiloConversion" time="0.004"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfWeightIsNegative" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testIfWeightIsWords" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInInchesConversion" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputIsNotOnlyZero" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInchesDoesNotStartWithZero" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToThreePlaces" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInMetersConversion" time="0.001"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckWeightIsNotZero" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfHeightIsZeroPreceding" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputReturnsBoolean" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToOnePlace" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testRoundingToTwoPlaces" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputQuotesAreInOrder" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasValidNumberMeasurements" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputStopsInvalidNumberMeasurements" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasCorrectNumberOfQuotes" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testFeetAndInchesDoNotStartWithZero" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testNoMeasurementUnitsAreInvalidHeights" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputQuotesAreAfterNumbers" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testTwoDoubleQuotesAreInvalidHeights" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasSingleAndDoubleQuote" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputCatchesWrongQuoteOrder" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testHeightInputFailsOnExtraCharacters" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckIfWeightContainsAbbreviations" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testTwoSingleQuotesAreInvalidHeights" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testCheckHeightInputHasOnlyQuotesAndNumbers" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testInput" time="0.051"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetBMI" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetUnderweight" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetObese" time="0"/>
+  <testcase classname="BodyMassIndexTest" name="BodyMassIndexTest.testGetOverweight" time="0"/>
+</testsuite>

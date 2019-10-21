@@ -1,6 +1,5 @@
 import main.java.Retirement;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.annotation.Testable;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -249,7 +248,7 @@ public class RetirementTest {
         assertEquals(user.getSavingsPerYear(), 5);
     }
 
-    // Retirement Calculation
+    // main.java.Retirement Calculation
     @Test
     public void testCalculateRetirementWhenSavingsIsNotReached() {
         Retirement user = new Retirement(50, 1000, 10, 200000);

@@ -1,24 +1,47 @@
+package main.java;
+
 import java.util.Scanner;
 
 public class MainMenu {
 
     private BodyMassIndex bodyMassIndex;
-    private main.java.Retirement retirement;
-    private main.java.ShortestDistance shortestDistance;
-    private main.java.TipCalculator tipCalculator;
+    private Retirement retirement;
+    private ShortestDistance shortestDistance;
+    private SqlDatabase database;
+    private TipCalculator tipCalculator;
+    private Server server;
     private boolean isStillRunning;
 
     public MainMenu() {
-        this.bodyMassIndex = new BodyMassIndex();
-        this.retirement = new main.java.Retirement();
-        this.shortestDistance = new main.java.ShortestDistance();
-        this.tipCalculator = new main.java.TipCalculator();
+        this.database = new SqlDatabase();
+        this.bodyMassIndex = new BodyMassIndex(this.database);
+        this.retirement = new Retirement();
+        this.shortestDistance = new ShortestDistance(this.database);
+        this.tipCalculator = new TipCalculator();
+        this.server = new Server(this.database);
         this.isStillRunning = true;
     }
 
-    public static void main(String[] args) {
+    public MainMenu(SqlDatabase database) {
+        this.bodyMassIndex = new BodyMassIndex();
+        this.database = database;
+        this.retirement = new Retirement();
+        this.shortestDistance = new ShortestDistance(database);
+        this.tipCalculator = new TipCalculator();
+        this.server = new Server(database);
+        this.isStillRunning = true;
+    }
+
+    public static void main(String[] args) throws Exception{
         MainMenu menu = new MainMenu();
+
+        menu.openDatabaseConnection();
+        menu.spawnServerThread(menu);
+
         menu.start();
+
+        menu.closeDatabaseConnection();
+        menu.closeServerConnection();
     }
 
     public void start() {
@@ -97,6 +120,49 @@ public class MainMenu {
         System.out.println("5 - Quit the program");
     }
 
+    public void openDatabaseConnection() {
+        this.database.connectToDatabase();
+    }
+
+    public void spawnServerThread(MainMenu menu) {
+//        https://stackoverflow.com/a/29060130
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while(menu.isStillRunning) {
+                        menu.startServer();
+                    }
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
+            }
+        });
+        thread.start();
+    }
+
+    public void startServer() throws Exception {
+        this.server.startServer();
+    }
+
+    public void closeDatabaseConnection() {
+        try {
+            this.database.closeConnection();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void closeServerConnection() {
+        try {
+            this.server.closeConnection();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
     public static void closeMenu() {
         System.out.println("Thank you for running our program");
         System.out.println("Closing application...");
@@ -111,12 +177,24 @@ public class MainMenu {
     }
 
     public void startShortestDistance() {
+        try{
+            this.database.printDistanceTable();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
         this.shortestDistance.acceptInput();
     }
 
     public void startRetirement() { this.retirement.acceptInput(); }
 
     public void startBodyMassIndex() {
+        try{
+            this.database.printBmiTable();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
         this.bodyMassIndex.acceptInput();
     }
 

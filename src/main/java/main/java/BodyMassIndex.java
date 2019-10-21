@@ -1,13 +1,38 @@
-import main.java.InputValidation;
+package main.java;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.InputMismatchException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class BodyMassIndex {
 
-    public static main.java.userInput acceptInput(){
+    private SqlDatabase db;
+    private String height;
+    private int weight;
+    private double bmi;
+
+    public BodyMassIndex() {}
+
+    public BodyMassIndex(SqlDatabase database) {
+        this.db = database;
+    }
+
+    public BodyMassIndex(SqlDatabase database, String height, int weight) {
+        this.db = database;
+        this.height = height;
+        this.weight = weight;
+    }
+
+    public BodyMassIndex(SqlDatabase database, String height, int weight, double bmi) {
+        this.db = database;
+        this.height = height;
+        this.weight = weight;
+        this.bmi = bmi;
+    }
+
+    public userInput acceptInput(){
         Scanner myScan = new Scanner(System.in);
         boolean validHeight = false;
         String height="";
@@ -24,6 +49,7 @@ public class BodyMassIndex {
             height = myScan.nextLine();
             validHeight = isValidHeight(height);
         }
+        setHeight(height);
         boolean validWeight = false;
         String weightStr = "";
         count = 0;
@@ -39,8 +65,10 @@ public class BodyMassIndex {
             validWeight = isValidWeight(weightStr);
         }
         int weight = Integer.parseInt(weightStr);
+        setWeight(weight);
         printResult(height, weight);
-        return new main.java.userInput(height, weight);
+        writeToDatabase();
+        return new userInput(height, weight);
     }
 
     public static boolean isValidHeight(String height){
@@ -62,62 +90,121 @@ public class BodyMassIndex {
         return false;
     }
 
-    public static double getHeightInMeters(int ft, int in){
+    public double getHeightInMeters(int ft, int in){
         double totalHeightInches = (double) getHeightInInches(ft, in);
         double htInMeters = totalHeightInches*0.025;
         return round(htInMeters, 3);
     }
 
-    public static int getHeightInInches(int ft, int in){
+    public int getHeightInInches(int ft, int in){
         return (ft*12 + in);
     }
 
-    public static double getWeightInKilos(int lbs){
+    public double getWeightInKilos(int lbs){
         double lbsInDbl = (double) lbs;
         double kilos = lbsInDbl*0.45;
         return round(kilos, 2);
 
     }
 
-    public static double getBMI(String height, int weight){
+    public double getBMI(String height, int weight){
         double heightInMeters = getHeightInMeters(getHeightFt(height), getHeightIn(height));
         double weightInKilos = getWeightInKilos(weight);
         double metersSquared = heightInMeters*heightInMeters;
         double rawBMI = weightInKilos/metersSquared;
-        return round(rawBMI, 1);
+        double bmi = round(rawBMI, 1);
+        this.setBmi(bmi);
+        return bmi;
     }
 
-    public static double round(double value, int places){
+    public double round(double value, int places){
 //      following is inspired by https://www.baeldung.com/java-round-decimal-number
         BigDecimal bdRounded = new BigDecimal(Double.toString(value));
         bdRounded = bdRounded.setScale(places, RoundingMode.HALF_UP);
         return bdRounded.doubleValue();
     }
 
-    public static String getBMICategory(double bmi){
+    public String getBMICategory(double bmi){
         if(bmi<18.5) return "Underweight";
         else if(bmi >= 18.5 && bmi <= 24.9) return "Normal weight";
         else if(bmi >= 25 && bmi <= 29.9) return "Overweight";
         else return "Obese";
     }
 
-    public static void printResult(String height, int weight){
+    public void printResult(String height, int weight){
         double bmi = getBMI(height, weight);
+        setBmi(bmi);
         String category = getBMICategory(bmi);
         System.out.println("\nBMI: " + bmi + " (" + category + ")");
     }
 
-    public static int getHeightIn(String height){
+    public int getHeightIn(String height){
         int singleQuoteIndex = height.indexOf('\'');
         int doubleQuoteIndex = height.indexOf('\"');
         String inchStr = height.substring(singleQuoteIndex+1, doubleQuoteIndex);
         return Integer.parseInt(inchStr);
     }
 
-    public static int getHeightFt(String height){
+    public int getHeightFt(String height){
         int singleQuoteIndex = height.indexOf('\'');
         String inchStr = height.substring(0, singleQuoteIndex);
         return Integer.parseInt(inchStr);
+    }
+
+    public int writeToDatabase() {
+        String timestamp = this.createTimeStamp();
+        return this.writeToTable(timestamp);
+    }
+
+    public String createTimeStamp() {
+        // https://www.geeksforgeeks.org/new-date-time-api-java8/
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        LocalDateTime timestamp = LocalDateTime.now();
+        String formattedTime = timestamp.format(format);
+        return formattedTime;
+    }
+
+    public int writeToTable(String timestamp) {
+        SqlDatabase db = this.getDatabase();
+        String height = this.getHeight();
+        int weight = this.getWeight();
+        double bmi = this.getBMI(height, weight);
+        String bmiCategory = this.getBMICategory(bmi);
+        try {
+            return db.writeToBmiTable(timestamp, bmi, bmiCategory, height, weight);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+        return -1;
+    }
+
+    public SqlDatabase getDatabase() {
+        return this.db;
+    }
+
+    public String getHeight() {
+        return this.height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public int getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public double getBmi() {
+        return this.bmi;
+    }
+
+    public void setBmi(double bmi) {
+        this.bmi = bmi;
     }
 
 }
